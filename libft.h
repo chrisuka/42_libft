@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 17:06:35 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/11/07 18:32:51 by ikarjala         ###   ########.fr       */
+/*   Updated: 2021/11/07 20:14:12 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,8 @@ int		ft_toupper(int c);
 
 void	ft_bzero(void *s, size_t n);
 void	*ft_memset(void *b, int c, size_t len);
+
+char	*ft_strchr(const char *s, int c);
+char	*ft_strrchr(const char *s, int c);
+char	*ft_strstr(const char *haystack, const char *needle);
 #endif
