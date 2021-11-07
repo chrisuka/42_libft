@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/07 19:32:42 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/11/07 20:34:30 by ikarjala         ###   ########.fr       */
+/*   Created: 2021/11/07 21:41:21 by ikarjala          #+#    #+#             */
+/*   Updated: 2021/11/07 22:34:21 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-char	*ft_strstr(const char *haystack, const char *needle)
+int	ft_atoi(const char *str)
 {
-	size_t	sweep;
-	size_t	probe;
+	int		nb;
+	int		mul;
+	int		sign;
+	char	*ptr;
 
-	if (*needle == '\0')
-		return ((char *)haystack);
-	sweep = 0;
-	while (haystack[++sweep] != '\0')
-	{
-		probe = sweep;
-		while (haystack[probe] == needle[probe])
-		{
-			if (haystack[probe] == '\0')
-				return ((char *)&haystack[probe]);
-			probe++;
-		}
-		sweep++;
-	}
-	return (NULL);
+	ptr = (char *)str;
+	while (ft_isspace(*ptr))
+		if (*ptr++ == '\0')
+			return (0);
+	nb = 0;
+	mul = 1;
+	sign = -(*ptr == '-') | 1;
+	while (ft_isdigit(*++ptr))
+		nb += (*ptr - '0') * sign * mul++;
+	return (nb);
 }

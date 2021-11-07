@@ -6,14 +6,14 @@
 #    By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/05 16:57:32 by ikarjala          #+#    #+#              #
-#    Updated: 2021/11/07 20:00:39 by ikarjala         ###   ########.fr        #
+#    Updated: 2021/11/07 22:26:38 by ikarjala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME       = libft.a
 BIN        = ./$(NAME)
 CFUNC      = ft_strlen ft_isdigit ft_isalpha ft_isalnum ft_isprint ft_isascii ft_tolower ft_toupper ft_bzero ft_memset\
-             ft_strchr ft_strrchr ft_strstr
+             ft_strchr ft_strrchr ft_strstr ft_atoi
 SRC_DIR    = ./
 OBJ_DIR    = ./
 SRC        = $(addprefix $(SRC_DIR),$(addsuffix .c,$(CFUNC)))
