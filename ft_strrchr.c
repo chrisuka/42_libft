@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/05 17:06:35 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/11/07 18:32:51 by ikarjala         ###   ########.fr       */
+/*   Created: 2021/11/07 18:59:31 by ikarjala          #+#    #+#             */
+/*   Updated: 2021/11/07 19:09:56 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
-# include <unistd.h>
-# include <stdlib.h>
-# include <string.h>
-size_t	ft_strlen(char *s);
+#include <libft.h>
 
-int		ft_isdigit(int c);
-int		ft_isalpha(int c);
-int		ft_isalnum(int c);
-int		ft_isprint(int c);
-int		ft_isascii(int c);
-int		ft_tolower(int c);
-int		ft_toupper(int c);
+char	*ft_strrchr(const char *s, int c)
+{
+	char	*ptr;
+	char	*last;
 
-void	ft_bzero(void *s, size_t n);
-void	*ft_memset(void *b, int c, size_t len);
-#endif
+	ptr = (char *)s;
+	last = NULL;
+	while (*ptr != '\0')
+		if (*ptr++ == c)
+			last = ptr;
+	return (last);
+}

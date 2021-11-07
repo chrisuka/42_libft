@@ -6,15 +6,18 @@
 #    By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/05 16:57:32 by ikarjala          #+#    #+#              #
-#    Updated: 2021/11/06 21:37:55 by ikarjala         ###   ########.fr        #
+#    Updated: 2021/11/07 19:07:46 by ikarjala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME       = libft.a
 BIN        = ./$(NAME)
+CFUNC      = ft_strlen ft_isdigit ft_isalpha ft_isalnum ft_isprint ft_isascii ft_tolower ft_toupper ft_bzero ft_memset\
+             ft_strchr ft_strrchr
 SRC_DIR    = ./
-SRC        = ft_strlen.c ft_isdigit.c ft_isalpha.c ft_isalnum.c ft_isprint.c ft_isascii.c ft_tolower.c ft_toupper.c ft_bzero.c
-OBJ        = ft_strlen.o ft_isdigit.o ft_isalpha.o ft_isalnum.o ft_isprint.o ft_isascii.o ft_tolower.o ft_toupper.o ft_bzero.o
+OBJ_DIR    = ./
+SRC        = $(addprefix $(SRC_DIR),$(addsuffix .c,$(CFUNC)))
+OBJ        = $(addprefix $(OBJ_DIR),$(addsuffix .o,$(CFUNC)))
 INC_DIR    = ./
 LIB        =
 FLAGS      = -Wall -Wextra -Werror
@@ -22,7 +25,7 @@ FLAGS      = -Wall -Wextra -Werror
 all: $(NAME)
 $(NAME):
 	@echo '$(NAME) :: Starting build...'
-	gcc -c	$(FLAGS) $(addprefix $(SRC_DIR),$(SRC)) -I $(INC_DIR)
+	gcc -c	$(FLAGS) $(SRC) -I $(INC_DIR)
 	ar -cr	$(BIN) $(OBJ)
 	ranlib	$(BIN)
 clean:
