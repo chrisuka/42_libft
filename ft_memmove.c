@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/06 21:31:06 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/11/12 17:51:59 by ikarjala         ###   ########.fr       */
+/*   Created: 2021/11/14 11:09:36 by ikarjala          #+#    #+#             */
+/*   Updated: 2021/11/14 11:09:55 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-void	ft_bzero(void *s, size_t n)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	if (n == 0)
-		return ;
-	while (--n > 0)
-		((char *)s)[n] = 0;
-	((char *)s)[0] = 0;
+	if (dst < src)
+		return (ft_memcpy(dst, src, len));
+	if (len == 0)
+		return (dst);
+	if (dst == NULL && src == NULL)
+		return (NULL);
+	while (--len > 0)
+		((char *)dst)[len] = ((char *)src)[len];
+	((char *)dst)[0] = ((char *)src)[0];
+	return (dst);
 }

@@ -1,22 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/06 21:31:06 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/11/12 17:51:59 by ikarjala         ###   ########.fr       */
+/*   Created: 2021/11/11 19:16:51 by ikarjala          #+#    #+#             */
+/*   Updated: 2021/11/14 11:09:13 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-void	ft_bzero(void *s, size_t n)
+static int	ft_idigits(int n)
 {
-	if (n == 0)
-		return ;
-	while (--n > 0)
-		((char *)s)[n] = 0;
-	((char *)s)[0] = 0;
+	int	dgt;
+
+	dgt = 1;
+	while (n > 0)
+	{
+		dgt++;
+		n /= 10;
+	}
+	return (dgt);
+}
+
+char	*ft_itoa(int n)
+{
+	char	*str;
+	int		dgt;
+
+	dgt = ft_idigits(n);
+	str = (char *)malloc(sizeof(char) * (dgt + 2));
+	if (!str)
+		return (NULL);
+	if (n < 0)
+	{
+		*str = '-';
+		n = -n;
+	}
+	str += dgt + 1;
+	*str = '\0';
+	while (n > 0)
+	{
+		*--str = n % 10 + '0';
+		n /= 10;
+	}
+	return (str);
 }

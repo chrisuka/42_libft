@@ -1,22 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/06 21:31:06 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/11/12 17:51:59 by ikarjala         ###   ########.fr       */
+/*   Created: 2021/11/10 23:04:24 by ikarjala          #+#    #+#             */
+/*   Updated: 2021/11/14 11:07:51 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-void	ft_bzero(void *s, size_t n)
+void	ft_putnbr_fd(int n, int fd)
 {
-	if (n == 0)
+	int		div;
+
+	if (n == FT_INT_MAX)
+	{
+		write(fd, "2147483647", 10);
 		return ;
-	while (--n > 0)
-		((char *)s)[n] = 0;
-	((char *)s)[0] = 0;
+	}
+	if (n == FT_INT_MIN)
+	{
+		write(fd, "-2147483648", 11);
+		return ;
+	}
+	if (n < 0)
+	{
+		write(fd, "-", 1);
+		n = -n;
+	}
+	div = 1;
+	while (n / div > 0)
+		div *= 10;
+	while (div > 1)
+	{
+		div /= 10;
+		ft_putchar_fd(n / div % 10 + '0', fd);
+	}
 }
