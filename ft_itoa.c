@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 19:16:51 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/11/14 11:09:13 by ikarjala         ###   ########.fr       */
+/*   Updated: 2021/11/15 18:37:47 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ static int	ft_idigits(int n)
 	int	dgt;
 
 	dgt = 1;
-	while (n > 0)
+	n /= 10;
+	while (n != 0)
 	{
 		dgt++;
 		n /= 10;
@@ -27,24 +28,24 @@ static int	ft_idigits(int n)
 
 char	*ft_itoa(int n)
 {
-	char	*str;
-	int		dgt;
+	signed char	neg;
+	char		*str;
+	int			dgt;
 
 	dgt = ft_idigits(n);
-	str = (char *)malloc(sizeof(char) * (dgt + 2));
+	neg = n < 0;
+	str = (char *)malloc(sizeof(char) * (dgt + 1 + neg));
 	if (!str)
 		return (NULL);
-	if (n < 0)
-	{
-		*str = '-';
-		n = -n;
-	}
-	str += dgt + 1;
+	*str = '-';
+	str += dgt + neg;
 	*str = '\0';
-	while (n > 0)
+	*--str = (1 | -neg) * (n % 10) + '0';
+	n /= (1 | -neg) * 10;
+	while (n != 0)
 	{
 		*--str = n % 10 + '0';
 		n /= 10;
 	}
-	return (str);
+	return (str - neg);
 }
