@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/14 09:00:26 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/11/16 19:13:29 by ikarjala         ###   ########.fr       */
+/*   Created: 2021/11/16 19:21:41 by ikarjala          #+#    #+#             */
+/*   Updated: 2021/11/16 19:46:29 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-void	*ft_memccpy(void *dst, void *src, int c, size_t n)
+void	*ft_memalloc(size_t size)
 {
-	unsigned char	*s;
-	unsigned char	*d;
+	char	*ptr;
 
-	if (n == 0)
+	if (size == 0)
 		return (NULL);
-	if (dst == NULL && src == NULL)
+	ptr = (char *)malloc(sizeof(char) * size);
+	if (!ptr)
 		return (NULL);
-	s = (unsigned char *)src;
-	d = (unsigned char *)dst;
-	while (n-- > 0)
-	{
-		if ((unsigned char)*d == (unsigned char)c)
-			return ((unsigned char *)++d);
-		*d = (unsigned char)*s;
-		s++;
-		d++;
-	}
-	return (NULL);
+	*ptr = 0;
+	while (--size > 0)
+		ptr[size] = 0;
+	return (ptr);
 }
