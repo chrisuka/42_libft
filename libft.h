@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 17:06:35 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/11/15 19:14:09 by ikarjala         ###   ########.fr       */
+/*   Updated: 2021/11/16 17:39:23 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	ft_putstr_fd(const char *s, int fd);
 void	ft_putstr(const char *s);
 void	ft_putendl(const char *s);
 void	ft_putnbr_fd(int n, int fd);
+void	ft_putnbr(int n);
 
 int		ft_isspace(int c);
 int		ft_isdigit(int c);
