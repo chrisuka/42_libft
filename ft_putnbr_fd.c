@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 23:04:24 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/11/16 18:56:11 by ikarjala         ###   ########.fr       */
+/*   Updated: 2021/11/18 16:19:20 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,9 @@ void	ft_putnbr_fd(int n, int fd)
 	size_t	div;
 
 	if (n == FT_INT_MAX)
-	{
-		write(fd, "2147483647", 10);
-		return ;
-	}
+		return ((void)write(fd, "2147483647", 10));
 	if (n == FT_INT_MIN)
-	{
-		write(fd, "-2147483648", 11);
-		return ;
-	}
+		return ((void)write(fd, "-2147483648", 11));
 	if (n < 0)
 	{
 		write(fd, "-", 1);

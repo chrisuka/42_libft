@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/14 09:00:26 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/11/18 15:13:31 by ikarjala         ###   ########.fr       */
+/*   Created: 2021/11/18 15:58:17 by ikarjala          #+#    #+#             */
+/*   Updated: 2021/11/18 16:13:35 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-void	*ft_memccpy(void *dst, void *src, int c, size_t n)
+char	*ft_strncpy(char *dst, const char *src, size_t len)
 {
-	unsigned char	*s;
-	unsigned char	*d;
+	char	*pd;
+	char	*ps;
 
-	if (n == 0)
+	if (!dst || !src)
 		return (NULL);
-	if (dst == NULL && src == NULL)
-		return (NULL);
-	s = (unsigned char *)src;
-	d = (unsigned char *)dst;
-	while (n-- > 0)
-	{
-		*d = *s;
-		if (*d == (unsigned char)c)
-			return (++d);
-		s++;
-		d++;
-	}
-	return (NULL);
+	pd = dst;
+	ps = (char *)src;
+	while (len-- > 0 && *ps != '\0')
+		*pd++ = *ps++;
+	*pd = '\0';
+	while (len-- > 0)
+		*pd++ = '\0';
+	return (dst);
 }

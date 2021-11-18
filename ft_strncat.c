@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/14 09:00:26 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/11/18 15:13:31 by ikarjala         ###   ########.fr       */
+/*   Created: 2021/11/18 14:36:36 by ikarjala          #+#    #+#             */
+/*   Updated: 2021/11/18 14:39:02 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-void	*ft_memccpy(void *dst, void *src, int c, size_t n)
+char	*ft_strncat(char *s1, const char *s2, size_t n)
 {
-	unsigned char	*s;
-	unsigned char	*d;
+	char	*p1;
+	char	*p2;
 
-	if (n == 0)
-		return (NULL);
-	if (dst == NULL && src == NULL)
-		return (NULL);
-	s = (unsigned char *)src;
-	d = (unsigned char *)dst;
-	while (n-- > 0)
-	{
-		*d = *s;
-		if (*d == (unsigned char)c)
-			return (++d);
-		s++;
-		d++;
-	}
-	return (NULL);
+	p1 = (char *)s1;
+	p2 = (char *)s2;
+	while (*p1 != '\0')
+		p1++;
+	while (n-- > 0 && *p2 != '\0')
+		*p1++ = *p2++;
+	*p1 = '\0';
+	return (s1);
 }
