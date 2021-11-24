@@ -1,37 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 15:58:44 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/11/24 15:58:46 by ikarjala         ###   ########.fr       */
+/*   Created: 2021/11/24 10:46:51 by ikarjala          #+#    #+#             */
+/*   Updated: 2021/11/24 15:50:21 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+char	*ft_strsub(const char *s, unsigned int start, size_t len)
 {
-	size_t	len;
-	char	*ps;
+	char	*sub;
+	char	*pstart;
+	size_t	i;
 
-	if (dstsize == 0)
-		return (0);
-	if (!dst || !src)
-		return (0);
-	len = 0;
-	while (*dst++ != '\0')
-		len++;
-	dst--;
-	ps = (char *)src;
-	while (len < dstsize - 1)
-	{
-		*dst++ = *ps;
-		src += *ps != '\0';
-		len += *ps != '\0';
-	}
-	*dst = '\0';
-	return (len);
+	if (!s || len == 0)
+		return (NULL);
+	sub = (char *)malloc(sizeof(char) * (len + 1));
+	if (!sub)
+		return (NULL);
+	sub[len] = 0;
+	if (start >= ft_strlen((char *)s))
+		return (sub);
+	pstart = (char *)(s + start);
+	i = -1;
+	while (++i < len)
+		sub[i] = pstart[i];
+	return (sub);
 }

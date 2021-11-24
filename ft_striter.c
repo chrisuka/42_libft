@@ -1,37 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_striter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 15:58:44 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/11/24 15:58:46 by ikarjala         ###   ########.fr       */
+/*   Created: 2021/11/24 10:07:01 by ikarjala          #+#    #+#             */
+/*   Updated: 2021/11/24 10:22:15 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+void	ft_striter(char *s, void (*f)(char *))
 {
-	size_t	len;
-	char	*ps;
+	char	*p;
 
-	if (dstsize == 0)
-		return (0);
-	if (!dst || !src)
-		return (0);
-	len = 0;
-	while (*dst++ != '\0')
-		len++;
-	dst--;
-	ps = (char *)src;
-	while (len < dstsize - 1)
-	{
-		*dst++ = *ps;
-		src += *ps != '\0';
-		len += *ps != '\0';
-	}
-	*dst = '\0';
-	return (len);
+	if (!s)
+		return ;
+	p = (char *)s;
+	while (*p != 0)
+		f(p++);
 }
