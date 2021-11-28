@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 17:19:17 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/11/24 18:06:50by ikarjala         ###   ########.fr       */
+/*   Created: 2021/11/28 11:04:07 by ikarjala          #+#    #+#             */
+/*   Updated: 2021/11/28 12:25:24 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,23 @@ char	*ft_strtrim(const char *s)
 {
 	char	*fresh;
 	char	*p_beg;
-	char	*p_itr;
 	char	*p_end;
 
-	if (!s || *s == 0)
+	if (!s)
 		return (NULL);
 	p_beg = (char *)s;
 	while (ft_isspace(*p_beg))
 		p_beg++;
-	p_itr = p_beg - 1;
 	p_end = p_beg;
-	while (++p_itr != 0)
-		if (!ft_isspace(*p_itr))
-			p_end = p_itr;
-	fresh = (char *)malloc(sizeof(char) * (p_itr - p_beg) + 1);
+	while (*p_end != 0)
+		p_end++;
+	if (p_beg == p_end)
+		return (ft_strsub(s, 0, 0));
+	else
+		while (ft_isspace(*--p_end))
+			continue ;
+	fresh = ft_strsub(s, p_beg - s, p_end - p_beg + 1);
 	if (!fresh)
 		return (NULL);
-	p_itr = fresh;
-	while (p_beg <= p_end)
-		*p_itr++ = p_beg++;
-	// last element to 0
 	return (fresh);
 }

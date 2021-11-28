@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 10:46:51 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/11/24 15:50:21 by ikarjala         ###   ########.fr       */
+/*   Updated: 2021/11/28 12:25:36 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,17 @@ char	*ft_strsub(const char *s, unsigned int start, size_t len)
 	char	*pstart;
 	size_t	i;
 
-	if (!s || len == 0)
+	if (!s)
 		return (NULL);
 	sub = (char *)malloc(sizeof(char) * (len + 1));
 	if (!sub)
 		return (NULL);
-	sub[len] = 0;
 	if (start >= ft_strlen((char *)s))
 		return (sub);
 	pstart = (char *)(s + start);
 	i = -1;
 	while (++i < len)
 		sub[i] = pstart[i];
+	sub[len] = 0;
 	return (sub);
 }

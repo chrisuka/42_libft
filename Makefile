@@ -6,7 +6,7 @@
 #    By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/05 16:57:32 by ikarjala          #+#    #+#              #
-#    Updated: 2021/11/24 17:58:22 by ikarjala         ###   ########.fr        #
+#    Updated: 2021/11/28 12:26:48 by ikarjala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME       = libft.a
 BIN        = ./$(NAME)
 CFUNC      = ft_isspace ft_isdigit ft_isalpha ft_isalnum ft_isprint ft_isascii ft_tolower ft_toupper \
              ft_putchar_fd ft_putchar ft_putstr_fd ft_putstr ft_putendl_fd ft_putendl ft_putnbr_fd ft_putnbr \
-             ft_bzero ft_memset ft_memcpy ft_memccpy ft_memmove ft_memchr ft_memcmp ft_memalloc \
+             ft_bzero ft_memset ft_memdel ft_memcpy ft_memccpy ft_memmove ft_memchr ft_memcmp ft_memalloc \
 			 ft_strnew ft_strdel ft_strclr \
 			 ft_strcat ft_strncat ft_strlcat ft_strcpy ft_strncpy ft_striter ft_striteri ft_strmap ft_strmapi \
 			 ft_strsub ft_strjoin ft_strtrim \
