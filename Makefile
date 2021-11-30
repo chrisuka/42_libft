@@ -6,7 +6,7 @@
 #    By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/05 16:57:32 by ikarjala          #+#    #+#              #
-#    Updated: 2021/11/30 19:05:38 by ikarjala         ###   ########.fr        #
+#    Updated: 2021/11/30 20:10:06 by ikarjala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CFUNC      = ft_isspace ft_isdigit ft_isalpha ft_isalnum ft_isprint ft_isascii f
 			 ft_strnew ft_strdel ft_strclr \
 			 ft_strcat ft_strncat ft_strlcat ft_strcpy ft_strncpy ft_strdup ft_striter ft_striteri ft_strmap ft_strmapi \
 			 ft_strsub ft_strjoin ft_strtrim ft_strsplit \
-             ft_strlen ft_atoi ft_itoa ft_strchr ft_strrchr ft_strstr ft_strcmp ft_strncmp ft_strequ ft_strnequ
+             ft_strlen ft_atoi ft_itoa ft_strchr ft_strrchr ft_strstr ft_strnstr ft_strcmp ft_strncmp ft_strequ ft_strnequ
 SRC_DIR    = ./
 OBJ_DIR    = ./
 SRC        = $(addprefix $(SRC_DIR),$(addsuffix .c,$(CFUNC)))
