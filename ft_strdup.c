@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 15:59:37 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/11/30 08:09:50 by ikarjala         ###   ########.fr       */
+/*   Created: 2021/11/30 18:49:21 by ikarjala          #+#    #+#             */
+/*   Updated: 2021/11/30 19:08:28 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-int	ft_atoi(const char *str)
+char	*ft_strdup(const char *s1)
 {
-	int		nb;
-	int		sign;
-	char	*ptr;
+	char	*fresh;
+	size_t	len;
 
-	ptr = (char *)str;
-	while (ft_isspace(*ptr))
-		ptr++;
-	if (!(ft_isdigit(*ptr) || *ptr == '-' || *ptr == '+'))
-		return (0);
-	sign = -(*ptr == '-') | 1;
-	ptr += !ft_isdigit(*ptr);
-	nb = 0;
-	while (*ptr == '0')
-		ptr++;
-	while (ft_isdigit(*ptr))
-		nb = nb * 10 + (*ptr++ - '0');
-	return (nb * sign);
+	if (!s1)
+		return (NULL);
+	len = ft_strlen((char *)s1);
+	fresh = (char *)malloc(sizeof(char) * (len + 1));
+	if (!fresh)
+		return (NULL);
+	fresh[len] = 0;
+	while (len-- > 0)
+		fresh[len] = s1[len];
+	return (fresh);
 }
