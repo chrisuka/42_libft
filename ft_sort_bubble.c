@@ -1,39 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_sort_bubble.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/07 19:32:42 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/11/30 20:45:37 by ikarjala         ###   ########.fr       */
+/*   Created: 2021/12/01 16:25:16 by ikarjala          #+#    #+#             */
+/*   Updated: 2021/12/01 16:44:08 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-char	*ft_strstr(const char *haystack, const char *needle)
+void	ft_sort_bubble(void *tab, size_t len, int (*cmpf)(void *, void *))
 {
-	char	*sweep;
-	size_t	probe;
+	size_t	i;
+	int		sorted;
 
-	if (!haystack || !needle)
-		return (NULL);
-	if (!haystack || !needle)
-		return (NULL);
-	if (*needle == '\0')
-		return ((char *)haystack);
-	sweep = (char *)haystack;
-	while (*sweep != '\0')
+	if (!tab || len < 2)
+		return ;
+	sorted = FT_FALSE;
+	while (!sorted)
 	{
-		probe = 0;
-		while (needle[probe] == sweep[probe])
+		sorted = FT_TRUE;
+		i = 1;
+		while (i < len)
 		{
-			if (needle[probe + 1] == '\0')
-				return (sweep);
-			probe++;
+			if (cmpf(&tab[i - 1], &tab[i]))
+			{
+				sorted = FT_FALSE;
+				ft_swap(&tab[i - 1], &tab[i]);
+			}
+			i++;
 		}
-		sweep++;
 	}
-	return (NULL);
 }

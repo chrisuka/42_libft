@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_islower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/05 18:22:09 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/12/01 16:09:41 by ikarjala         ###   ########.fr       */
+/*   Created: 2021/12/01 15:51:35 by ikarjala          #+#    #+#             */
+/*   Updated: 2021/12/01 15:51:59 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-int	ft_isalpha(int c)
+int	ft_islower(int c)
 {
-	return (ft_isupper(c) || ft_islower(c));
+	return (c >= 'a' && c <= 'z');
 }

@@ -1,39 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_memdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/07 19:32:42 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/11/30 20:45:37 by ikarjala         ###   ########.fr       */
+/*   Created: 2021/12/01 14:35:04 by ikarjala          #+#    #+#             */
+/*   Updated: 2021/12/01 16:13:39 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-char	*ft_strstr(const char *haystack, const char *needle)
+void	*ft_memdup(const void *s1, size_t len)
 {
-	char	*sweep;
-	size_t	probe;
+	char	*fresh;
+	size_t	i;
 
-	if (!haystack || !needle)
+	if (!s1 || len == 0)
 		return (NULL);
-	if (!haystack || !needle)
+	fresh = malloc(sizeof(char) * len);
+	if (!fresh)
 		return (NULL);
-	if (*needle == '\0')
-		return ((char *)haystack);
-	sweep = (char *)haystack;
-	while (*sweep != '\0')
-	{
-		probe = 0;
-		while (needle[probe] == sweep[probe])
-		{
-			if (needle[probe + 1] == '\0')
-				return (sweep);
-			probe++;
-		}
-		sweep++;
-	}
-	return (NULL);
+	i = -1;
+	while (++i < len)
+		fresh[i] = ((char *)s1)[i];
+	return ((void *)fresh);
 }

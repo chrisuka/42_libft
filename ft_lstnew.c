@@ -1,39 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/07 19:32:42 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/11/30 20:45:37 by ikarjala         ###   ########.fr       */
+/*   Created: 2021/12/01 14:09:03 by ikarjala          #+#    #+#             */
+/*   Updated: 2021/12/01 15:18:39 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-char	*ft_strstr(const char *haystack, const char *needle)
+t_list	*ft_lstnew(const void *content, size_t content_size)
 {
-	char	*sweep;
-	size_t	probe;
+	t_list	*new;
 
-	if (!haystack || !needle)
+	new = (t_list *)malloc(sizeof(t_list));
+	if (!new)
 		return (NULL);
-	if (!haystack || !needle)
-		return (NULL);
-	if (*needle == '\0')
-		return ((char *)haystack);
-	sweep = (char *)haystack;
-	while (*sweep != '\0')
+	if (!content)
 	{
-		probe = 0;
-		while (needle[probe] == sweep[probe])
-		{
-			if (needle[probe + 1] == '\0')
-				return (sweep);
-			probe++;
-		}
-		sweep++;
+		content = NULL;
+		content_size = 0;
 	}
-	return (NULL);
+	new->content = malloc(content_size);
+	if (!new->content)
+	{
+		free(new->content);
+		free(new);
+		return (NULL);
+	}
+	new->content = (void *)content;
+	new->content_size = content_size;
+	new->next = NULL;
+	return (new);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/28 12:29:31 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/11/28 14:18:04 ikarjala         ###   ########.fr       */
+/*   Created: 2021/11/30 21:43:00 by ikarjala          #+#    #+#             */
+/*   Updated: 2021/11/30 21:43:48 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	**ft_strsplit(char const *s, char c)
 		a_wc += *p_itr++ == c;
 	array = (char **)malloc(sizeof(char *) * (a_wc + 1));
 	array[a_wc] = 0;
-	while (--a_wc != (size_t)-1)
+	while (--a_wc != (size_t) - 1)
 	{
 		p_rev = --p_itr;
 		while (*p_rev != c && p_rev >= s)
@@ -41,6 +41,3 @@ char	**ft_strsplit(char const *s, char c)
 	}
 	return (array);
 }
-
-// first pass: count number of words to split and malloc array
-// second pass: copy strings into appropriate slots
