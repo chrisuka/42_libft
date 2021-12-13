@@ -6,7 +6,7 @@
 #    By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/05 16:57:32 by ikarjala          #+#    #+#              #
-#    Updated: 2021/12/01 16:51:55 by ikarjala         ###   ########.fr        #
+#    Updated: 2021/12/13 19:00:39 by ikarjala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ CFUNC      = ft_isdigit ft_isalpha ft_isalnum ft_isprint ft_isascii ft_tolower f
 			 ft_strcat ft_strncat ft_strlcat ft_strcpy ft_strncpy ft_strdup ft_striter ft_striteri ft_strmap ft_strmapi \
 			 ft_strsub ft_strjoin ft_strtrim ft_strsplit \
              ft_strlen ft_atoi ft_itoa ft_strchr ft_strrchr ft_strstr ft_strnstr ft_strcmp ft_strncmp ft_strequ ft_strnequ \
-			 ft_lstnew \
+			 ft_lstnew ft_lstdelone ft_lstdel \
 			 ft_isspace ft_isupper ft_islower ft_isxdigit ft_haschr ft_swap ft_memdup ft_sort_bubble
 
 SRC_DIR    = ./
