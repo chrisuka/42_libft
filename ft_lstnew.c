@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 14:09:03 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/12/01 15:18:39 by ikarjala         ###   ########.fr       */
+/*   Updated: 2021/12/13 18:31:06 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,14 @@ t_list	*ft_lstnew(const void *content, size_t content_size)
 		return (NULL);
 	if (!content)
 	{
-		content = NULL;
-		content_size = 0;
+		new->content = NULL;
+		new->content_size = 0;
 	}
-	new->content = malloc(content_size);
-	if (!new->content)
+	else
 	{
-		free(new->content);
-		free(new);
-		return (NULL);
+		new->content = ft_memdup(content, content_size);
+		new->content_size = content_size;
 	}
-	new->content = (void *)content;
-	new->content_size = content_size;
 	new->next = NULL;
 	return (new);
 }
