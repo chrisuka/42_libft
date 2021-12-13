@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 16:30:12 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/12/13 17:26:18 by ikarjala         ###   ########.fr       */
+/*   Updated: 2021/12/13 17:32:42 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,6 @@ char	**ft_strsplit(const char *s, char c)
 	if (!s)
 		return (NULL);
 	a_wc = ft_count_words(s, c);
-
-
-
 	array = (char **)malloc(sizeof(char *) * (a_wc + 1));
 	if (!array)
 		return (NULL);
@@ -79,7 +76,7 @@ char	**ft_strsplit(const char *s, char c)
 	{
 		p_itr = ft_strword(p_itr, c, &len);
 		array[a_itr] = (char *)ft_memdup(p_itr, len);
- 		if (!array[a_itr])
+		if (!array[a_itr])
 			ft_delarray((void ***)&array, a_wc);
 		p_itr += len;
 	}
