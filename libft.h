@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 17:06:35 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/12/01 16:48:17 by ikarjala         ###   ########.fr       */
+/*   Updated: 2021/12/13 16:21:27 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ int		ft_isupper(int c);
 int		ft_isxdigit(int c);
 int		ft_haschr(int c, const char *str);
 
-void	ft_swap(void *p1, void *p2);
+void	ft_swap(void **a, void **b);
 void	ft_sort_bubble(void *tab, size_t len, int (*cmpf)(void *, void *));
 
 void	*ft_memdup(const void *s1, size_t len);

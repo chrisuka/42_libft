@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 21:35:17 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/11/12 15:19:38 by ikarjala         ###   ########.fr       */
+/*   Updated: 2021/12/02 15:37:24 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,7 @@
 
 void	ft_putstr_fd(const char *s, int fd)
 {
-	char	*p;
-
 	if (!s)
 		return ;
-	p = (char *)s;
-	while (*p != '\0')
-		write(fd, &(*p++), 1);
+	write(fd, s, ft_strlen((char *)s));
 }

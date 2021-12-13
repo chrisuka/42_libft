@@ -5,39 +5,83 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/30 21:43:00 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/11/30 21:43:48 by ikarjala         ###   ########.fr       */
+/*   Created: 2021/12/02 16:30:12 by ikarjala          #+#    #+#             */
+/*   Updated: 2021/12/13 17:26:18 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-char	**ft_strsplit(char const *s, char c)
+static	char	*ft_strword(const char *s, char c, size_t *lenout)
+{
+	*lenout = 0;
+	if (!s)
+		return (NULL);
+	while (*s == c)
+		s++;
+	while (s[*lenout] != c && s[*lenout] != '\0')
+		(*lenout)++;
+	return ((char *)s);
+}
+
+static size_t	ft_count_words(const char *s, char c)
+{
+	size_t	wc;
+	size_t	len;
+
+	if (!s)
+		return (0);
+	wc = 0;
+	len = 0;
+	while (*s != '\0')
+	{
+		s = (const char *)(ft_strword(s, c, &len) + len);
+		wc += (len != 0);
+	}
+	return (wc);
+}
+
+static void	ft_delarray(void ***array, size_t len)
+{
+	size_t	i;
+
+	if (!array)
+		return ;
+	i = 0;
+	while (i < len)
+		ft_memdel(array[i]);
+	free(array);
+	array = NULL;
+}
+
+char	**ft_strsplit(const char *s, char c)
 {
 	char	**array;
-	char	*a_itr;
 	char	*p_itr;
-	char	*p_rev;
 	size_t	a_wc;
+	size_t	a_itr;
+	size_t	len;
 
 	if (!s)
 		return (NULL);
-	a_wc = 1;
-	p_itr = (char *)s;
-	while (*p_itr != 0)
-		a_wc += *p_itr++ == c;
+	a_wc = ft_count_words(s, c);
+
+
+
 	array = (char **)malloc(sizeof(char *) * (a_wc + 1));
+	if (!array)
+		return (NULL);
 	array[a_wc] = 0;
-	while (--a_wc != (size_t) - 1)
+	len = 0;
+	p_itr = (char *)s;
+	a_itr = -1;
+	while (++a_itr < a_wc)
 	{
-		p_rev = --p_itr;
-		while (*p_rev != c && p_rev >= s)
-			p_rev--;
-		array[a_wc] = (char *)malloc(sizeof(char) * (p_itr - p_rev + 1));
-		a_itr = array[a_wc] + (p_itr - p_rev);
-		*a_itr-- = 0;
-		while (p_rev < p_itr)
-			*a_itr-- = *p_itr--;
+		p_itr = ft_strword(p_itr, c, &len);
+		array[a_itr] = (char *)ft_memdup(p_itr, len);
+ 		if (!array[a_itr])
+			ft_delarray((void ***)&array, a_wc);
+		p_itr += len;
 	}
 	return (array);
 }

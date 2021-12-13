@@ -5,18 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/01 15:46:42 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/12/01 15:48:06 by ikarjala         ###   ########.fr       */
+/*   Created: 2021/12/02 16:30:41 by ikarjala          #+#    #+#             */
+/*   Updated: 2021/12/02 16:30:42 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-void	ft_swap(void *p1, void *p2)
+void	ft_swap(void **a, void **b)
 {
 	void	*tmp;
 
-	tmp = p1;
-	p1 = p2;
-	p2 = tmp;
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
 }
