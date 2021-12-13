@@ -1,0 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/13 19:34:01 by ikarjala          #+#    #+#             */
+/*   Updated: 2021/12/13 20:17:36 by ikarjala         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <libft.h>
+
+
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
+{
+	t_list *newnode;
+
+	if (lst == NULL)
+		return (NULL);
+	newnode = f(lst);
+	if (!newnode)
+		return (NULL);
+	newnode->next = ft_lstmap(lst->next, f);
+	return (newnode);
+}
