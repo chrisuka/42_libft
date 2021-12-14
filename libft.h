@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 17:06:35 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/12/13 19:33:38 by ikarjala         ###   ########.fr       */
+/*   Updated: 2021/12/14 17:43:27 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define FT_FALSE	0
 
 /*
-** LIBC
+** PART 1 & 2
 */
 void	ft_putchar_fd(char c, int fd);
 void	ft_putchar(char c);
