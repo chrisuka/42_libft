@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 21:42:44 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/12/14 18:06:08 by ikarjala         ###   ########.fr       */
+/*   Updated: 2021/12/14 19:04:52 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	size_t	result;
 	char	*ps;
 
-	if (dstsize == 0)
-		return (0);
 	len = 0;
 	while (*dst++ != '\0')
 		len++;
@@ -29,12 +27,13 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 		result = len + ft_strlen((char *)src);
 	dst--;
 	ps = (char *)src;
-	while (*ps != '\0' && len < dstsize - 1)
+	while (*ps != '\0' && len + 1 < dstsize)
 	{
 		*dst++ = *ps;
 		len++;
 		ps++;
 	}
-	*dst = '\0';
+	if (dstsize != 0)
+		*dst = '\0';
 	return (result);
 }
