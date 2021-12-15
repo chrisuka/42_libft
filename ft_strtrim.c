@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 11:04:07 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/12/15 17:44:28 by ikarjala         ###   ########.fr       */
+/*   Updated: 2021/12/15 20:50:47 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static int	ft_isdelim(int c)
 {
 	const char	*delim_lst = " \n\t";
+
 	while (*delim_lst != '\0')
 		if (*delim_lst++ == c)
 			return (FT_TRUE);

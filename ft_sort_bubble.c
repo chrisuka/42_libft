@@ -6,13 +6,14 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 16:25:16 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/12/01 16:44:08 by ikarjala         ###   ########.fr       */
+/*   Updated: 2021/12/15 21:26:29by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-void	ft_sort_bubble(void *tab, size_t len, int (*cmpf)(void *, void *))
+void	ft_sort_bubble(void *tab, size_t len,
+			int (*cmpf)(void **, void **), size_t bs)
 {
 	size_t	i;
 	int		sorted;
@@ -23,15 +24,15 @@ void	ft_sort_bubble(void *tab, size_t len, int (*cmpf)(void *, void *))
 	while (!sorted)
 	{
 		sorted = FT_TRUE;
-		i = 1;
-		while (i < len)
+		i = bs;
+		while (i < len * bs)
 		{
-			if (cmpf(&tab[i - 1], &tab[i]))
+			if (cmpf(&tab[i - bs], &tab[i]))
 			{
 				sorted = FT_FALSE;
-				ft_swap(&tab[i - 1], &tab[i]);
+				ft_swap(&tab[i - bs], &tab[i], bs);
 			}
-			i++;
+			i += bs;
 		}
 	}
 }

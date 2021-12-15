@@ -6,12 +6,13 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 19:16:51 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/11/30 20:02:12 by ikarjala         ###   ########.fr       */
+/*   Updated: 2021/12/15 19:17:53 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
+// make this an extra function
 static int	ft_idigits(int n)
 {
 	int	dgt;

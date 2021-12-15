@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 17:06:35 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/12/14 17:43:27 by ikarjala         ###   ########.fr       */
+/*   Updated: 2021/12/15 20:51:49 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,11 +109,11 @@ int		ft_isspace(int c);
 int		ft_islower(int c);
 int		ft_isupper(int c);
 int		ft_isxdigit(int c);
-int		ft_haschr(int c, const char *str);
+int		ft_strchr_equ(const char *s, int c);
 
-void	ft_swap(void **a, void **b);
-void	ft_sort_bubble(void *tab, size_t len, int (*cmpf)(void *, void *));
-
+int		ft_swap(void **a, void **b, size_t bs);
+void	ft_sort_bubble(void *tab, size_t len,
+			int (*cmpf)(void **, void **), size_t bs);
 void	*ft_memdup(const void *s1, size_t len);
 
 #endif
