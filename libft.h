@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 17:06:35 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/12/15 20:51:49 by ikarjala         ###   ########.fr       */
+/*   Updated: 2021/12/15 23:23:49 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,10 @@ int		ft_islower(int c);
 int		ft_isupper(int c);
 int		ft_isxdigit(int c);
 int		ft_strchr_equ(const char *s, int c);
+
+int		ft_abs(int n);
+int		ft_minint(int a, int b);
+int		ft_maxint(int a, int b);
 
 int		ft_swap(void **a, void **b, size_t bs);
 void	ft_sort_bubble(void *tab, size_t len,
