@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 16:30:12 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/12/14 18:10:36 by ikarjala         ###   ########.fr       */
+/*   Updated: 2021/12/16 15:00:04 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ char	**ft_strsplit(const char *s, char c)
 		p_itr = ft_strword(p_itr, c, &len);
 		array[a_itr] = (char *)ft_memdup(p_itr, len);
 		if (!array[a_itr])
-			ft_delarray((void ***)&array, a_wc);
+			ft_delarray((void ***)&array, a_itr);
 		p_itr += len;
 	}
 	return (array);
