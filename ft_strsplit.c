@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 16:30:12 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/12/16 15:00:04 by ikarjala         ###   ########.fr       */
+/*   Updated: 2021/12/16 22:29:23 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	ft_delarray(void ***array, size_t len)
 		return ;
 	i = 0;
 	while (i < len)
-		ft_memdel(array[i]);
+		ft_memdel(array[i++]);
 	free(array);
 	array = NULL;
 }
