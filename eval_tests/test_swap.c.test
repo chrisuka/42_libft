@@ -1,0 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/15 22:42:31 by ikarjala          #+#    #+#             */
+/*   Updated: 2021/12/15 23:27:40 by ikarjala         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libftest.h"
+
+void	test_swap_batch(size_t iter)
+{
+	int pair[2];
+
+	srand((unsigned int)time(NULL));
+	printf("performing ft_swap unit tests...\n\n");
+	while (iter-- != 0)
+	{
+		pair[0] = rand() % 300 - 150;
+		pair[1] = rand() % 300 - 150;
+		printf(" pre swap: %i %i\n", pair[0], pair[1]);
+		ft_swap((void **)&pair[0], (void **)&pair[1], sizeof(int));
+		printf("post swap: %i %i\n", pair[0], pair[1]);
+	}
+	printf("%s\n\n", col_nul);
+}

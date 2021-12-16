@@ -1,0 +1,226 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/06 13:41:04 by ikarjala          #+#    #+#             */
+/*   Updated: 2021/11/06 19:58:47by ikarjala         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libftest.h"
+
+# define VERBOSE_CHECK 0
+
+#pragma region ASCII_CHECKS
+static int	g_col_i;
+void	cmp_asciitest(int (*og)(int), int (*ft)(int), const char *fname, const char *prnt)
+{
+	const int	start = -2;
+	const int	end = 0200;
+	int	i;
+
+	i = start;
+	printf((g_col_i = !g_col_i) == 1 ? col_swp : col_nul);
+	printf("   %s:  ", fname);
+	while (++i <= end)
+		printf(prnt, og(i));
+	printf("\n");
+	i = start;
+	printf("ft_%s:  ", fname);
+	while (++i <= end)
+		printf(prnt, ft(i));
+	printf(col_nul "\n");
+}
+void	cmp_asciitest2(int (*og)(const char *), int (*ft)(const char *), const char *fname, const char *prnt, const char **s1)
+{
+	const int	start = -1;
+	const int	end = 14;
+	int i;
+
+	i = start;
+	printf((g_col_i = !g_col_i) == 1 ? col_swp : col_nul);
+	printf("   %s:  ", fname);
+	while (++i < end)
+		printf(prnt, og(s1[i]));
+	printf("\n");
+	i = start;
+	printf("ft_%s:  ", fname);
+	while (++i < end)
+		printf(prnt, ft(s1[i]));
+	printf(col_nul "\n");
+}
+
+static int	ftest_fmaxtoi(int a, int b)
+{
+	return ((int)fmaxf((float)a, (float)b));
+}
+static int	ftest_fmintoi(int a, int b)
+{
+	return ((int)fminf((float)a, (float)b));
+}
+
+static int	cmp_minmax(int (*og)(int, int), int(*ft)(int, int))
+{
+	int	i;
+	int j;
+
+	i = -300;
+	while (++i < 300)
+	{
+		j = -300;
+		while (++j < 300)
+			if (og(i, j) != ft(i, j))
+				return (0);
+	}
+	return (1);
+}
+
+# pragma region TEST_FUNC_DEFINES
+	#if VERBOSE_CHECK
+	#define test_isdigit	cmp_asciitest(&isdigit, &ft_isdigit, "isdigit", "%i")
+	#define test_isalpha	cmp_asciitest(&isalpha, &ft_isalpha, "isalpha", "%i")
+	#define test_isalnum	cmp_asciitest(&isalnum, &ft_isalnum, "isalnum", "%i")
+	#define test_isprint	cmp_asciitest(&isprint, &ft_isprint, "isprint", "%i")
+	#define test_isascii	cmp_asciitest(&isascii, &ft_isascii, "isascii", "%i")
+	#define test_tolower	cmp_asciitest(&tolower, &ft_tolower, "tolower", "%c")
+	#define test_toupper	cmp_asciitest(&toupper, &ft_toupper, "toupper", "%c")
+
+	#define test_atoi		cmp_asciitest2(&atoi, &ft_atoi, "atoi", "[%i]", teststr1)
+	#else
+	#define test_isdigit	cmp_funcs(&isdigit, &ft_isdigit, "isdigit")
+	#define test_isalpha	cmp_funcs(&isalpha, &ft_isalpha, "isalpha")
+	#define test_isalnum	cmp_funcs(&isalnum, &ft_isalnum, "isalnum")
+	#define test_isprint	cmp_funcs(&isprint, &ft_isprint, "isprint")
+	#define test_isascii	cmp_funcs(&isascii, &ft_isascii, "isascii")
+
+	#define test_tolower	cmp_funcs(&tolower, &ft_tolower, "tolower")
+	#define test_toupper	cmp_funcs(&toupper, &ft_toupper, "toupper")
+
+	#define test_atoi		cmp_funcs2(&atoi, &ft_atoi, "atoi", teststr1)
+	#define test_strcmp		cmp_funcs2(&strcmp, &ft_strcmp, "strcmp", teststr1)
+
+	#define test_isspace	cmp_funcs(&isspace, &ft_isspace, "isspace")
+	#define test_islower	cmp_funcs(&islower, &ft_islower, "islower")
+	#define test_isupper	cmp_funcs(&isupper, &ft_isupper, "isupper")
+	#define test_isxdigit	cmp_funcs(&isxdigit, &ft_isxdigit, "isxdigit")
+	#define test_abs		cmp_funcs(&abs, &ft_abs, "abs")
+#define test_min			i = cmp_minmax(&ftest_fmintoi, &ft_minint); \
+	printf("%s ft_%s: DIFF %s%s\n", i ? col_gre : col_err, "min", i ? "OK :D" : "KO D:", col_nul)
+#define test_max			i = cmp_minmax(&ftest_fmaxtoi, &ft_maxint); \
+	printf("%s ft_%s: DIFF %s%s\n", i ? col_gre : col_err, "max", i ? "OK :D" : "KO D:", col_nul)
+
+#endif
+	#pragma endregion
+#pragma endregion
+#pragma region CMP_FUNC
+const char *teststr1[15] = {
+	"Hello World",
+	"The Answer to The Ultimate Question of Life, The Universe, and Everything is...",
+	"Don't Panic!",
+	"",
+	"42",
+	"      -12451 00 -2",
+	"	+25001-12",
+	" ",
+	"21j",
+	" -2147483648",
+	" -2147483649   ",
+	" 2147483648",
+	" 2147483647a  ",
+	"-+124==",
+	0};
+void	cmp_funcs(int (*og)(int), int (*ft)(int), const char *fname)
+{
+	const int	start = -2;
+	const int	end = 0200;
+	int i;
+
+	i = start;
+	while (++i <= end)
+		if (og(i) != ft(i))
+		{
+			printf(col_err " ft_%s: DIFF KO D:\n" col_nul, fname);
+			return ;
+		}
+	printf(col_gre " ft_%s: DIFF OK :D\n" col_nul, fname);
+}
+void	cmp_funcs2(int (*og)(const char *), int (*ft)(const char *), const char *fname, const char **argv)
+{
+	int i;
+
+	i = -1;
+	while (argv[++i] != 0)
+		if (og(argv[i]) != ft(argv[i]))
+		{
+			printf(col_err " ft_%s: DIFF KO D:\n" col_nul, fname);
+			return ;
+		}
+	printf(col_gre " ft_%s: DIFF OK :D\n" col_nul, fname);
+}
+void	cmp_funcs3(int (*og)(const char *), int (*ft)(const char *), const char *fname, const char **argv)
+{
+	int i;
+
+	i = -1;
+	while (argv[++i] != 0)
+		if (og(argv[i]) != ft(argv[i]))
+		{
+			printf(col_err " ft_%s: DIFF KO D:\n" col_nul, fname);
+			return ;
+		}
+	printf(col_gre " ft_%s: DIFF OK :D\n" col_nul, fname);
+}
+#pragma endregion
+
+int		main(void)
+{
+	test_isdigit;
+	test_isalpha;
+	test_isalnum;
+	test_isprint;
+	test_isascii;
+
+	test_tolower;
+	test_toupper;
+
+	test_atoi;
+
+	int	i;
+
+	printf("%s%s\n", ft_strtrim("    trim this	for\n me!	"), col_swp "\\0" col_nul);
+	printf("%s%s\n", ft_strtrim("alright then,  how about this			"), col_swp "\\0" col_nul);
+	printf("%s%s\n", ft_strtrim("\t"), col_swp "\\0" col_nul);
+
+	const char *str = "split  ||this|for|me|||||!|";
+	printf("splitting string: %s\n", str);
+	char **strtab = ft_strsplit(str, '|');
+	i = -1;
+	while (strtab[++i] != 0)
+	{
+		printf("%s%s\\0%s\n", strtab[i], col_swp, col_nul);
+		free(strtab[i]);
+	}
+	printf("%s%i%s\n", col_swp, -(strtab[i] != 0), col_nul);
+	free(strtab[i]);
+	free(strtab);
+
+	printf("ft_strlcat: %lu\n", ft_strlcat(strdup("abc\0\0\0"), "ccc", 0));
+
+	printf("\v%sCustom Fuctios:%s\n\n", col_swp, col_nul);
+
+	test_isspace;
+	test_islower;
+	test_isupper;
+	test_isxdigit;
+	test_abs;
+	test_min;
+	test_max;
+
+	printf("\n");
+
+	test_swap_batch(15);
+	test_sort_bubble_batch(5, 15);
+}

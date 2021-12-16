@@ -1,0 +1,85 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_sort_bubble.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/15 21:36:27 by ikarjala          #+#    #+#             */
+/*   Updated: 2021/12/15 22:39:57 by ikarjala         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libftest.h"
+
+static void	ft_printnums(int *nums, const char *header)
+{
+	size_t i;
+
+	printf("%s", header);
+	i = 0;
+	while (i < 15)
+		printf("%i ", nums[i++]);
+	printf("\n");
+}
+
+static void	ft_printstrs(char **strs, size_t len, const char *header)
+{
+	size_t i;
+
+	printf("%s", header);
+	i = 0;
+	while (i < len)
+		printf("%s ", strs[i++]);
+	printf("\n");
+}
+
+
+
+static int		ft_intcmp(void **a, void **b)
+{
+	return ((int)*a > (int)*b);
+}
+
+static int		ft_strcmpequ(void **a, void **b)
+{
+	return (ft_strcmp((char *)*a, (char *)*b) > 0);
+}
+
+static void	test_sort_bubble_unit(size_t size)
+{
+	int		num[size];
+	size_t	i;
+
+	srand((unsigned int)time(NULL));
+	i = 0;
+	while (i < size)
+		num[i++] = rand() % 80 - 40;
+
+	ft_printnums(num, " pre sort: ");
+	ft_sort_bubble(num, size, &ft_intcmp, sizeof(int));
+	ft_printnums(num, "post sort: ");
+	printf("\n");
+}
+
+static void	test_sort_bubble_strings(void)
+{
+	char *strs[] = {"Canada", "Italy", "France", "Sweden", "Finland", "Switzerland", "alaska", "Finland"};
+
+	ft_printstrs(strs, 8, " pre sort: ");
+	ft_sort_bubble(strs, 8, &ft_strcmpequ, sizeof(char *));
+	ft_printstrs(strs, 8, "post sort: ");
+	printf("\n");
+}
+
+void	test_sort_bubble_batch(size_t iter, size_t size)
+{
+	printf("performing ft_sort_bubble unit tests...\n\n");
+	while (iter-- != 0)
+	{
+		printf("%s", iter % 2 == 0 ? col_swp : col_nul);
+		test_sort_bubble_unit(size);
+	}
+	printf("%s", col_nul);
+	test_sort_bubble_strings();
+}

@@ -1,0 +1,3 @@
+20,21d19
+< 	if (!dst || !src)
+< 		return (NULL);
