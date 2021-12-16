@@ -6,13 +6,13 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 17:12:43 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/11/05 17:30:47 by ikarjala         ###   ########.fr       */
+/*   Updated: 2021/12/16 19:49:18 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-size_t	ft_strlen(char *s)
+size_t	ft_strlen(const char *s)
 {
 	size_t	len;
 
