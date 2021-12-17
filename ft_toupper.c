@@ -6,9 +6,11 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 18:46:24 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/11/06 21:18:03 by ikarjala         ###   ########.fr       */
+/*   Updated: 2021/12/17 17:07:47 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <libft.h>
 
 int	ft_toupper(int c)
 {

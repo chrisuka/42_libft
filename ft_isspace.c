@@ -6,9 +6,11 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 19:28:33 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/11/08 19:28:36 by ikarjala         ###   ########.fr       */
+/*   Updated: 2021/12/17 17:06:41 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <libft.h>
 
 int	ft_isspace(int c)
 {

@@ -6,7 +6,7 @@
 #    By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/30 21:31:17 by ikarjala          #+#    #+#              #
-#    Updated: 2021/12/16 20:30:03 by ikarjala         ###   ########.fr        #
+#    Updated: 2021/12/17 16:36:35 by ikarjala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ FLAGS      = -Wall -Wextra -Werror
 
 UNIT_TEST	= ~/source/repos/vogosphere/libft-unit-test-old/
 MOULI_TEST	= ~/source/repos/vogosphere/moulitest/
-LIBFTEST	= $(ROOT)/libftest/
+LIBFTEST	= ~/Desktop/libfthing/Libftest-old-libft
 
 ##	BUILD ====
 all: $(NAME)
@@ -61,6 +61,11 @@ patch_segv:
 	cd patches && make patch_segv
 patch_segnull:
 	cd patches && make patch_segnull
+# ------
+patch_hangle:
+	cd patches && make patch_hangle
+patch_hquote:
+	cd patches && make patch_hangle
 
 ## UTILS
 define nl
@@ -81,7 +86,6 @@ gen_gitignore:
 	!./libft.h\n\
 	!./author\n\
 	!./Makefile\n\
-	!eval_tests/\n\
 	!eval_tests/*.c.test\n\
 	!eval_tests/*.h.test\n\
 	!eval_tests/Makefile\n\
