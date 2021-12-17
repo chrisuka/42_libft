@@ -6,7 +6,7 @@
 #    By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/30 21:31:17 by ikarjala          #+#    #+#              #
-#    Updated: 2021/12/17 17:39:52 by ikarjala         ###   ########.fr        #
+#    Updated: 2021/12/17 20:06:17 by ikarjala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ FLAGS      = -Wall -Wextra -Werror
 UNIT_TEST	= ~/source/repos/vogosphere/libft-unit-test-old/
 MOULI_TEST	= ~/source/repos/vogosphere/moulitest/
 LIBFTEST	= ~/Desktop/libfthing/Libftest-old-libft
+WSDON_TEST	= ~/source/import/wsdonnelly-libft-tests
 
 ##	BUILD ====
 all: $(NAME)
@@ -53,6 +54,8 @@ run2: install
 	cd $(MOULI_TEST) && make libft_bonus
 run3: install
 	cd $(LIBFTEST) && bash grademe.sh
+run4:
+	cd $(WSDON_TEST) && make && ./test_ft
 norme:
 	norminette -R CheckForbiddenSourceHeader ../*.c ../*.h
 

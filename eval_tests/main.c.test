@@ -15,8 +15,9 @@
 # define VERBOSE_CHECK 0
 
 #pragma region ASCII_CHECKS
-static int	g_col_i;
-void	cmp_asciitest(int (*og)(int), int (*ft)(int), const char *fname, const char *prnt)
+int	g_col_i;
+#if 0
+static void	cmp_asciitest(int (*og)(int), int (*ft)(int), const char *fname, const char *prnt)
 {
 	const int	start = -2;
 	const int	end = 0200;
@@ -34,7 +35,7 @@ void	cmp_asciitest(int (*og)(int), int (*ft)(int), const char *fname, const char
 		printf(prnt, ft(i));
 	printf(col_nul "\n");
 }
-void	cmp_asciitest2(int (*og)(const char *), int (*ft)(const char *), const char *fname, const char *prnt, const char **s1)
+static void	cmp_asciitest2(int (*og)(const char *), int (*ft)(const char *), const char *fname, const char *prnt, const char **s1)
 {
 	const int	start = -1;
 	const int	end = 14;
@@ -52,6 +53,7 @@ void	cmp_asciitest2(int (*og)(const char *), int (*ft)(const char *), const char
 		printf(prnt, ft(s1[i]));
 	printf(col_nul "\n");
 }
+#endif
 
 static int	ftest_fmaxtoi(int a, int b)
 {
@@ -132,7 +134,7 @@ const char *teststr1[15] = {
 	" 2147483647a  ",
 	"-+124==",
 	0};
-void	cmp_funcs(int (*og)(int), int (*ft)(int), const char *fname)
+static void	cmp_funcs(int (*og)(int), int (*ft)(int), const char *fname)
 {
 	const int	start = -2;
 	const int	end = 0200;
@@ -147,7 +149,7 @@ void	cmp_funcs(int (*og)(int), int (*ft)(int), const char *fname)
 		}
 	printf(col_gre " ft_%s: DIFF OK :D\n" col_nul, fname);
 }
-void	cmp_funcs2(int (*og)(const char *), int (*ft)(const char *), const char *fname, const char **argv)
+static void	cmp_funcs2(int (*og)(const char *), int (*ft)(const char *), const char *fname, const char **argv)
 {
 	int i;
 
@@ -160,7 +162,8 @@ void	cmp_funcs2(int (*og)(const char *), int (*ft)(const char *), const char *fn
 		}
 	printf(col_gre " ft_%s: DIFF OK :D\n" col_nul, fname);
 }
-void	cmp_funcs3(int (*og)(const char *), int (*ft)(const char *), const char *fname, const char **argv)
+#if 0
+static void	cmp_funcs3(int (*og)(const char *), int (*ft)(const char *), const char *fname, const char **argv)
 {
 	int i;
 
@@ -173,6 +176,7 @@ void	cmp_funcs3(int (*og)(const char *), int (*ft)(const char *), const char *fn
 		}
 	printf(col_gre " ft_%s: DIFF OK :D\n" col_nul, fname);
 }
+#endif
 #pragma endregion
 
 int		main(void)
@@ -188,14 +192,19 @@ int		main(void)
 
 	test_atoi;
 
-	int	i;
+	size_t	i;
 
+	i = 0;
 	printf("%s%s\n", ft_strtrim("    trim this	for\n me!	"), col_swp "\\0" col_nul);
 	printf("%s%s\n", ft_strtrim("alright then,  how about this			"), col_swp "\\0" col_nul);
 	printf("%s%s\n", ft_strtrim("\t"), col_swp "\\0" col_nul);
+	printf("\n");
 
-	const char *str = "split  ||this|for|me|||||!|";
-	printf("splitting string: %s\n", str);
+	const char *str = "||||split  ||this|for|me|||||!|";
+
+	printf("%s\t%lu\n", ft_strword(str, " |", &i), i);
+
+	printf("splitting string: \"%s\"\n", str);
 	char **strtab = ft_strsplit(str, '|');
 	i = -1;
 	while (strtab[++i] != 0)
@@ -209,7 +218,7 @@ int		main(void)
 
 	printf("ft_strlcat: %lu\n", ft_strlcat(strdup("abc\0\0\0"), "ccc", 0));
 
-	printf("\v%sCustom Fuctios:%s\n\n", col_swp, col_nul);
+	printf("\v%sCustom Functions:%s\n\n", col_swp, col_nul);
 
 	test_isspace;
 	test_islower;
