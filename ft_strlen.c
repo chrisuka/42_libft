@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 17:12:43 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/12/16 19:49:18 by ikarjala         ###   ########.fr       */
+/*   Updated: 2021/12/17 18:02:38 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ size_t	ft_strlen(const char *s)
 {
 	size_t	len;
 
+	if (!s)
+		return (0);
 	len = 0;
 	while (*s++ != '\0')
 		len++;

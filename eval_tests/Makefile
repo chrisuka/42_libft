@@ -6,7 +6,7 @@
 #    By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/30 21:31:17 by ikarjala          #+#    #+#              #
-#    Updated: 2021/12/17 16:36:35 by ikarjala         ###   ########.fr        #
+#    Updated: 2021/12/17 17:39:52 by ikarjala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,8 +65,11 @@ patch_segnull:
 patch_hangle:
 	cd patches && make patch_hangle
 patch_hquote:
-	cd patches && make patch_hangle
+	cd patches && make patch_hquote
 
+pclean:
+	rm -f $(wildcard $(ROOT)*.rej)
+	rm -f $(wildcard $(ROOT)*.orig)
 ## UTILS
 define nl
 
