@@ -200,21 +200,42 @@ int		main(void)
 	printf("%s%s\n", ft_strtrim("\t"), col_swp "\\0" col_nul);
 	printf("\n");
 
-	const char *str = "||||split  ||this|for|me|||||!|";
+	// test
+	char	**teststr2 = (char **)ft_memalloc(sizeof(char *) * 3);
+	teststr2[0] = ft_strdup("hello");
+	teststr2[1] = ft_strdup("world");
+	teststr2[2] = 0;
+	printf(" pre: \'%s\' \'%s\'\n", teststr2[0], teststr2[1]);
+	ft_aiter((void **)teststr2, 3, &ft_memdel);
+	free(teststr2);
+	teststr2 = NULL;
+
+	const char	*str = "||||split  ||this|for|me|||||!|";
 
 	printf("%s\t%lu\n", ft_strword(str, " |", &i), i);
 
 	printf("splitting string: \"%s\"\n", str);
 	char **strtab = ft_strsplit(str, '|');
-	i = -1;
-	while (strtab[++i] != 0)
+	if (!strtab)
+		printf("array is null.\n");
+	else
 	{
-		printf("%s%s\\0%s\n", strtab[i], col_swp, col_nul);
-		free(strtab[i]);
+		i = -1;
+		while (strtab[++i])
+			printf("%s%s\\0%s\n", strtab[i], col_swp, col_nul);
+		printf("%s%i%s\n", col_swp, -(strtab[i] != 0), col_nul);
 	}
-	printf("%s%i%s\n", col_swp, -(strtab[i] != 0), col_nul);
-	free(strtab[i]);
-	free(strtab);
+
+	ft_arraywipe((void ***)&strtab, 5);
+	if (!strtab)
+		printf("array is null.\n");
+	else
+	{
+		i = -1;
+		while (strtab[++i])
+			printf("%s%s\\0%s\n", strtab[i], col_swp, col_nul);
+		printf("%s%i%s\n", col_swp, -(strtab[i] != 0), col_nul);
+	}
 
 	printf("ft_strlcat: %lu\n", ft_strlcat(strdup("abc\0\0\0"), "ccc", 0));
 

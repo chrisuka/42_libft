@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 17:06:35 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/12/17 22:34:05 by ikarjala         ###   ########.fr       */
+/*   Updated: 2021/12/18 20:50:03 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,14 +118,14 @@ int		ft_abs(int n);
 int		ft_minint(int a, int b);
 int		ft_maxint(int a, int b);
 
+char	*ft_strword(const char *s, const char *delim, size_t *lenout);
+size_t	ft_wordcount(const char *s, const char *del);
+void	*ft_memdup(const void *s1, size_t len);
+
+void	ft_aiter(void **array, size_t len, void (*fn)(void **));
+void	ft_arraywipe(void ***array, size_t len);
 int		ft_swap(void **a, void **b, size_t bs);
 void	ft_sort_bubble(void *tab, size_t len,
 			int (*cmpf)(void **, void **), size_t bs);
-void	*ft_memdup(const void *s1, size_t len);
-
-void	ft_aiter(void ***array, size_t len,
-			void (*fn)(void **), size_t bytesize);
-char	*ft_strword(const char *s, const char *delim, size_t *lenout);
-size_t	ft_wordcount(const char *s, const char *del);
 
 #endif
