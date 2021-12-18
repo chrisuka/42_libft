@@ -6,7 +6,7 @@
 #    By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/30 21:31:17 by ikarjala          #+#    #+#              #
-#    Updated: 2021/12/17 20:06:17 by ikarjala         ###   ########.fr        #
+#    Updated: 2021/12/18 21:48:11 by ikarjala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -96,6 +96,6 @@ gen_gitignore:
 	!eval_tests/*.h.test\n\
 	!eval_tests/Makefile\n\
 	!eval_tests/patches/\n\
-	!eval_tests/patches/**'\
+	!eval_tests/patches/*/*.patch.*'\
 	> $(ROOT).gitignore
 	@echo 'wrote to gitignore file.'

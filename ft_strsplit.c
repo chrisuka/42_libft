@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
 static char	**ft_populate(char **array, const char *s,
 				const char *del, size_t a_size)
