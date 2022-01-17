@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 10:46:51 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/11/28 12:25:36 by ikarjala         ###   ########.fr       */
+/*   Updated: 2022/01/17 17:44:41 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strsub(const char *s, unsigned int start, size_t len)
 
 	if (!s)
 		return (NULL);
-	sub = (char *)malloc(sizeof(char) * (len + 1));
+	sub = (char *)ft_memalloc(sizeof(char) * (len + 1));
 	if (!sub)
 		return (NULL);
 	if (start >= ft_strlen((char *)s))
@@ -29,6 +29,5 @@ char	*ft_strsub(const char *s, unsigned int start, size_t len)
 	i = -1;
 	while (++i < len)
 		sub[i] = pstart[i];
-	sub[len] = 0;
 	return (sub);
 }

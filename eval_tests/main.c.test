@@ -179,7 +179,7 @@ static void	cmp_funcs3(int (*og)(const char *), int (*ft)(const char *), const c
 #endif
 #pragma endregion
 
-int		main(void)
+int		runset1(void)
 {
 	test_isdigit;
 	test_isalpha;
@@ -195,9 +195,15 @@ int		main(void)
 	size_t	i;
 
 	i = 0;
-	printf("%s%s\n", ft_strtrim("    trim this	for\n me!	"), col_swp "\\0" col_nul);
-	printf("%s%s\n", ft_strtrim("alright then,  how about this			"), col_swp "\\0" col_nul);
-	printf("%s%s\n", ft_strtrim("\t"), col_swp "\\0" col_nul);
+	char *str1;
+#define test_trim(string) \
+	str1 = ft_strtrim(string);\
+	printf("%s%s\n", str1, col_swp "\\0" col_nul);\
+	ft_memdel((void **)&str1)
+
+	test_trim("    trim this	for\n me!	");
+	test_trim("alright then,  how about this			");
+	test_trim("\t");
 	printf("\n");
 
 	// test
@@ -206,9 +212,7 @@ int		main(void)
 	teststr2[1] = ft_strdup("world");
 	teststr2[2] = 0;
 	printf(" pre: \'%s\' \'%s\'\n", teststr2[0], teststr2[1]);
-	ft_aiter((void **)teststr2, 3, &ft_memdel);
-	free(teststr2);
-	teststr2 = NULL;
+	ft_arraywipe((void ***)&teststr2, 3);
 
 	const char	*str = "||||split  ||this|for|me|||||!|";
 
@@ -237,7 +241,9 @@ int		main(void)
 		printf("%s%i%s\n", col_swp, -(strtab[i] != 0), col_nul);
 	}
 
-	printf("ft_strlcat: %lu\n", ft_strlcat(strdup("abc\0\0\0"), "ccc", 0));
+	char *str2 = strdup("abc\0\0\0");
+	printf("ft_strlcat: %lu\n", ft_strlcat(str2, "ccc", 0));
+	ft_memdel((void **)&str2);
 
 	printf("\v%sCustom Functions:%s\n\n", col_swp, col_nul);
 
@@ -253,4 +259,10 @@ int		main(void)
 
 	test_swap_batch(15);
 	test_sort_bubble_batch(5, 15);
+	return (0);
+}
+
+int		main(void)
+{
+	return (runset1());
 }
