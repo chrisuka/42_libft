@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_strchr_equ.c                                  :+:      :+:    :+:   */
+/*   ft_lmax.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/15 22:53:41 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/12/15 22:54:06 by ikarjala         ###   ########.fr       */
+/*   Created: 2021/12/15 20:46:20 by ikarjala          #+#    #+#             */
+/*   Updated: 2022/01/22 19:31:47 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftest.h"
+#include "libft.h"
 
-void	test_strchr_equ_unit(void)
+int	ft_lmax(int a, int b)
 {
-
+	if (a > b)
+		return (a);
+	return (b);
 }

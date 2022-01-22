@@ -6,74 +6,87 @@
 #    By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/30 21:31:17 by ikarjala          #+#    #+#              #
-#    Updated: 2021/12/18 21:48:11 by ikarjala         ###   ########.fr        #
+#    Updated: 2022/01/22 20:09:27 by ikarjala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME       = libftest
-BIN        = ./$(NAME)
-ROOT       = ~/source/repos/vogosphere/libft/
-SRC_DIR    = ./
-FUNC       = strchr_equ isspace isxdigit sort_bubble swap abs maxint minint
-SRC        = main.c $(addprefix test_,$(addsuffix .c,$(FUNC)))
-OBJ        = main.o $(addprefix test_,$(addsuffix .o,$(FUNC)))
-INC_DIR    = ../
-LIB_DIR    = ..
-LIB        = ft
-FLAGS      = -Wall -Wextra -Werror
+NAME		= libftest
+BIN			= ./$(NAME)
+ROOT		= ..
+SRC_DIR		= ./
+CFUNC		= \
+
+SRC			= $(addprefix $(SRC_DIR)test_,$(addsuffix .c,$(CFUNC)))
+OBJ			= $(addprefix test_,$(addsuffix .o,$(CFUNC)))
+INC_DIR		= $(ROOT)
+LIB_DIR		= $(ROOT)
+LIB			= ft
+FLAGS		=
+CC			= clang
 
 UNIT_TEST	= ~/source/repos/vogosphere/libft-unit-test-old/
 MOULI_TEST	= ~/source/repos/vogosphere/moulitest/
 LIBFTEST	= ~/Desktop/libfthing/Libftest-old-libft
 WSDON_TEST	= ~/source/import/wsdonnelly-libft-tests
+PATCHDIR	= patches
+
+COL_HL		= \x1B[33m
+COL_CS		= \x1B[0m
+COL_NUL		= \x1B[0m
 
 ##	BUILD ====
 all: $(NAME)
 $(NAME):
-	@echo '$(NAME) :: Starting build...'
-	gcc -c	$(FLAGS) $(addprefix $(SRC_DIR),$(SRC)) -I $(INC_DIR)
+	@echo -e '$(COL_HL)' '$(NAME) :: Starting build...' '$(COL_NUL)'
 ifeq (,$(wildcard $(addprefix $(LIB_DIR),$(LIB))))
-	@echo '  ! No libraries found, trying to build...'
-	cd $(LIB_DIR) && make
+	@echo -e '$(COL_HL)[?] No libraries found, trying to build...' '$(COL_NUL)'
+	 make -C $(LIB_DIR)
+	@echo -e '$(COL_CS)' '$(NAME) :: Build Success' '$(COL_NUL)'
 endif
-	gcc -o	$(BIN) $(OBJ) -L$(LIB_DIR) -l $(LIB)
+	$(CC) -c $(FLAGS) $(SRC) -I $(INC_DIR)
+	$(CC) -o $(BIN) $(OBJ) -L$(LIB_DIR) -l $(LIB)
 clean:
 	rm -f $(OBJ)
-	cd $(LIB_DIR) && make fclean
-fclean: clean
+	make -C $(LIB_DIR)	clean
+fclean: pclean
+	rm -f $(OBJ)
+	make -C $(LIB_DIR)	fclean
 	rm -f $(BIN)
 re: fclean all
-install: all clean
+install: re clean
 
 ##	TESTS ====
 run: install
-	cd $(UNIT_TEST) && make f
+	make -C $(UNIT_TEST)	f
 benchmark: install
-	cd $(UNIT_TEST) && ./run_test -b
+	$(UNIT_TEST)/run_test -b
 run2: install
-	cd $(MOULI_TEST) && make libft_bonus
+	make -C $(MOULI_TEST)	libft_bonus
 run3: install
 	cd $(LIBFTEST) && bash grademe.sh
 run4:
-	cd $(WSDON_TEST) && make && ./test_ft
+	make -C $(WSDON_TEST)
+	$(WSDON_TEST)/test_ft
+
 norme:
-	norminette -R CheckForbiddenSourceHeader ../*.c ../*.h
+	norminette -R CheckForbiddenSourceHeader $(ROOT)/*.c $(ROOT)/*.h
 
 ##	PATCHES ====
-patch_segv:
-	cd patches && make patch_segv
-patch_segnull:
-	cd patches && make patch_segnull
+patch_segv_1:
+	make -C $(PATCHDIR)	patch_segv
+patch_segv_0:
+	make -C $(PATCHDIR)	patch_segnull
 # ------
-patch_hangle:
-	cd patches && make patch_hangle
-patch_hquote:
-	cd patches && make patch_hquote
+patch_hquote_1:
+	make -C $(PATCHDIR)	patch_hquote
+patch_hquote_0:
+	make -C $(PATCHDIR)	patch_hangle
 
 pclean:
-	rm -f $(wildcard $(ROOT)*.rej)
-	rm -f $(wildcard $(ROOT)*.orig)
-## UTILS
+	rm -f $(wildcard $(ROOT)/*.rej)
+	rm -f $(wildcard $(ROOT)/*.orig)
+
+## UTILS ====
 define nl
 
 
@@ -84,18 +97,3 @@ unpack:
 pack:
 	$(foreach f,$(SRC),mv $(f) $(addsuffix .test,$(f))${nl})
 	mv libftest.h libftest.h.test
-
-gen_gitignore:
-	@echo '\
-	**\n\
-	!ft_*.c\n\
-	!./libft.h\n\
-	!./author\n\
-	!./Makefile\n\
-	!eval_tests/*.c.test\n\
-	!eval_tests/*.h.test\n\
-	!eval_tests/Makefile\n\
-	!eval_tests/patches/\n\
-	!eval_tests/patches/*/*.patch.*'\
-	> $(ROOT).gitignore
-	@echo 'wrote to gitignore file.'

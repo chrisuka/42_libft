@@ -26,20 +26,27 @@ P_HANG		= $(PATCH_DIR)hangle/
 CMD_P_HANG	= $(foreach f,$(F_HEADER),patch -N  $(f) $(P_HANG)allc.patch.hangle;)
 CMD_P_HQUO	= $(foreach f,$(F_HEADER),patch -NR $(f) $(P_HANG)allc.patch.hangle;)
 
+COL_HL		= \x1B[33m
+COL_CS		= \x1B[32m
+COL_NUL		= \x1B[0m
+
+MSG_PATCH	= echo -e '$(COL_HL):: PATCHING: '
+MSG_PATCH_S	= echo -e '$(COL_CS) patching success! $(COL_NUL)'
+
 patch_segv:
-	@echo ":: PATCHING: segv will not be protected against"
+	@$(MSG_PATCH) 'segv will not be protected against' '$(COL_NUL)'
 	cd $(SRC_DIR) && sh -c '$(CMD_P_SEGV)'
-	@echo "patching success!"
+	@$(MSG_PATCH_S)
 patch_segnull:
-	@echo ":: PATCHING: null input will cause segv"
+	@$(MSG_PATCH) 'null input will cause segv' '$(COL_NUL)'
 	cd $(SRC_DIR) && sh -c '$(CMD_P_SEGN)'
-	@echo "patching success!"
+	@$(MSG_PATCH_S)
 # ------
 patch_hangle:
-	@echo ":: PATCHING: C files will include header with angle brackets"
+	@$(MSG_PATCH) 'C files will include header with angle brackets' '$(COL_NUL)'
 	cd $(SRC_DIR) && sh -c '$(CMD_P_HANG)'
-	@echo "patching success!"
+	@$(MSG_PATCH_S)
 patch_hquote:
-	@echo ":: PATCHING: C files will include header with double quotes"
+	@$(MSG_PATCH) 'C files will include header with double quotes' '$(COL_NUL)'
 	cd $(SRC_DIR) && sh -c '$(CMD_P_HQUO)'
-	@echo "patching success!"
+	@$(MSG_PATCH_S)

@@ -17,6 +17,10 @@ char	*ft_strncpy(char *dst, const char *src, size_t len)
 	char	*pd;
 	char	*ps;
 
+	if (!dst || !src)
+		return (NULL);
+	if (!dst || !src)
+		return (NULL);
 	pd = dst;
 	ps = (char *)src;
 	while (len-- > 0 && *ps != '\0')
