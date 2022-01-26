@@ -14,19 +14,14 @@
 
 char	*ft_strncpy(char *dst, const char *src, size_t len)
 {
-	char	*pd;
-	char	*ps;
+	char	*p_dst;
 
 	if (!dst || !src)
 		return (NULL);
-	if (!dst || !src)
-		return (NULL);
-	pd = dst;
-	ps = (char *)src;
-	while (len-- > 0 && *ps != '\0')
-		*pd++ = *ps++;
-	len++;
+	p_dst = dst;
+	while (*src != '\0' && len-- > 0)
+		*p_dst++ = *src++;
 	while (len-- > 0)
-		*pd++ = '\0';
+		*p_dst++ = '\0';
 	return (dst);
 }

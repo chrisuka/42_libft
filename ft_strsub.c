@@ -15,19 +15,12 @@
 char	*ft_strsub(const char *s, unsigned int start, size_t len)
 {
 	char	*sub;
-	char	*pstart;
-	size_t	i;
 
-	if (!s)
+	if (!s || (size_t)(start + len) >= ft_strlen(s))
 		return (NULL);
-	sub = (char *)ft_memalloc(sizeof(char) * (len + 1));
+	sub = (char *)malloc(sizeof(char) * (len + 1));
 	if (!sub)
 		return (NULL);
-	if (start >= ft_strlen((char *)s))
-		return (sub);
-	pstart = (char *)(s + start);
-	i = -1;
-	while (++i < len)
-		sub[i] = pstart[i];
+	ft_memmove(sub, &s[start], len);
 	return (sub);
 }

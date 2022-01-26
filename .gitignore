@@ -4,6 +4,7 @@
 !libft.h
 !author
 !Makefile
+!eval_tests
 !eval_tests/*.c.test
 !eval_tests/*.h.test
 !eval_tests/Makefile

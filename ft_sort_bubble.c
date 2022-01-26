@@ -27,10 +27,10 @@ void	ft_sort_bubble(void *tab, size_t len,
 		i = bs;
 		while (i < len * bs)
 		{
-			if (cmpf(&tab[i - bs], &tab[i]))
+			if (cmpf(tab + i - bs, tab + i))
 			{
 				sorted = FT_FALSE;
-				ft_swap(&tab[i - bs], &tab[i], bs);
+				ft_swap(tab + i - bs, tab + i, bs);
 			}
 			i += bs;
 		}

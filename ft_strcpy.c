@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 14:44:18 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/11/18 15:03:10 by ikarjala         ###   ########.fr       */
+/*   Updated: 2022/01/23 01:48:12 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,13 @@
 
 char	*ft_strcpy(char *dst, const char *src)
 {
-	char	*pd;
-	char	*ps;
+	char	*p_dst;
 
 	if (!dst || !src)
 		return (NULL);
-	if (!dst || !src)
-		return (NULL);
-	pd = dst;
-	ps = (char *)src;
-	while (*ps != '\0')
-		*pd++ = *ps++;
-	*pd = '\0';
+	p_dst = dst;
+	while (*src != '\0')
+		*p_dst++ = *src++;
+	*p_dst = '\0';
 	return (dst);
 }

@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int	ft_lmin(int a, int b)
+long	ft_lmin(long a, long b)
 {
 	if (a < b)
 		return (a);

@@ -22,7 +22,7 @@ void	*ft_memdup(const void *s1, size_t len)
 	fresh = malloc(sizeof(char) * (len + 1));
 	if (!fresh)
 		return (NULL);
-	i = -1;
+	i = FT_SIZE_T_MAX;
 	while (++i < len)
 		fresh[i] = ((char *)s1)[i];
 	fresh[i] = 0;

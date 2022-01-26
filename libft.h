@@ -18,9 +18,12 @@
 
 # define FT_INT_MAX	(signed int)0x7FFFFFFF
 # define FT_INT_MIN	(signed int)0x80000000
+# define FT_SIZE_T_MAX	(size_t)0xFFFFFFFF
 
 # define FT_TRUE	1
 # define FT_FALSE	0
+
+typedef signed char	t_bool;
 
 /*
 ** PART 1 & 2
@@ -109,15 +112,17 @@ void	ft_lstadd(t_list **alst, t_list *new);
 ** EXTRA
 */
 
+int		ft_toinverse(int c);
 int		ft_isspace(int c);
 int		ft_islower(int c);
 int		ft_isupper(int c);
 int		ft_isxdigit(int c);
 int		ft_strchr_equ(const char *s, int c);
 
-int		ft_abs(int n);
-int		ft_lmin(int a, int b);
-int		ft_lmax(int a, int b);
+long	ft_lmin(long a, long b);
+long	ft_lmax(long a, long b);
+int		ft_nbr_len(int n);
+unsigned int	ft_abs(int n);
 
 size_t	ft_wordcount(const char *s, const char *del);
 char	*ft_strword(const char *s, const char *delim, size_t *lenout);

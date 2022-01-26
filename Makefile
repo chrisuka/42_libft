@@ -6,7 +6,7 @@
 #    By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/05 16:57:32 by ikarjala          #+#    #+#              #
-#    Updated: 2021/12/18 21:15:46 by ikarjala         ###   ########.fr        #
+#    Updated: 2022/01/22 22:20:28 by ikarjala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,8 +30,8 @@ ft_strjoin ft_strtrim ft_strsplit \
 \
 ft_lstnew ft_lstdelone ft_lstdel ft_lstadd ft_lstiter ft_lstmap \
 \
-ft_isspace ft_isupper ft_islower ft_isxdigit ft_strchr_equ \
-ft_lmax ft_lmin ft_abs \
+ft_isspace ft_isupper ft_islower ft_isxdigit ft_toinverse ft_strchr_equ \
+ft_lmax ft_lmin ft_abs ft_nbr_len \
 ft_swap ft_memdup ft_sort_bubble ft_strword ft_wordcount ft_aiter ft_freearray
 
 SRC_DIR		= ./
@@ -45,7 +45,7 @@ FLAGS		= -Wall -Wextra -Werror -Wimplicit -Wconversion
 CC			= clang
 
 COL_HL		= \x1B[33m
-COL_CS		= \x1B[0m
+COL_CS		= \x1B[32m
 COL_NUL		= \x1B[0m
 
 ##	BUILD ====
@@ -55,7 +55,7 @@ $(NAME):
 	$(CC) -c $(FLAGS) $(SRC) -I $(INC_DIR)
 	ar -cr	$(BIN) $(OBJ)
 	ranlib	$(BIN)
-	@echo -e '$(COL_CS)' '$(NAME) :: Build Success' '$(COL_NUL)'
+	@echo -e '$(COL_CS)' '$(NAME) :: Build success!' '$(COL_NUL)'
 clean:
 	rm -f $(OBJ)
 fclean: clean

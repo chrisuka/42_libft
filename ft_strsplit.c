@@ -19,7 +19,7 @@ static char	**ft_populate(char **array, const char *s,
 	size_t	len;
 
 	len = 0;
-	a_itr = -1;
+	a_itr = FT_SIZE_T_MAX;
 	while (++a_itr < a_size)
 	{
 		s = ft_strword(s, del, &len);

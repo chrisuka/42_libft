@@ -14,9 +14,7 @@
 
 int	ft_toupper(int c)
 {
-	const int	ascii_case_offset = 'a' - 'A';
-
-	if (c >= 'a' && c <= 'z')
-		return (c - ascii_case_offset);
+	if (ft_islower(c))
+		return (c - 32);
 	return (c);
 }

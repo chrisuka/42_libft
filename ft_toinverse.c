@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_toinverse.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ikarjala <ikarjala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/05 18:35:58 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/12/17 17:07:36 by ikarjala         ###   ########.fr       */
+/*   Created: 2022/01/26 03:06:52 by ikarjala          #+#    #+#             */
+/*   Updated: 2022/01/26 03:06:54 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_tolower(int c)
+int	ft_toinverse(int c)
 {
-	if (ft_isupper(c))
-		return (c + 32);
+	if (ft_isalpha(c))
+		return (c ^ 32);
 	return (c);
 }

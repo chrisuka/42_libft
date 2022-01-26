@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_l_digit_c.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ikarjala <ikarjala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/05 18:35:58 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/12/17 17:07:36 by ikarjala         ###   ########.fr       */
+/*   Created: 2022/01/22 22:15:28 by ikarjala          #+#    #+#             */
+/*   Updated: 2022/01/22 22:15:36 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_tolower(int c)
+int	ft_nbr_len(int n)
 {
-	if (ft_isupper(c))
-		return (c + 32);
-	return (c);
+	int	len;
+
+	len = 1;
+	n /= 10;
+	while (n != 0)
+	{
+		len++;
+		n /= 10;
+	}
+	return (len);
 }

@@ -19,8 +19,6 @@ char	*ft_strstr(const char *haystack, const char *needle)
 
 	if (!haystack || !needle)
 		return (NULL);
-	if (!haystack || !needle)
-		return (NULL);
 	if (*needle == '\0')
 		return ((char *)haystack);
 	sweep = (char *)haystack;

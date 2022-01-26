@@ -12,40 +12,28 @@
 
 #include "libft.h"
 
-static int	ft_idigits(int n)
-{
-	int	dgt;
-
-	dgt = 1;
-	n /= 10;
-	while (n != 0)
-	{
-		dgt++;
-		n /= 10;
-	}
-	return (dgt);
-}
-
 char	*ft_itoa(int n)
 {
-	signed char	neg;
-	char		*str;
-	int			dgt;
+	char	*str;
+	int		c_digits;
+	t_bool	is_ltz;
+	t_bool	ltz_mul;
 
-	dgt = ft_idigits(n);
-	neg = n < 0;
-	str = (char *)malloc(sizeof(char) * (dgt + 1 + neg));
+	c_digits = ft_nbr_len(n);
+	is_ltz = n < 0;
+	str = (char *)malloc(sizeof(char) * (size_t)(c_digits + 1 + is_ltz));
 	if (!str)
 		return (NULL);
 	*str = '-';
-	str += dgt + neg;
+	str += c_digits + is_ltz;
 	*str = '\0';
-	*--str = (1 | -neg) * (n % 10) + '0';
-	n /= (1 | -neg) * 10;
+	ltz_mul = (t_bool)(1 | -is_ltz);
+	*--str = (char)(ltz_mul * (n % 10) + '0');
+	n /= ltz_mul * 10;
 	while (n != 0)
 	{
-		*--str = n % 10 + '0';
+		*--str = (char)(n % 10 + '0');
 		n /= 10;
 	}
-	return (str - neg);
+	return (str - is_ltz);
 }
