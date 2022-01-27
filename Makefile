@@ -6,7 +6,7 @@
 #    By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/05 16:57:32 by ikarjala          #+#    #+#              #
-#    Updated: 2022/01/27 03:21:26 by ikarjala         ###   ########.fr        #
+#    Updated: 2022/01/27 03:28:10 by ikarjala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ ft_strjoin ft_strtrim ft_strsplit \
 ft_lstnew ft_lstdelone ft_lstdel ft_lstadd ft_lstiter ft_lstmap \
 \
 ft_isspace ft_isupper ft_islower ft_isxdigit ft_toinverse ft_strchr_equ \
-ft_lmax ft_lmin ft_abs ft_nbr_len ft_strword ft_wordcount \
+ft_lmax ft_lmin ft_abs ft_log10 ft_strword ft_wordcount \
 ft_swap ft_memdup ft_sort_bubble ft_aiter ft_freearray \
 ft_lstlen
 

@@ -124,7 +124,7 @@ int		ft_strchr_equ(const char *s, int c);
 long	ft_lmin(long a, long b);
 long	ft_lmax(long a, long b);
 t_uint	ft_abs(int n);
-int		ft_nbr_len(int n);
+int		ft_log10(int n);
 
 size_t	ft_wordcount(const char *s, const char *del);
 char	*ft_strword(const char *s, const char *delim, size_t *lenout);

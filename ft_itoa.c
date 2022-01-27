@@ -19,7 +19,7 @@ char	*ft_itoa(int n)
 	t_bool	is_ltz;
 	t_bool	ltz_mul;
 
-	c_digits = ft_nbr_len(n);
+	c_digits = ft_log10(n) + 1;
 	is_ltz = n < 0;
 	str = (char *)malloc(sizeof(char) * (size_t)(c_digits + 1 + is_ltz));
 	if (!str)
