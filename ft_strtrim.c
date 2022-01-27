@@ -31,7 +31,7 @@ char	*ft_strtrim(const char *s)
 	p_end = p_beg + len;
 	while (*p_end != '\0')
 		p_end = ft_strword(p_end, ft_get_delims(), &len) + len;
-	fresh = ft_strsub(s, (unsigned int)(p_beg - s), (size_t)(p_end - p_beg + 1));
+	fresh = ft_strsub(s, (t_uint)(p_beg - s), (size_t)(p_end - p_beg + 1));
 	if (!fresh)
 		return (NULL);
 	return (fresh);

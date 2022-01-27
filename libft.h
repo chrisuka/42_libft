@@ -18,12 +18,14 @@
 
 # define FT_INT_MAX	(signed int)0x7FFFFFFF
 # define FT_INT_MIN	(signed int)0x80000000
-# define FT_SIZE_T_MAX	(size_t)0xFFFFFFFF
+
+# define FT_SIZE_T_MAX	(unsigned long)0xFFFFFFFF
 
 # define FT_TRUE	1
 # define FT_FALSE	0
 
-typedef signed char	t_bool;
+typedef signed char		t_bool;
+typedef unsigned int	t_uint;
 
 /*
 ** PART 1 & 2
@@ -94,7 +96,7 @@ char	*ft_itoa(int n);
 ** BONUS PART
 */
 
-typedef struct	s_list
+typedef struct s_list
 {
 	void			*content;
 	size_t			content_size;
@@ -121,8 +123,8 @@ int		ft_strchr_equ(const char *s, int c);
 
 long	ft_lmin(long a, long b);
 long	ft_lmax(long a, long b);
+t_uint	ft_abs(int n);
 int		ft_nbr_len(int n);
-unsigned int	ft_abs(int n);
 
 size_t	ft_wordcount(const char *s, const char *del);
 char	*ft_strword(const char *s, const char *delim, size_t *lenout);

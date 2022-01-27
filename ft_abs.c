@@ -21,7 +21,8 @@ unsigned int	ft_abs(int n)
 }
 
 /*
-** bitshifting >> sizeof(n) * CHAR_BIT - 1 will produce all 0s or all 1s depending on the signing bit
+** bitshifting >> sizeof(n) * CHAR_BIT - 1 will produce
+** 			all 0s or all 1s depending on the signing bit
 ** XORing ^ a number with 0 will yield the orig nb
 **        XORing it with -1 will yield its inverse
 */

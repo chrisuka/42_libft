@@ -26,7 +26,7 @@ size_t	ft_wordcount(const char *s, const char *del)
 	while (*s != '\0')
 	{
 		in_word_now = !ft_strchr_equ(del, *s);
-		wc += !in_word_bef && in_word_now;
+		wc += (!in_word_bef && in_word_now);
 		in_word_bef = in_word_now;
 		s++;
 	}
