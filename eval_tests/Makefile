@@ -6,7 +6,7 @@
 #    By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/30 21:31:17 by ikarjala          #+#    #+#              #
-#    Updated: 2022/01/22 20:09:27 by ikarjala         ###   ########.fr        #
+#    Updated: 2022/02/02 02:51:05 by ikarjala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,10 +26,10 @@ CC			= clang
 
 PATCH_DIR	= patches
 TEST_ROOT	= ./unit-tests/
-UNIT_TEST	= $(TEST_ROOT)libft-unit-test
+UNIT_TEST	= $(TEST_ROOT)alelievr
 MOULI_TEST	= $(TEST_ROOT)moulitest
 LIBFTEST	= $(TEST_ROOT)Libftest-old-libft
-WSDON_TEST	= $(TEST_ROOT)wsdonnelly-libft-tests
+WSDON_TEST	= $(TEST_ROOT)wsdonnelly
 
 COL_HL		= \x1B[33m
 COL_CS		= \x1B[32m

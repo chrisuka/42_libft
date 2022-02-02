@@ -10,3 +10,5 @@
 !eval_tests/Makefile
 !eval_tests/patches/
 !eval_tests/patches/*/*.patch.*
+!eval_tests/unit-tests
+!eval_tests/unit-tests/*
