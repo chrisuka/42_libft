@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 17:06:35 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/12/18 20:50:03 by ikarjala         ###   ########.fr       */
+/*   Updated: 2022/02/15 17:03:39 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@
 # define FT_TRUE	1
 # define FT_FALSE	0
 
-typedef signed char		t_bool;
+typedef signed char		t_sbyte;
+typedef unsigned char	t_bool;
 typedef unsigned int	t_uint;
 
 /*
@@ -123,14 +124,16 @@ int		ft_strchr_equ(const char *s, int c);
 
 long	ft_lmin(long a, long b);
 long	ft_lmax(long a, long b);
-t_uint	ft_abs(int n);
+int		ft_abs(int n);
 int		ft_log10(int n);
 
 size_t	ft_wordcount(const char *s, const char *del);
+int		*ft_mapi(int start, int end);
 char	*ft_strword(const char *s, const char *delim, size_t *lenout);
 void	*ft_memdup(const void *s1, size_t len);
 
-int		ft_swap(void **a, void **b, size_t bs);
+void	ft_swap(char *a, char *b, size_t bs);
+void	ft_memswap(char *a, char *b, size_t len);
 void	ft_aiter(void **array, size_t len, void (*fn)(void **));
 void	ft_freearray(void ***array, size_t len);
 void	ft_sort_bubble(void *tab, size_t len,

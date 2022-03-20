@@ -6,13 +6,14 @@
 #    By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/05 16:57:32 by ikarjala          #+#    #+#              #
-#    Updated: 2022/01/27 03:28:10 by ikarjala         ###   ########.fr        #
+#    Updated: 2022/03/18 02:57:38 by ikarjala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= libft.a
 BIN		= ./$(NAME)
-CFUNC	= \
+
+FUNC_P12 = \
 ft_isdigit ft_isalpha ft_isalnum ft_isprint ft_isascii \
 ft_tolower ft_toupper ft_strlen ft_itoa ft_atoi \
 \
@@ -26,14 +27,17 @@ ft_strcmp ft_strncmp ft_strequ ft_strnequ \
 ft_strchr ft_strrchr ft_strstr ft_strnstr \
 ft_strcat ft_strncat ft_strlcat ft_strcpy ft_strncpy ft_striter ft_striteri \
 ft_strnew ft_strdel ft_strclr ft_strdup ft_strsub ft_strmap ft_strmapi \
-ft_strjoin ft_strtrim ft_strsplit \
-\
-ft_lstnew ft_lstdelone ft_lstdel ft_lstadd ft_lstiter ft_lstmap \
-\
+ft_strjoin ft_strtrim ft_strsplit
+FUNC_BONUS = \
+ft_lstnew ft_lstdelone ft_lstdel ft_lstadd ft_lstiter ft_lstmap
+FUNC_EXTRA = \
 ft_isspace ft_isupper ft_islower ft_isxdigit ft_toinverse ft_strchr_equ \
-ft_lmax ft_lmin ft_abs ft_log10 ft_strword ft_wordcount \
-ft_swap ft_memdup ft_sort_bubble ft_aiter ft_freearray \
-ft_lstlen
+ft_lmax ft_lmin ft_abs ft_log10 ft_strword ft_wordcount ft_mapi \
+ft_swap ft_memdup ft_aiter ft_freearray \
+ft_lstlen \
+#ft_sort_bubble
+
+CFUNC	= $(FUNC_P12) $(FUNC_BONUS) $(FUNC_EXTRA)
 
 SRC_DIR		= ./
 OBJ_DIR		= ./
@@ -61,4 +65,11 @@ clean:
 	rm -f $(OBJ)
 fclean: clean
 	rm -f $(BIN) $(LIB)
+	rm -f libft.so
 re: fclean all
+
+so:
+	@echo -e '$(COL_HL)' '$(NAME) :: Starting SO build...' '$(COL_NUL)'
+	$(CC) -nostartfiles -fPIC $(FLAGS) $(SRC)
+	$(CC) -nostartfiles -shared -o libft.so $(OBJ)
+	@echo -e '$(COL_CS)' '$(NAME) :: Build success!' '$(COL_NUL)'
