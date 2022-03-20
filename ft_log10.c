@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 03:36:29 by ikarjala          #+#    #+#             */
-/*   Updated: 2022/01/27 03:36:31 by ikarjala         ###   ########.fr       */
+/*   Updated: 2022/02/11 01:45:17 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 int	ft_log10(int n)
 {
-	const int	bs_table[9] = {
-		1000000000, 100000000, 10000000, 1000000, 100000, 10000, 1000, 100, 10};
-	const int	rv_table[9] = {9, 8, 7, 6, 5, 4, 3, 2, 1};
 	int			i;
+	const int	pow[9] = {
+		10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000};
 
-	i = 0;
-	while (n < bs_table[i])
-		i++;
-	return (rv_table[i]);
+	n = ft_abs(n);
+	i = -1;
+	while (++i < 9)
+	{
+		if (n < pow[i])
+			break ;
+	}
+	return (i);
 }
-
-// norminette will likely not approve :o
-// todo: figure out how to rearrange these tables for binary search

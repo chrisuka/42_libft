@@ -6,18 +6,18 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 20:48:14 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/12/15 20:49:24 by ikarjala         ###   ########.fr       */
+/*   Updated: 2022/02/11 01:19:15 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-unsigned int	ft_abs(int n)
+int	ft_abs(int n)
 {
 	int	mask;
 
 	mask = n >> 31;
-	return ((unsigned int)((n + mask) ^ mask));
+	return ((n + mask) ^ mask);
 }
 
 /*

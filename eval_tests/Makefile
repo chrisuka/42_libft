@@ -6,7 +6,7 @@
 #    By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/30 21:31:17 by ikarjala          #+#    #+#              #
-#    Updated: 2022/02/02 02:51:05 by ikarjala         ###   ########.fr        #
+#    Updated: 2022/03/20 04:08:48 by ikarjala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,44 +57,22 @@ re: fclean all
 install: re clean
 
 ##	TESTS ====
-run: install
+run: fclean
 	make -C $(UNIT_TEST)	f
 benchmark:
 	make -C $(UNIT_TEST)	b
-run2: install
+run2: fclean
 	make -C $(MOULI_TEST)	libft_bonus
-run3: install
+run3: fclean
 	cd $(LIBFTEST) && bash grademe.sh
-run4: install
+run4: fclean
 	make -C $(WSDON_TEST)
 	$(WSDON_TEST)/test_ft
 
 norme:
 	norminette -R CheckForbiddenSourceHeader $(ROOT)/*.c $(ROOT)/*.h
 
-##	PATCHES ====
-patch_segv_1:
-	make -C $(PATCH_DIR)	patch_segv
-patch_segv_0:
-	make -C $(PATCH_DIR)	patch_segnull
-# ------
-patch_hquote_1:
-	make -C $(PATCH_DIR)	patch_hquote
-patch_hquote_0:
-	make -C $(PATCH_DIR)	patch_hangle
-
+##	UTILS ====
 pclean:
 	rm -f $(wildcard $(ROOT)/*.rej)
 	rm -f $(wildcard $(ROOT)/*.orig)
-
-## UTILS ====
-define nl
-
-
-endef
-unpack:
-	$(foreach f,$(addsuffix .test,$(SRC)),mv $(f) $(basename $(f))${nl})
-	mv libftest.h.test libftest.h
-pack:
-	$(foreach f,$(SRC),mv $(f) $(addsuffix .test,$(f))${nl})
-	mv libftest.h libftest.h.test
