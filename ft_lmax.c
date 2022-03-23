@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lmax.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/06 13:41:04 by ikarjala          #+#    #+#             */
-/*   Updated: 2022/03/19 20:10:40 by ikarjala         ###   ########.fr       */
+/*   Created: 2021/12/15 20:46:20 by ikarjala          #+#    #+#             */
+/*   Updated: 2022/01/22 19:31:47 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftest.h"
+#include "libft.h"
 
-# define VERBOSE_CHECK 0
-
-int		main(void)
+long	ft_lmax(long a, long b)
 {
-	return (0);
+	if (a > b)
+		return (a);
+	return (b);
 }

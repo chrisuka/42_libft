@@ -12,14 +12,9 @@
 
 #include "libft.h"
 
-static int	ft_isdelim(int c)
+static const char	*ft_get_delims(void)
 {
-	const char	*delim_lst = " \n\t";
-
-	while (*delim_lst != '\0')
-		if (*delim_lst++ == c)
-			return (FT_TRUE);
-	return (FT_FALSE);
+	return (" \n\t");
 }
 
 char	*ft_strtrim(const char *s)
@@ -27,21 +22,16 @@ char	*ft_strtrim(const char *s)
 	char	*fresh;
 	char	*p_beg;
 	char	*p_end;
+	size_t	len;
 
 	if (!s)
 		return (NULL);
-	p_beg = (char *)s;
-	while (ft_isdelim(*p_beg))
-		p_beg++;
-	p_end = p_beg;
-	while (*p_end != 0)
-		p_end++;
-	if (p_beg == p_end)
-		return (ft_strsub(s, 0, 0));
-	else
-		while (ft_isdelim(*--p_end))
-			continue ;
-	fresh = ft_strsub(s, p_beg - s, p_end - p_beg + 1);
+	len = 0;
+	p_beg = ft_strword(s, ft_get_delims(), &len);
+	p_end = p_beg + len;
+	while (*p_end != '\0')
+		p_end = ft_strword(p_end, ft_get_delims(), &len) + len;
+	fresh = ft_strsub(s, (t_uint)(p_beg - s), (size_t)(p_end - p_beg + 1));
 	if (!fresh)
 		return (NULL);
 	return (fresh);

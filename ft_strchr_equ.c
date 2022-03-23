@@ -16,6 +16,8 @@ int	ft_strchr_equ(const char *s, int c)
 {
 	if (!s)
 		return (-1);
+	if (c == '\0')
+		return (FT_TRUE);
 	while (*s != '\0')
 		if (*s++ == c)
 			return (FT_TRUE);

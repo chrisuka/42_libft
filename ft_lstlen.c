@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_arraywipe.c                                     :+:      :+:    :+:   */
+/*   ft_lstlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ikarjala <ikarjala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/18 20:48:27 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/12/18 20:48:53 by ikarjala         ###   ########.fr       */
+/*   Created: 2022/01/27 03:10:08 by ikarjala          #+#    #+#             */
+/*   Updated: 2022/01/27 03:11:11 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_arraywipe(void ***array, size_t len)
+size_t	ft_lstlen(t_list *lst)
 {
-	ft_aiter(*array, len, &ft_memdel);
-	free(*array);
-	*array = NULL;
+    size_t	len;
+
+    len = 0;
+    while (lst)
+    {
+        len++;
+        lst = lst->next;
+    }
+    return (len);
 }

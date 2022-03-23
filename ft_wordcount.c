@@ -15,16 +15,20 @@
 size_t	ft_wordcount(const char *s, const char *del)
 {
 	size_t	wc;
-	size_t	len;
+	t_bool	in_word_now;
+	t_bool	in_word_bef;
 
 	if (!s)
 		return (0);
 	wc = 0;
-	len = 0;
+	in_word_now = FT_FALSE;
+	in_word_bef = FT_FALSE;
 	while (*s != '\0')
 	{
-		s = (const char *)(ft_strword(s, del, &len) + len);
-		wc += (len != 0);
+		in_word_now = !ft_strchr_equ(del, *s);
+		wc += (!in_word_bef && in_word_now);
+		in_word_bef = in_word_now;
+		s++;
 	}
 	return (wc);
 }

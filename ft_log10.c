@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_log10.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ikarjala <ikarjala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 10:07:01 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/11/24 10:27:13 by ikarjala         ###   ########.fr       */
+/*   Created: 2022/01/27 03:36:29 by ikarjala          #+#    #+#             */
+/*   Updated: 2022/02/11 01:45:17 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char *))
+int	ft_log10(int n)
 {
-	unsigned int	i;
+	int			i;
+	const int	pow[9] = {
+		10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000};
 
-	if (!s || !f)
-		return ;
-	i = FT_SIZE_T_MAX;
-	while (s[++i] != '\0')
-		f(i, &s[i]);
+	n = ft_abs(n);
+	i = -1;
+	while (++i < 9)
+	{
+		if (n < pow[i])
+			break ;
+	}
+	return (i);
 }

@@ -1,0 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ikarjala <ikarjala@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+<<<<<<< HEAD:eval_tests/main.c
+/*   Created: 2021/11/06 13:41:04 by ikarjala          #+#    #+#             */
+/*   Updated: 2022/03/19 20:10:40 by ikarjala         ###   ########.fr       */
+=======
+/*   Created: 2022/01/23 06:03:06 by ikarjala          #+#    #+#             */
+/*   Updated: 2022/01/23 06:03:58 by ikarjala         ###   ########.fr       */
+>>>>>>> c1853be85ed2b233da6fd5691601a1d0f49996cd:eval_tests/test_main.c.test
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libftest.h"
+
+<<<<<<< HEAD:eval_tests/main.c
+# define VERBOSE_CHECK 0
+
+int		main(void)
+=======
+int	main(void)
+>>>>>>> c1853be85ed2b233da6fd5691601a1d0f49996cd:eval_tests/test_main.c.test
+{
+	return (0);
+}

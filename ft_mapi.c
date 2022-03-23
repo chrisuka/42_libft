@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_mapi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ikarjala <ikarjala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/30 18:49:21 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/11/30 21:41:37 by ikarjala         ###   ########.fr       */
+/*   Created: 2022/02/11 04:12:49 by ikarjala          #+#    #+#             */
+/*   Updated: 2022/02/22 09:43:41 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+int	*ft_mapi(int start, int end)
 {
-	char	*fresh;
 	size_t	len;
+	size_t	i;
+	int		*array;
+	t_sbyte	dir_sign;
 
-	if (!s1)
+	len = (size_t)(end - start);
+	if (len == 0)
 		return (NULL);
-	len = ft_strlen((char *)s1);
-	fresh = (char *)malloc(sizeof(char) * (len + 1));
-	if (!fresh)
+	dir_sign = 1 | -(start > end);
+	array = (int *)malloc(sizeof(int) * (len));
+	if (!array)
 		return (NULL);
-	fresh[len] = 0;
-	while (len-- > 0)
-		fresh[len] = s1[len];
-	return (fresh);
+	i = 0xFF;
+	while (++i < len)
+		array[i] = start + dir_sign * (int)i;
+	return (array);
 }

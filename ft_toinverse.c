@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_minint.c                                        :+:      :+:    :+:   */
+/*   ft_toinverse.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ikarjala <ikarjala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/15 20:47:38 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/12/15 20:47:58 by ikarjala         ###   ########.fr       */
+/*   Created: 2022/01/26 03:06:52 by ikarjala          #+#    #+#             */
+/*   Updated: 2022/01/26 03:06:54 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_minint(int a, int b)
+int	ft_toinverse(int c)
 {
-	if (a < b)
-		return (a);
-	return (b);
+	if (ft_isalpha(c))
+		return (c ^ 32);
+	return (c);
 }

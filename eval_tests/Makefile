@@ -6,6 +6,7 @@
 #    By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/30 21:31:17 by ikarjala          #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2022/03/19 20:08:31 by ikarjala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
@@ -21,81 +22,75 @@ INC_DIR    = ../
 LIB_DIR    = ..
 LIB        = ft
 FLAGS      = -Wall -Wextra -Werror
+=======
+#    Updated: 2022/03/20 04:08:48 by ikarjala         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-UNIT_TEST	= ~/source/repos/vogosphere/libft-unit-test-old/
-MOULI_TEST	= ~/source/repos/vogosphere/moulitest/
-LIBFTEST	= ~/Desktop/libfthing/Libftest-old-libft
-WSDON_TEST	= ~/source/import/wsdonnelly-libft-tests
+NAME		= libftest
+BIN			= ./$(NAME)
+ROOT		= ..
+SRC_DIR		= ./
+CFUNC		= \
+main
+SRC			= $(addprefix $(SRC_DIR)test_,$(addsuffix .c,$(CFUNC)))
+OBJ			= $(addprefix test_,$(addsuffix .o,$(CFUNC)))
+INC_DIR		= $(ROOT)
+LIB_DIR		= $(ROOT)
+LIB			= ft
+FLAGS		=
+CC			= clang
+>>>>>>> c1853be85ed2b233da6fd5691601a1d0f49996cd
+
+PATCH_DIR	= patches
+TEST_ROOT	= ./unit-tests/
+UNIT_TEST	= $(TEST_ROOT)alelievr
+MOULI_TEST	= $(TEST_ROOT)moulitest
+LIBFTEST	= $(TEST_ROOT)Libftest-old-libft
+WSDON_TEST	= $(TEST_ROOT)wsdonnelly
+
+COL_HL		= \x1B[33m
+COL_CS		= \x1B[32m
+COL_NUL		= \x1B[0m
 
 ##	BUILD ====
 all: $(NAME)
 $(NAME):
-	@echo '$(NAME) :: Starting build...'
-	gcc -c	$(FLAGS) $(addprefix $(SRC_DIR),$(SRC)) -I $(INC_DIR)
+	@echo -e '$(COL_HL)' '$(NAME) :: Starting build...' '$(COL_NUL)'
 ifeq (,$(wildcard $(addprefix $(LIB_DIR),$(LIB))))
-	@echo '  ! No libraries found, trying to build...'
-	cd $(LIB_DIR) && make
+	@echo -e '$(COL_HL)' '[?] No libraries found, trying to build...' '$(COL_NUL)'
+	 make -C $(LIB_DIR)
+	@echo -e '$(COL_CS)' '$(NAME) :: Build success!' '$(COL_NUL)'
 endif
-	gcc -o	$(BIN) $(OBJ) -L$(LIB_DIR) -l $(LIB)
+	$(CC) -c $(FLAGS) $(SRC) -I $(INC_DIR)
+	$(CC) -o $(BIN) $(OBJ) -L$(LIB_DIR) -l $(LIB)
 clean:
 	rm -f $(OBJ)
-	cd $(LIB_DIR) && make fclean
-fclean: clean
+	make -C $(LIB_DIR)	clean
+fclean: pclean
+	rm -f $(OBJ)
+	make -C $(LIB_DIR)	fclean
 	rm -f $(BIN)
 re: fclean all
-install: all clean
+install: re clean
 
 ##	TESTS ====
-run: install
-	cd $(UNIT_TEST) && make f
-benchmark: install
-	cd $(UNIT_TEST) && ./run_test -b
-run2: install
-	cd $(MOULI_TEST) && make libft_bonus
-run3: install
+run: fclean
+	make -C $(UNIT_TEST)	f
+benchmark:
+	make -C $(UNIT_TEST)	b
+run2: fclean
+	make -C $(MOULI_TEST)	libft_bonus
+run3: fclean
 	cd $(LIBFTEST) && bash grademe.sh
-run4:
-	cd $(WSDON_TEST) && make && ./test_ft
+run4: fclean
+	make -C $(WSDON_TEST)
+	$(WSDON_TEST)/test_ft
+
 norme:
-	norminette -R CheckForbiddenSourceHeader ../*.c ../*.h
+	norminette -R CheckForbiddenSourceHeader $(ROOT)/*.c $(ROOT)/*.h
 
-##	PATCHES ====
-patch_segv:
-	cd patches && make patch_segv
-patch_segnull:
-	cd patches && make patch_segnull
-# ------
-patch_hangle:
-	cd patches && make patch_hangle
-patch_hquote:
-	cd patches && make patch_hquote
-
+##	UTILS ====
 pclean:
-	rm -f $(wildcard $(ROOT)*.rej)
-	rm -f $(wildcard $(ROOT)*.orig)
-## UTILS
-define nl
-
-
-endef
-unpack:
-	$(foreach f,$(addsuffix .test,$(SRC)),mv $(f) $(basename $(f))${nl})
-	mv libftest.h.test libftest.h
-pack:
-	$(foreach f,$(SRC),mv $(f) $(addsuffix .test,$(f))${nl})
-	mv libftest.h libftest.h.test
-
-gen_gitignore:
-	@echo '\
-	**\n\
-	!ft_*.c\n\
-	!./libft.h\n\
-	!./author\n\
-	!./Makefile\n\
-	!eval_tests/*.c.test\n\
-	!eval_tests/*.h.test\n\
-	!eval_tests/Makefile\n\
-	!eval_tests/patches/\n\
-	!eval_tests/patches/*/*.patch.*'\
-	> $(ROOT).gitignore
-	@echo 'wrote to gitignore file.'
+	rm -f $(wildcard $(ROOT)/*.rej)
+	rm -f $(wildcard $(ROOT)/*.orig)

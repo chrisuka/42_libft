@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_maxint.c                                        :+:      :+:    :+:   */
+/*   ft_lmin.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/15 20:46:20 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/12/15 20:47:20 by ikarjala         ###   ########.fr       */
+/*   Created: 2021/12/15 20:47:38 by ikarjala          #+#    #+#             */
+/*   Updated: 2022/01/22 19:31:37 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_maxint(int a, int b)
+long	ft_lmin(long a, long b)
 {
-	if (a > b)
+	if (a < b)
 		return (a);
 	return (b);
 }
