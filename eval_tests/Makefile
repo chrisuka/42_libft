@@ -6,7 +6,7 @@
 #    By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/30 21:31:17 by ikarjala          #+#    #+#              #
-#    Updated: 2021/12/18 21:48:11 by ikarjala         ###   ########.fr        #
+#    Updated: 2022/03/19 20:08:31 by ikarjala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME       = libftest
 BIN        = ./$(NAME)
 ROOT       = ~/source/repos/vogosphere/libft/
 SRC_DIR    = ./
-FUNC       = strchr_equ isspace isxdigit sort_bubble swap abs maxint minint
+FUNC       = 
 SRC        = main.c $(addprefix test_,$(addsuffix .c,$(FUNC)))
 OBJ        = main.o $(addprefix test_,$(addsuffix .o,$(FUNC)))
 INC_DIR    = ../

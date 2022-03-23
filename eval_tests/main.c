@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_strchr_equ.c                                  :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/15 22:53:41 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/12/15 22:54:06 by ikarjala         ###   ########.fr       */
+/*   Created: 2021/11/06 13:41:04 by ikarjala          #+#    #+#             */
+/*   Updated: 2022/03/19 20:10:40 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftest.h"
 
-void	test_strchr_equ_unit(void)
-{
+# define VERBOSE_CHECK 0
 
+int		main(void)
+{
+	return (0);
 }
