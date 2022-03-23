@@ -6,43 +6,27 @@
 #    By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/30 21:31:17 by ikarjala          #+#    #+#              #
-<<<<<<< HEAD
-#    Updated: 2022/03/19 20:08:31 by ikarjala         ###   ########.fr        #
+#    Updated: 2022/03/23 20:38:43 by ikarjala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME       = libftest
 BIN        = ./$(NAME)
-ROOT       = ~/source/repos/vogosphere/libft/
-SRC_DIR    = ./
-FUNC       = 
-SRC        = main.c $(addprefix test_,$(addsuffix .c,$(FUNC)))
-OBJ        = main.o $(addprefix test_,$(addsuffix .o,$(FUNC)))
-INC_DIR    = ../
-LIB_DIR    = ..
-LIB        = ft
-FLAGS      = -Wall -Wextra -Werror
-=======
-#    Updated: 2022/03/20 04:08:48 by ikarjala         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
 
-NAME		= libftest
-BIN			= ./$(NAME)
 ROOT		= ..
 SRC_DIR		= ./
-CFUNC		= \
-main
-SRC			= $(addprefix $(SRC_DIR)test_,$(addsuffix .c,$(CFUNC)))
-OBJ			= $(addprefix test_,$(addsuffix .o,$(CFUNC)))
 INC_DIR		= $(ROOT)
 LIB_DIR		= $(ROOT)
 LIB			= ft
-FLAGS		=
+CFLAGS      = -Wall -Wextra -Werror
 CC			= clang
->>>>>>> c1853be85ed2b233da6fd5691601a1d0f49996cd
 
-PATCH_DIR	= patches
+CFUNC		= \
+main
+
+SRC			= $(addprefix $(SRC_DIR)test_,$(addsuffix .c,$(CFUNC)))
+OBJ			= $(addprefix $(SRC_DIR)test_,$(addsuffix .o,$(CFUNC)))
+
 TEST_ROOT	= ./unit-tests/
 UNIT_TEST	= $(TEST_ROOT)alelievr
 MOULI_TEST	= $(TEST_ROOT)moulitest
@@ -62,7 +46,7 @@ ifeq (,$(wildcard $(addprefix $(LIB_DIR),$(LIB))))
 	 make -C $(LIB_DIR)
 	@echo -e '$(COL_CS)' '$(NAME) :: Build success!' '$(COL_NUL)'
 endif
-	$(CC) -c $(FLAGS) $(SRC) -I $(INC_DIR)
+	$(CC) -c $(CFLAGS) $(SRC) -I $(INC_DIR)
 	$(CC) -o $(BIN) $(OBJ) -L$(LIB_DIR) -l $(LIB)
 clean:
 	rm -f $(OBJ)

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/23 19:28:53 by ikarjala          #+#    #+#             */
-/*   Updated: 2022/03/23 19:29:55by ikarjala         ###   ########.fr       */
+/*   Created: 2022/03/23 20:44:00 by ikarjala          #+#    #+#             */
+/*   Updated: 2022/03/23 20:54:33 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,10 @@ int	ft_lstcut(t_list **alst, size_t start, size_t count,
 	t_list	*head;
 	t_list	*tail;
 	t_list	*temp;
-	size_t	index;
 
 	if (count == 0 || !alst)
 		return (-1);
-	head = *alst;
-	index = 0;
-	while (++index < start)
-	{
-		if (!head)
-			return (-1);
-		head = head->next;
-	}
+	head = ft_lstn(*alst, start);
 	tail = head->next;
 	if (start == 0)
 		tail = head;

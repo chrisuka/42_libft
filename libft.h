@@ -6,11 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 17:06:35 by ikarjala          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/03/23 19:35:55 by ikarjala         ###   ########.fr       */
-=======
-/*   Updated: 2022/02/15 17:03:39 by ikarjala         ###   ########.fr       */
->>>>>>> c1853be85ed2b233da6fd5691601a1d0f49996cd
+/*   Updated: 2022/03/23 20:53:36 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,8 +141,11 @@ void	ft_sort_bubble(void *tab, size_t len,
 
 void	ft_memclr(void *ap, size_t size);
 
+size_t	ft_lstlen(t_list *lst);
 size_t	ft_lstclen(t_list *lst, t_list *target);
 size_t	lst_contentlen(t_list *lst);
+t_list	*lstn(t_list *lst, size_t n);
+
 t_list	*ft_lstinit(size_t elemc, size_t size);
 char	*ft_lststr(t_list *lst);
 int		ft_lstcut(t_list **alst, size_t start, size_t count,
