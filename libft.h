@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 17:06:35 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/12/18 20:50:03 by ikarjala         ###   ########.fr       */
+/*   Updated: 2022/03/23 19:35:55 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,5 +127,14 @@ void	ft_arraywipe(void ***array, size_t len);
 int		ft_swap(void **a, void **b, size_t bs);
 void	ft_sort_bubble(void *tab, size_t len,
 			int (*cmpf)(void **, void **), size_t bs);
+
+void	ft_memclr(void *ap, size_t size);
+
+size_t	ft_lstclen(t_list *lst, t_list *target);
+size_t	lst_contentlen(t_list *lst);
+t_list	*ft_lstinit(size_t elemc, size_t size);
+char	*ft_lststr(t_list *lst);
+int		ft_lstcut(t_list **alst, size_t start, size_t count,
+			void (*del)(void *, size_t));
 
 #endif
