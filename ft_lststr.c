@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 19:31:49 by ikarjala          #+#    #+#             */
-/*   Updated: 2022/03/23 19:31:59 by ikarjala         ###   ########.fr       */
+/*   Updated: 2022/03/23 21:12:30 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_lststr(t_list *lst)
 	size_t	len;
 	char	*str;
 
-	len = lst_contentlen(lst);
+	len = ft_lstbuflen(lst);
 	if (len == 0)
 		return (NULL);
 	str = (char *)malloc(sizeof(char) * (len + 1));

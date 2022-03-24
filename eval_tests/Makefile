@@ -6,7 +6,7 @@
 #    By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/30 21:31:17 by ikarjala          #+#    #+#              #
-#    Updated: 2022/03/23 20:38:43 by ikarjala         ###   ########.fr        #
+#    Updated: 2022/03/23 21:15:19 by ikarjala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,8 +24,8 @@ CC			= clang
 CFUNC		= \
 main
 
-SRC			= $(addprefix $(SRC_DIR)test_,$(addsuffix .c,$(CFUNC)))
-OBJ			= $(addprefix $(SRC_DIR)test_,$(addsuffix .o,$(CFUNC)))
+SRC			= $(addprefix $(SRC_DIR),$(addsuffix .c,$(CFUNC)))
+OBJ			= $(addprefix $(SRC_DIR),$(addsuffix .o,$(CFUNC)))
 
 TEST_ROOT	= ./unit-tests/
 UNIT_TEST	= $(TEST_ROOT)alelievr

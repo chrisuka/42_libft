@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 17:06:35 by ikarjala          #+#    #+#             */
-/*   Updated: 2022/03/23 20:53:36 by ikarjala         ###   ########.fr       */
+/*   Updated: 2022/03/23 21:11:50 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,8 +143,8 @@ void	ft_memclr(void *ap, size_t size);
 
 size_t	ft_lstlen(t_list *lst);
 size_t	ft_lstclen(t_list *lst, t_list *target);
-size_t	lst_contentlen(t_list *lst);
-t_list	*lstn(t_list *lst, size_t n);
+size_t	ft_lstbuflen(t_list *lst);
+t_list	*ft_lstn(t_list *lst, size_t n);
 
 t_list	*ft_lstinit(size_t elemc, size_t size);
 char	*ft_lststr(t_list *lst);
