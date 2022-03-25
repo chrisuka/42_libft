@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 18:49:21 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/11/30 21:41:37 by ikarjala         ###   ########.fr       */
+/*   Updated: 2022/03/24 16:36:19 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ char	*ft_strdup(const char *s1)
 	char	*fresh;
 	size_t	len;
 
-	if (!s1)
-		return (NULL);
 	len = ft_strlen((char *)s1);
 	fresh = (char *)malloc(sizeof(char) * (len + 1));
 	if (!fresh)

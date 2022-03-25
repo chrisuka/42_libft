@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 21:42:44 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/12/14 19:04:52 by ikarjala         ###   ########.fr       */
+/*   Updated: 2022/03/24 16:35:11 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	size_t	result;
 	char	*ps;
 
-	if (!dst || !src)
+	if (!dst && !src)
 		return (0);
 	len = 0;
 	while (*dst++ != '\0')

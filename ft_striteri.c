@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 10:07:01 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/11/24 10:27:13 by ikarjala         ###   ########.fr       */
+/*   Updated: 2022/03/25 17:59:40 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 
 	if (!s || !f)
 		return ;
-	i = FT_SIZE_T_MAX;
+	i = -1U;
 	while (s[++i] != '\0')
 		f(i, &s[i]);
 }

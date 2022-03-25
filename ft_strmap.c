@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 18:39:39 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/11/22 19:00:53 by ikarjala         ###   ########.fr       */
+/*   Updated: 2022/03/25 17:47:06 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_strmap(const char *s, char (*f)(char))
 	new = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
 	if (!new)
 		return (NULL);
-	i = FT_SIZE_T_MAX;
+	i = -1UL;
 	while (s[++i] != '\0')
 		new[i] = f(s[i]);
 	new[i] = '\0';

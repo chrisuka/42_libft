@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 19:56:31 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/11/30 20:30:27 by ikarjala         ###   ########.fr       */
+/*   Updated: 2022/03/24 16:35:28 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	char	*sweep;
 	size_t	probe;
 
-	if (!haystack || !needle)
+	if (!haystack && !needle)
 		return (NULL);
 	if (*needle == '\0')
 		return ((char *)haystack);

@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 14:35:04 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/12/14 18:33:28 by ikarjala         ###   ########.fr       */
+/*   Updated: 2022/03/25 17:59:09 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	*ft_memdup(const void *s1, size_t len)
 	fresh = malloc(sizeof(char) * (len + 1));
 	if (!fresh)
 		return (NULL);
-	i = FT_SIZE_T_MAX;
+	i = -1UL;
 	while (++i < len)
 		fresh[i] = ((char *)s1)[i];
 	fresh[i] = 0;

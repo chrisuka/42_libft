@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/10 23:04:24 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/11/18 16:19:20 by ikarjala         ###   ########.fr       */
+/*   Created: 2022/03/25 19:05:20 by ikarjala          #+#    #+#             */
+/*   Updated: 2022/03/25 19:07:48 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,14 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
+	int	pow;
 	int	div;
 
-	if (n == FT_INT_MIN)
-		return ((void)write(fd, "-2147483648", 11));
 	if (n < 0)
-	{
 		write(fd, "-", 1);
-		n = -n;
-	}
-	div = 1;
-	while (n / div != 0)
-		div *= 10;
-	while (div > 0)
+	pow = ft_log10(n);
+	div = ft_pow(10, pow);
+	while (pow-- > 0)
 	{
 		ft_putchar_fd((char)(n / div % 10 + '0'), fd);
 		div /= 10;

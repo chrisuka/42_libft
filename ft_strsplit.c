@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 16:30:12 by ikarjala          #+#    #+#             */
-/*   Updated: 2022/01/22 19:13:44 by ikarjala         ###   ########.fr       */
+/*   Updated: 2022/03/25 17:58:49 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static char	**ft_populate(char **array, const char *s,
 	size_t	len;
 
 	len = 0;
-	a_itr = FT_SIZE_T_MAX;
+	a_itr = -1UL;
 	while (++a_itr < a_size)
 	{
 		s = ft_strword(s, del, &len);
