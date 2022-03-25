@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 17:06:35 by ikarjala          #+#    #+#             */
-/*   Updated: 2022/03/23 21:11:50 by ikarjala         ###   ########.fr       */
+/*   Updated: 2022/03/25 17:46:48 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 
 # define FT_INT_MAX	(signed int)0x7FFFFFFF
 # define FT_INT_MIN	(signed int)0x80000000
-
-# define FT_SIZE_T_MAX	(unsigned long)0xFFFFFFFF
 
 # define FT_TRUE	1
 # define FT_FALSE	0
@@ -122,10 +120,9 @@ int		ft_isupper(int c);
 int		ft_isxdigit(int c);
 int		ft_strchr_equ(const char *s, int c);
 
-long	ft_lmin(long a, long b);
-long	ft_lmax(long a, long b);
 int		ft_abs(int n);
 int		ft_log10(int n);
+int		ft_pow(int n, int pow);
 
 size_t	ft_wordcount(const char *s, const char *del);
 int		*ft_mapi(int start, int end);

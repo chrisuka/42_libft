@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lmax.c                                          :+:      :+:    :+:   */
+/*   ft_pow.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/15 20:46:20 by ikarjala          #+#    #+#             */
-/*   Updated: 2022/01/22 19:31:47 by ikarjala         ###   ########.fr       */
+/*   Created: 2022/03/25 17:06:28 by ikarjala          #+#    #+#             */
+/*   Updated: 2022/03/25 19:04:57 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-long	ft_lmax(long a, long b)
+int	ft_pow(int n, int pow)
 {
-	if (a > b)
-		return (a);
-	return (b);
+	int	base;
+
+	if (pow <= 0)
+		return (pow == 0);
+	base = n;
+	while (--pow > 0)
+		n *= base;
+	return (n);
 }
