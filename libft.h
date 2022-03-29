@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 17:06:35 by ikarjala          #+#    #+#             */
-/*   Updated: 2022/03/25 17:46:48 by ikarjala         ###   ########.fr       */
+/*   Updated: 2022/03/29 17:40:33 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ int		ft_isupper(int c);
 int		ft_isxdigit(int c);
 int		ft_strchr_equ(const char *s, int c);
 
-int		ft_abs(int n);
+t_uint	ft_abs(int n);
 int		ft_log10(int n);
 int		ft_pow(int n, int pow);
 
