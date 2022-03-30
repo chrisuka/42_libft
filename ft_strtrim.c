@@ -6,33 +6,38 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 11:04:07 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/12/15 20:50:47 by ikarjala         ###   ########.fr       */
+/*   Updated: 2022/03/30 17:18:32 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-static const char	*ft_get_delims(void)
+static inline const char	*get_delim(void)
 {
 	return (" \n\t");
 }
 
 char	*ft_strtrim(const char *s)
 {
-	char	*fresh;
-	char	*p_beg;
-	char	*p_end;
 	size_t	len;
+	t_uint	index;
+	t_uint	start;
+	t_uint	end;
 
 	if (!s)
 		return (NULL);
-	len = 0;
-	p_beg = ft_strword(s, ft_get_delims(), &len);
-	p_end = p_beg + len;
-	while (*p_end != '\0')
-		p_end = ft_strword(p_end, ft_get_delims(), &len) + len;
-	fresh = ft_strsub(s, (t_uint)(p_beg - s), (size_t)(p_end - p_beg + 1));
-	if (!fresh)
-		return (NULL);
-	return (fresh);
+	start = 0;
+	while (s[start] && ft_strchr_equ(get_delim(), s[start]))
+		start++;
+	end = start;
+	index = start;
+	while (s[index] != '\0')
+	{
+		if (!ft_strchr_equ(get_delim(), s[index]))
+			end = index;
+		index++;
+	}
+	len = (size_t)(end - start + (start != end));
+	return (ft_strsub(s, start, len));
 }
