@@ -6,13 +6,13 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 16:30:12 by ikarjala          #+#    #+#             */
-/*   Updated: 2022/03/25 17:58:49 by ikarjala         ###   ########.fr       */
+/*   Updated: 2022/04/02 19:50:13 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	**ft_populate(char **array, const char *s,
+static char	**populate(char **array, const char *s,
 				const char *del, size_t a_size)
 {
 	size_t	a_itr;
@@ -48,5 +48,5 @@ char	**ft_strsplit(const char *s, char c)
 	array = (char **)ft_memalloc(sizeof(char *) * (a_wc + 1));
 	if (!array)
 		return (NULL);
-	return (ft_populate(array, s, (const char *)del, a_wc));
+	return (populate(array, s, (const char *)del, a_wc));
 }
