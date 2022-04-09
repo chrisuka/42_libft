@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 21:35:17 by ikarjala          #+#    #+#             */
-/*   Updated: 2022/02/11 01:40:14 by ikarjala         ###   ########.fr       */
+/*   Updated: 2022/04/09 17:21:21 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 
 void	ft_putstr(const char *s)
 {
-	ft_putstr_fd(s, 1);
+	if (!s)
+		return ;
+	write(1, s, ft_strlen(s));
 }
