@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 16:00:28 by ikarjala          #+#    #+#             */
-/*   Updated: 2022/05/12 01:17:07 by ikarjala         ###   ########.fr       */
+/*   Updated: 2022/05/13 20:56:01 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,19 @@ void	*ft_memset(void *b, int c, size_t len)
 	uint8_t		i;
 
 	uchr = (unsigned char)c;
-	if (len > 8)
+	if (len > sizeof(dword))
 	{
 		dword = (uint64_t)uchr;
-		i = 1;
-		while (i < sizeof(dword))
+		i = sizeof(char) * __CHAR_BIT__;
+		while (i < sizeof(dword) * __CHAR_BIT__)
 		{
 			dword |= (dword << i);
 			i <<= 1;
 		}
-		dword_p = &b[n];
-		while (len >= 8)
+		dword_p = &b[len];
+		while (len >= sizeof(dword))
 		{
-			len -= 8;
+			len -= sizeof(dword);
 			*(--dword_p) = dword;
 		}
 	}

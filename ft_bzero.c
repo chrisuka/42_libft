@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 21:31:06 by ikarjala          #+#    #+#             */
-/*   Updated: 2022/05/12 01:15:42 by ikarjala         ###   ########.fr       */
+/*   Updated: 2022/05/13 20:55:10 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	ft_bzero(void *s, size_t n)
 	uint64_t	*dword_p;
 
 	dword_p = &s[n];
-	while (n >= 8)
+	while (n >= sizeof(dword_p))
 	{
-		n -= 8;
+		n -= sizeof(dword_p);
 		*(--dword_p) = 0x0ULL;
 	}
 	while (n-- > 0)
