@@ -6,12 +6,13 @@
 #    By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/05 16:57:32 by ikarjala          #+#    #+#              #
-#    Updated: 2022/05/13 15:38:11 by ikarjala         ###   ########.fr        #
+#    Updated: 2022/07/09 00:05:21 by ikarjala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= libft.a
-BIN		= ./$(NAME)
+BIN		= $(ROOT)$(NAME)
+ROOT	:= ./
 
 FUNC_P12	= \
 ft_isdigit ft_isalpha ft_isalnum ft_isprint ft_isascii \
@@ -39,41 +40,69 @@ ft_swap ft_memdup ft_memclr ft_aiter ft_freearray \
 \
 ft_lstlen ft_lstclen ft_lstn ft_lstbuflen \
 ft_lstinit ft_lstcut ft_lststr
-#ft_sort_bubble
 
 CFUNC	= $(FUNC_P12) $(FUNC_BONUS) $(FUNC_EXTRA)
 
-SRC_DIR		= ./
-OBJ_DIR		= ./
-SRC			= $(addprefix $(SRC_DIR),$(addsuffix .c,$(CFUNC)))
-OBJ			= $(addprefix $(OBJ_DIR),$(addsuffix .o,$(CFUNC)))
-INC_DIR		= ./
-LIB_DIR		=
-LIB			=
-FLAGS		= -Wall -Wextra -Werror -Wimplicit -Wconversion
+SRC_DIR		= $(ROOT)
+OBJ_DIR		= $(ROOT)
+INC_DIR		= $(ROOT)
+
+SRC			= $(addprefix $(SRC_DIR), $(addsuffix .c, $(CFUNC)))
+OBJ			= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(CFUNC)))
+INCLUDE		= $(addprefix -I , $(INC_DIR))
+RM			= rm -f
+
+CFLAGS		= -Wall -Wextra -Werror
+DEBUG_FLAGS	= $(CFLAGS) -Wimplicit -Wconversion -g -fsanitize=address
 CC			= clang
+AR			= ar -cru
 
-COL_HL		= \x1B[33m
-COL_CS		= \x1B[32m
-COL_NUL		= \x1B[0m
+.PHONY: all clean fclean re
 
-##	BUILD ====
 all: $(NAME)
-$(NAME):
-	@echo -e '$(COL_HL)' '$(NAME) :: Starting build...' '$(COL_NUL)'
-	$(CC) -c $(FLAGS) $(SRC) -I $(INC_DIR)
-	ar -cr	$(BIN) $(OBJ)
-	ranlib	$(BIN)
-	@echo -e '$(COL_CS)' '$(NAME) :: Build success!' '$(COL_NUL)'
+$(NAME): premsg $(OBJ) Makefile
+	@echo	$(BMSG_AR)
+	@$(AR)		$(BIN) $(OBJ)
+	@ranlib		$(BIN)
+	@echo	$(BMSG_FIN)
+
+$(OBJ): %.o:%.c Makefile
+	@printf	"$<\t\t... "
+	@$(CC) -c $(CFLAGS) $< -o $@ $(INCLUDE)
+	@echo	"DONE"
+
 clean:
-	rm -f $(OBJ)
+	@echo	'Cleaning objects...'
+	@$(RM) $(OBJ)
 fclean: clean
-	rm -f $(BIN) $(LIB)
-	rm -f libft.so
+	@echo	'Removing binary...'
+	@$(RM) $(BIN) $(BIN:.a=.so)
 re: fclean all
 
 so:
-	@echo -e '$(COL_HL)' '$(NAME) :: Starting SO build...' '$(COL_NUL)'
+	@echo	$(BMSG_SO)
 	$(CC) -nostartfiles -fPIC $(FLAGS) $(SRC)
 	$(CC) -nostartfiles -shared -o libft.so $(OBJ)
-	@echo -e '$(COL_CS)' '$(NAME) :: Build success!' '$(COL_NUL)'
+	@echo	$(BMSG_FIN)
+
+premsg:
+	@echo	$(BMSG_BIN)
+	@echo	$(BMSG_CC)
+	@echo	$(BMSG_RELINK)
+
+BMSG_BIN	= '$(COL_HL)$(NAME) :: Starting build... $(COL_NUL)'
+BMSG_SO		= '$(COL_HL)$(NAME) :: Starting SO build... $(COL_NUL)'
+BMSG_DEBUG	= '$(COL_HL)$(NAME) :: Starting =DEBUG= build... $(COL_NUL)'
+BMSG_CC		= '$(COL_HL)$(NAME) :: Using $(CC) with $(CFLAGS) $(COL_NUL)'
+BMSG_RELINK	= '$(COL_HL)$(NAME) :: Compiling C objects:'
+BMSG_AR		= '$(COL_HL)$(NAME) :: Linking... ($(AR))'
+BMSG_FIN	= '$(COL_CS)$(NAME) :: Build success! $(COL_NUL)'
+
+#COL_HL		:=^[[0;33m
+#COL_CS		:=^[[0;32m
+#COL_NUL		:=^[[0;0m
+
+##	UTILS ====
+CMD_NORME	= norminette -R CheckForbiddenSourceHeader
+norme:
+	$(CMD_NORME) $(SRC_DIR)*.c $(INC_DIR)*.h
