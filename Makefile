@@ -6,13 +6,13 @@
 #    By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/05 16:57:32 by ikarjala          #+#    #+#              #
-#    Updated: 2022/07/09 00:05:21 by ikarjala         ###   ########.fr        #
+#    Updated: 2022/07/11 22:56:30by ikarjala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= libft.a
-BIN		= $(ROOT)$(NAME)
 ROOT	:= ./
+NAME	:= libft.a
+BIN		= $(ROOT)$(NAME)
 
 FUNC_P12	= \
 ft_isdigit ft_isalpha ft_isalnum ft_isprint ft_isascii \
@@ -53,18 +53,21 @@ INCLUDE		= $(addprefix -I , $(INC_DIR))
 RM			= rm -f
 
 CFLAGS		= -Wall -Wextra -Werror
-DEBUG_FLAGS	= $(CFLAGS) -Wimplicit -Wconversion -g -fsanitize=address
+DEBUG_FLAGS	= -Wimplicit -Wconversion -g -fsanitize=address
+SOFLAGS		= -nostartfiles -fPIC -shared
 CC			= clang
 AR			= ar -cru
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re debug so pre_build
 
 all: $(NAME)
-$(NAME): premsg $(OBJ) Makefile
+$(NAME): pre_build $(OBJ) Makefile
 	@echo	$(BMSG_AR)
 	@$(AR)		$(BIN) $(OBJ)
 	@ranlib		$(BIN)
 	@echo	$(BMSG_FIN)
+$(NAME:%.a=%.so): BIN = $(BIN:.a=.so)
+$(NAME:%.a=%.so): $(NAME)
 
 $(OBJ): %.o:%.c Makefile
 	@printf	"$<\t\t... "
@@ -79,28 +82,30 @@ fclean: clean
 	@$(RM) $(BIN) $(BIN:.a=.so)
 re: fclean all
 
-so:
-	@echo	$(BMSG_SO)
-	$(CC) -nostartfiles -fPIC $(FLAGS) $(SRC)
-	$(CC) -nostartfiles -shared -o libft.so $(OBJ)
-	@echo	$(BMSG_FIN)
+so: CFLAGS += $(SOFLAGS)
+so: BMSG_FORM = 'SO'
+so: $(NAME:%.a=%.so)
 
-premsg:
+debug: CFLAGS += $(DEBUG_FLAGS)
+debug: BMSG_FORM = '=DEBUG='
+debug: $(NAME)
+
+pre_build:
 	@echo	$(BMSG_BIN)
 	@echo	$(BMSG_CC)
 	@echo	$(BMSG_RELINK)
 
-BMSG_BIN	= '$(COL_HL)$(NAME) :: Starting build... $(COL_NUL)'
-BMSG_SO		= '$(COL_HL)$(NAME) :: Starting SO build... $(COL_NUL)'
-BMSG_DEBUG	= '$(COL_HL)$(NAME) :: Starting =DEBUG= build... $(COL_NUL)'
+BMSG_BIN	= '$(COL_HL)$(NAME) :: Starting $(BMSG_FORM) build... $(COL_NUL)'
+BMSG_FORM	:= 'deploy'
+
 BMSG_CC		= '$(COL_HL)$(NAME) :: Using $(CC) with $(CFLAGS) $(COL_NUL)'
 BMSG_RELINK	= '$(COL_HL)$(NAME) :: Compiling C objects:'
-BMSG_AR		= '$(COL_HL)$(NAME) :: Linking... ($(AR))'
+BMSG_AR		= '$(COL_HL)$(NAME) :: Linking... { $(AR) }'
 BMSG_FIN	= '$(COL_CS)$(NAME) :: Build success! $(COL_NUL)'
 
 #COL_HL		:=^[[0;33m
 #COL_CS		:=^[[0;32m
-#COL_NUL		:=^[[0;0m
+#COL_NUL	:=^[[0;0m
 
 ##	UTILS ====
 CMD_NORME	= norminette -R CheckForbiddenSourceHeader
