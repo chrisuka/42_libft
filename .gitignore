@@ -1,9 +1,12 @@
 **
 !.gitignore
-!ft_*.c
-!libft.h
 !author
+
 !Makefile
+!libft.h
+!src/
+!src/ft_*.c
+
 !eval_tests
 !eval_tests/*.c.test
 !eval_tests/*.h.test

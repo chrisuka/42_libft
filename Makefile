@@ -43,8 +43,8 @@ ft_lstinit ft_lstcut ft_lststr
 
 CFUNC	= $(FUNC_P12) $(FUNC_BONUS) $(FUNC_EXTRA)
 
-SRC_DIR		= $(ROOT)
-OBJ_DIR		= $(ROOT)
+SRC_DIR		= $(ROOT)src/
+OBJ_DIR		= $(ROOT)src/
 INC_DIR		= $(ROOT)
 
 SRC			= $(addprefix $(SRC_DIR), $(addsuffix .c, $(CFUNC)))
@@ -70,7 +70,7 @@ $(NAME:%.a=%.so): BIN = $(BIN:.a=.so)
 $(NAME:%.a=%.so): $(NAME)
 
 $(OBJ): %.o:%.c Makefile
-	@printf	"$<\t\t... "
+	@printf	"$<    \t\t... "
 	@$(CC) -c $(CFLAGS) $< -o $@ $(INCLUDE)
 	@echo	"DONE"
 
