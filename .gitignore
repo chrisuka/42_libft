@@ -4,6 +4,10 @@
 
 !Makefile
 !libft.h
+
+!obj/
+!obj/.gitinclude
+
 !src/
 !src/ft_*.c
 

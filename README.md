@@ -29,13 +29,13 @@ Find details with the respective subdirectories.
 ### (NOTE: I am in the process of cleaning up and re-organizing this repository, some info may not be up to date.)
 
 ## Installation
-``cd`` into the root folder and ``make`` with the appropriate rules to compile libft, then link it with your own programs.\
+``cd`` into the root folder and ``make`` with the appropriate rules to compile libft, then link it with your own programs.
 See Makefile for further details.
 
 The supported targets are:\
 ``all`` : standard deploy build\
 ``so`` : dynamic library\
-``debug`` : build with debug symbols, additional -W flags and fsanitize\
+``debug``,``db`` : build with debug symbols, additional -W flags and fsanitize\
 ``clean`` : remove object files\
 ``fclean`` : remove objects and binary\
 ``re`` : full rebuild
@@ -47,4 +47,7 @@ There is also a separate Makefile in eval_tests/ for compiling the library with 
 but it is also very much WIP.
 
 ## TODO:
+* Makefile should be able to build .so despite .a existing
+* add PRE_BUILD_MESSAGE for make targets
+* fix Makefile colors
 * write a script to automate building a moulinette-compliant directory with only needed files
