@@ -6,18 +6,16 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 19:31:49 by ikarjala          #+#    #+#             */
-/*   Updated: 2022/04/02 19:54:54 by ikarjala         ###   ########.fr       */
+/*   Updated: 2022/08/17 17:31:58 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_lststr(t_list *lst)
+char	*ft_lststr(t_list *lst, size_t len)
 {
-	size_t	len;
 	char	*str;
 
-	len = ft_lstbuflen(lst);
 	str = (char *)malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (NULL);
