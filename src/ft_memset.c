@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 16:00:28 by ikarjala          #+#    #+#             */
-/*   Updated: 2022/05/13 20:56:01 by ikarjala         ###   ########.fr       */
+/*   Updated: 2022/09/02 19:25:50 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,25 @@
 
 void	*ft_memset(void *b, int c, size_t len)
 {
-	uint64_t	*dword_p;
-	uint64_t	dword;
+	uint64_t	*qwordp;
+	uint64_t	quad;
 	uint8_t		uchr;
-	uint8_t		i;
 
-	uchr = (unsigned char)c;
-	if (len > sizeof(dword))
+	uchr = (unsigned char)(c);
+	if (len > sizeof(quad))
 	{
-		dword = (uint64_t)uchr;
-		i = sizeof(char) * __CHAR_BIT__;
-		while (i < sizeof(dword) * __CHAR_BIT__)
+		quad = (uint64_t)(uchr);
+		quad |= (quad << (__CHAR_BIT__ << 0));
+		quad |= (quad << (__CHAR_BIT__ << 1));
+		quad |= (quad << (__CHAR_BIT__ << 2));
+		qwordp = &b[len];
+		while (len >= sizeof(quad))
 		{
-			dword |= (dword << i);
-			i <<= 1;
-		}
-		dword_p = &b[len];
-		while (len >= sizeof(dword))
-		{
-			len -= sizeof(dword);
-			*(--dword_p) = dword;
+			len -= sizeof(quad);
+			*(--qwordp) = quad;
 		}
 	}
 	while (len-- > 0)
-		((unsigned char *)b)[len] = uchr;
+		((unsigned char *)(b))[len] = uchr;
 	return (b);
 }
