@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 17:06:35 by ikarjala          #+#    #+#             */
-/*   Updated: 2022/08/17 17:32:37 by ikarjala         ###   ########.fr       */
+/*   Updated: 2022/09/26 17:53:18 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,9 +122,9 @@ int		ft_isupper(int c);
 int		ft_isxdigit(int c);
 int		ft_strchr_equ(const char *s, int c);
 
-t_uint	ft_abs(int n);
-int		ft_log10(int n);
-int		ft_pow(int n, int pow);
+long long	ft_abs(long long n);
+int			ft_log10(unsigned long long n);
+int			ft_pow(int n, int pow);
 
 size_t	ft_wordcount(const char *s, const char *del);
 int		*ft_mapi(int start, int end);
@@ -134,7 +134,7 @@ void	*ft_memdup(const void *s1, size_t len);
 void	ft_swap(char *a, char *b, size_t bs);
 void	ft_memswap(char *a, char *b, size_t len);
 void	ft_aiter(void **array, size_t len, void (*fn)(void **));
-void	ft_freearray(void ***array, size_t len);
+void	ft_freearray(void **array, size_t len);
 void	ft_sort_bubble(void *tab, size_t len,
 			int (*cmpf)(void **, void **), size_t bs);
 
@@ -149,5 +149,7 @@ t_list	*ft_lstinit(size_t elemc, size_t size);
 char	*ft_lststr(t_list *lst, size_t len);
 int		ft_lstcut(t_list **alst, size_t start, size_t count,
 			void (*del)(void *, size_t));
+
+int	ft_bool2sign(int b);
 
 #endif

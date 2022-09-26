@@ -6,7 +6,7 @@
 #    By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/05 16:57:32 by ikarjala          #+#    #+#              #
-#    Updated: 2022/07/13 01:57:36 by ikarjala         ###   ########.fr        #
+#    Updated: 2022/09/26 22:47:52 by ikarjala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,12 +35,13 @@ FUNC_BONUS	= \
 ft_lstnew ft_lstdelone ft_lstdel ft_lstadd ft_lstiter ft_lstmap
 
 FUNC_EXTRA	= \
-ft_isspace ft_isupper ft_islower ft_isxdigit ft_toinverse ft_strchr_equ \
+ft_isspace ft_isupper ft_islower ft_isxdigit ft_toinverse \
 ft_abs ft_log10 ft_pow ft_strword ft_wordcount ft_mapi \
 ft_swap ft_memdup ft_memclr ft_aiter ft_freearray \
 \
 ft_lstlen ft_lstclen ft_lstn ft_lstbuflen \
-ft_lstinit ft_lstcut ft_lststr
+ft_lstinit ft_lstcut ft_lststr \
+ft_bool2sign ft_min ft_max
 
 CFUNC	= $(FUNC_P12) $(FUNC_BONUS) $(FUNC_EXTRA)
 
@@ -54,12 +55,12 @@ INCLUDE		= $(addprefix -I , $(INC_DIR))
 RM			= rm -f
 
 CFLAGS		= -Wall -Wextra -Werror
-DEBUG_FLAGS	= -Wimplicit -Wconversion -g -fsanitize=address
+DEBUG_FLAGS	= -Wimplicit -Wconversion -g# -fsanitize=address
 SOFLAGS		= -nostartfiles -fPIC
 CC			= clang
 AR			= ar -cr
 
-.PHONY: all clean fclean re db debug so $(PRE_BUILD_MESSAGE)
+.PHONY: all clean fclean re db debug so
 
 all: $(NAME)
 $(NAME): $(OBJ) Makefile
@@ -92,22 +93,24 @@ debug: CFLAGS += $(DEBUG_FLAGS)
 debug: BMSG_FORM := =DEBUG=
 debug: $(NAME)
 
-$(PRE_BUILD_MESSAGE):
+PRE_BUILD_MESSAGE:
 	@echo	$(BMSG_BIN)
 	@echo	$(BMSG_CC)
 	@echo	$(BMSG_RELINK)
 
-BMSG_BIN	= '$(COL_HL)$(NAME) :: Starting $(BMSG_FORM) build... $(COL_NUL)'
+BMSG_BIN	= '$(PURPLE)$(NAME) :: Starting $(BMSG_FORM) build... $(RESET)'
 BMSG_FORM	:= deploy
 
-BMSG_CC		= '$(COL_HL)$(NAME) :: Using $(CC) with $(CFLAGS) $(COL_NUL)'
-BMSG_RELINK	= '$(COL_HL)$(NAME) :: Compiling C objects:'
-BMSG_AR		= '$(COL_HL)$(NAME) :: Linking... { $(AR) }'
-BMSG_FIN	= '$(COL_CS)$(NAME) :: Build success! $(COL_NUL)'
+BMSG_CC		= "$(PURPLE)$(NAME) :: Using $(CC) with $(CFLAGS) $(RESET)"
+BMSG_RELINK	= "$(PURPLE)$(NAME) :: Compiling C objects:"
+BMSG_AR		= "$(PURPLE)$(NAME) :: Linking..."
+BMSG_FIN	= "$(GREEN)$(NAME) :: Build success! $(RESET)"
 
-#COL_HL		:=\033[0;33m
-#COL_CS		:=\033[0;32m
-#COL_NUL	:=\033[0;0m
+RED		:= \033[1;31m
+GREEN	:= \033[1;32m
+PURPLE	:= \033[1;35m
+CYAN	:= \033[1;36m
+RESET	:= \033[0m
 
 ##	UTILS ====
 CMD_NORME	= norminette -R CheckForbiddenSourceHeader
