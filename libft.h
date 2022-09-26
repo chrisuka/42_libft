@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 17:06:35 by ikarjala          #+#    #+#             */
-/*   Updated: 2022/09/26 23:10:49 by ikarjala         ###   ########.fr       */
+/*   Updated: 2022/09/26 23:15:49 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ int		ft_isxdigit(int c);
 int		ft_strchr_equ(const char *s, int c);
 
 long long	ft_abs(long long n);
-int			ft_log10(unsigned long long n);
+int			ft_log10(int n);
 int			ft_pow(int n, int pow);
 
 size_t	ft_wordcount(const char *s, const char *del);
