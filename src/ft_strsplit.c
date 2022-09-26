@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 16:30:12 by ikarjala          #+#    #+#             */
-/*   Updated: 2022/04/02 19:50:13 by ikarjala         ###   ########.fr       */
+/*   Updated: 2022/09/02 16:24:23 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static char	**populate(char **array, const char *s,
 		array[a_itr] = (char *)ft_memdup(s, len);
 		if (!array[a_itr])
 		{
-			ft_freearray((void ***)&array, a_itr);
+			ft_freearray((void **)&array, a_itr);
 			return (NULL);
 		}
 		s += len;

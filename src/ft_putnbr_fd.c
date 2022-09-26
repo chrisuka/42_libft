@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 19:05:20 by ikarjala          #+#    #+#             */
-/*   Updated: 2022/04/09 17:27:16 by ikarjala         ###   ########.fr       */
+/*   Updated: 2022/08/25 19:41:59 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_putnbr_fd(int n, int fd)
 
 	ltz = n < 0;
 	write(fd, "-", ltz);
-	pow = ft_log10(n);
+	pow = ft_log10((unsigned long long)n);
 	div = ft_pow(10, pow) * (1 | -ltz);
 	while (pow-- >= 0)
 	{
