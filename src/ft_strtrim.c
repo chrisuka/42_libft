@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 11:04:07 by ikarjala          #+#    #+#             */
-/*   Updated: 2022/03/30 17:18:32 by ikarjala         ###   ########.fr       */
+/*   Updated: 2022/08/25 15:45:54 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ char	*ft_strtrim(const char *s)
 	if (!s)
 		return (NULL);
 	start = 0;
-	while (s[start] && ft_strchr_equ(get_delim(), s[start]))
+	while (s[start] && ft_strchr(get_delim(), s[start]))
 		start++;
 	end = start;
 	index = start;
 	while (s[index] != '\0')
 	{
-		if (!ft_strchr_equ(get_delim(), s[index]))
+		if (!ft_strchr(get_delim(), s[index]))
 			end = index;
 		index++;
 	}

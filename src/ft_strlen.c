@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 17:12:43 by ikarjala          #+#    #+#             */
-/*   Updated: 2022/09/02 20:15:12 by ikarjala         ###   ########.fr       */
+/*   Updated: 2022/09/29 00:14:43 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 static inline	uint64_t	catch_bits(uint64_t quad)
 {
-	const uint64_t	magic = 0x80808080ULL | 0x80808080ULL << 32;
+	const uint64_t	himagic = 0x80808080ULL | (0x80808080ULL << 32);
+	const uint64_t	lomagic = 0x01010101ULL | (0x01010101ULL << 32);
 
-	return ((quad - ~magic) & ~quad & magic);
+	return ((quad - lomagic) & (~quad & himagic));
 }
 
 size_t	ft_strlen(const char *s)

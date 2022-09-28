@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 19:16:51 by ikarjala          #+#    #+#             */
-/*   Updated: 2022/03/29 16:56:44 by ikarjala         ###   ########.fr       */
+/*   Updated: 2022/09/02 20:46:34 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_itoa(int n)
 	t_bool	is_ltz;
 	t_sbyte	ltz_mul;
 
-	c_digits = ft_log10(n) + 1;
+	c_digits = ft_log10((unsigned long long)(n)) + 1;
 	is_ltz = n < 0;
 	str = (char *)malloc(sizeof(char) * (size_t)(is_ltz + c_digits + 1));
 	if (!str)

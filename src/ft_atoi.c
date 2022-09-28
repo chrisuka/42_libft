@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 15:59:37 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/11/30 08:09:50 by ikarjala         ###   ########.fr       */
+/*   Updated: 2022/09/28 21:12:16 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,19 @@ int	ft_atoi(const char *str)
 {
 	int		nb;
 	int		sign;
-	char	*ptr;
+	char	*cp;
 
-	ptr = (char *)str;
-	while (ft_isspace(*ptr))
-		ptr++;
-	if (!(ft_isdigit(*ptr) || *ptr == '-' || *ptr == '+'))
+	cp = (char *)(str);
+	while (ft_isspace(*cp))
+		cp++;
+	if (!(ft_isdigit(*cp) || *cp == '-' || *cp == '+'))
 		return (0);
-	sign = -(*ptr == '-') | 1;
-	ptr += !ft_isdigit(*ptr);
+	sign = ft_bool2sign(*cp != '-');
+	cp += !ft_isdigit(*cp);
 	nb = 0;
-	while (*ptr == '0')
-		ptr++;
-	while (ft_isdigit(*ptr))
-		nb = nb * 10 + (*ptr++ - '0');
+	while (*cp == '0')
+		cp++;
+	while (ft_isdigit(*cp))
+		nb = nb * 10 + (*cp++ - '0');
 	return (nb * sign);
 }

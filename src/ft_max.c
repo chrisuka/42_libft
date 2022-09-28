@@ -6,13 +6,13 @@
 /*   By: ikarjala <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 22:50:06 by ikarjala          #+#    #+#             */
-/*   Updated: 2022/09/26 22:50:07 by ikarjala         ###   ########.fr       */
+/*   Updated: 2022/09/28 20:46:40 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-long	ft_max (long a, long b)
+long	ft_max(long a, long b)
 {
 	if (a > b)
 		return (a);

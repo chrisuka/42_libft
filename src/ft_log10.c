@@ -6,25 +6,24 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 03:36:29 by ikarjala          #+#    #+#             */
-/*   Updated: 2022/03/30 17:19:49 by ikarjala         ###   ########.fr       */
+/*   Updated: 2022/09/28 20:45:16 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_log10(int n)
+int	ft_log10(unsigned long long n)
 {
-	t_uint			nu;
-	int				i;
-	const t_uint	pow[9] = {
-		10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000};
+	int							nu;
+	const unsigned long long	pow[] = {
+		1e1, 1e2, 1e3, 1e4, 1e5, 1e6, 1e7, 1e8, 1e9, 1e10,
+		1e11, 1e12, 1e13, 1e14, 1e15, 1e16, 1e17, 1e18, 1e19};
 
-	nu = ft_abs(n);
-	i = -1;
-	while (++i < 9)
+	nu = (int)(sizeof(pow) / sizeof(unsigned long long));
+	while (--nu)
 	{
-		if (nu < pow[i])
+		if (n < pow[nu])
 			break ;
 	}
-	return (i);
+	return (nu);
 }

@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 17:06:35 by ikarjala          #+#    #+#             */
-/*   Updated: 2022/09/26 23:15:49 by ikarjala         ###   ########.fr       */
+/*   Updated: 2022/09/29 00:27:58 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,12 @@
 # define FT_TRUE	1
 # define FT_FALSE	0
 
-typedef unsigned char		t_bool;
+typedef unsigned char	t_bool;
 typedef unsigned char	t_byte;
 typedef signed char		t_sbyte;
 typedef unsigned int	t_uint;
+
+typedef long long int	t_ll;
 
 /*
 ** PART 1 & 2
@@ -102,7 +104,7 @@ typedef struct s_list
 	void			*content;
 	size_t			content_size;
 	struct s_list	*next;
-}				t_list;
+}	t_list;
 
 t_list	*ft_lstnew(const void *content, size_t content_size);
 t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
@@ -122,9 +124,9 @@ int		ft_isupper(int c);
 int		ft_isxdigit(int c);
 int		ft_strchr_equ(const char *s, int c);
 
-long long	ft_abs(long long n);
-int			ft_log10(int n);
-int			ft_pow(int n, int pow);
+t_ll	ft_abs(long long n);
+int		ft_log10(unsigned long long n);
+int		ft_pow(int n, int pow);
 
 size_t	ft_wordcount(const char *s, const char *del);
 int		*ft_mapi(int start, int end);

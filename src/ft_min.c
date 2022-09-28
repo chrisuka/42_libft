@@ -6,13 +6,13 @@
 /*   By: ikarjala <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 22:48:00 by ikarjala          #+#    #+#             */
-/*   Updated: 2022/09/26 22:49:42 by ikarjala         ###   ########.fr       */
+/*   Updated: 2022/09/28 20:46:30 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-long	ft_min (long a, long b)
+long	ft_min(long a, long b)
 {
 	if (a < b)
 		return (a);
