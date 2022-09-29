@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 04:12:49 by ikarjala          #+#    #+#             */
-/*   Updated: 2022/02/22 09:43:41 by ikarjala         ###   ########.fr       */
+/*   Updated: 2022/09/29 21:48:28 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 int	*ft_mapi(int start, int end)
 {
+	int		*array;
 	size_t	len;
 	size_t	i;
-	int		*array;
-	t_sbyte	dir_sign;
+	int		direction;
 
 	len = (size_t)(end - start);
 	if (len == 0)
 		return (NULL);
-	dir_sign = 1 | -(start > end);
+	direction = ft_bool2sign(start < end);
 	array = (int *)malloc(sizeof(int) * (len));
 	if (!array)
 		return (NULL);
 	i = 0xFF;
 	while (++i < len)
-		array[i] = start + dir_sign * (int)i;
+		array[i] = start + direction * (int)i;
 	return (array);
 }

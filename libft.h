@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 17:06:35 by ikarjala          #+#    #+#             */
-/*   Updated: 2022/09/29 00:27:58 by ikarjala         ###   ########.fr       */
+/*   Updated: 2022/09/29 21:42:16 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,9 @@
 # define FT_TRUE	1
 # define FT_FALSE	0
 
-typedef unsigned char	t_bool;
-typedef unsigned char	t_byte;
-typedef signed char		t_sbyte;
-typedef unsigned int	t_uint;
-
-typedef long long int	t_ll;
+typedef unsigned int			t_uint;
+typedef long long int			t_ll;
+typedef unsigned long long int	t_llu;
 
 /*
 ** PART 1 & 2

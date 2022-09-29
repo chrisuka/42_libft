@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 20:48:14 by ikarjala          #+#    #+#             */
-/*   Updated: 2022/08/25 15:37:20 by ikarjala         ###   ########.fr       */
+/*   Updated: 2022/09/29 20:29:05 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ long long	ft_abs(long long n)
 	long long	mask;
 
 	mask = n >> (sizeof(n) * __CHAR_BIT__ - 1);
-	return ((long long)((n + mask) ^ mask));
+	return ((n + mask) ^ mask);
 }
 
 /*

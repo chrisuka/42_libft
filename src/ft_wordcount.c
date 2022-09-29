@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 22:21:36 by ikarjala          #+#    #+#             */
-/*   Updated: 2022/09/28 20:42:45 by ikarjala         ###   ########.fr       */
+/*   Updated: 2022/09/29 21:45:02 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 size_t	ft_wordcount(const char *s, const char *del)
 {
 	size_t	wc;
-	t_bool	in_word_now;
-	t_bool	in_word_bef;
+	int		in_word_now;
+	int		in_word_bef;
 
 	if (!s)
 		return (0);

@@ -6,7 +6,7 @@
 #    By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/30 21:31:17 by ikarjala          #+#    #+#              #
-#    Updated: 2022/03/23 21:15:19 by ikarjala         ###   ########.fr        #
+#    Updated: 2022/09/02 15:50:50 by ikarjala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,10 +15,11 @@ BIN        = ./$(NAME)
 
 ROOT		= ..
 SRC_DIR		= ./
-INC_DIR		= $(ROOT)
+INC_DIR		= $(ROOT) .
 LIB_DIR		= $(ROOT)
 LIB			= ft
-CFLAGS      = -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror
+DEBUG_FLAGS = -Wimplicit -g
 CC			= clang
 
 CFUNC		= \
@@ -26,6 +27,8 @@ main
 
 SRC			= $(addprefix $(SRC_DIR),$(addsuffix .c,$(CFUNC)))
 OBJ			= $(addprefix $(SRC_DIR),$(addsuffix .o,$(CFUNC)))
+
+INCLUDE		= $(addprefix -I, $(INC_DIR))
 
 TEST_ROOT	= ./unit-tests/
 UNIT_TEST	= $(TEST_ROOT)alelievr
@@ -46,7 +49,7 @@ ifeq (,$(wildcard $(addprefix $(LIB_DIR),$(LIB))))
 	 make -C $(LIB_DIR)
 	@echo -e '$(COL_CS)' '$(NAME) :: Build success!' '$(COL_NUL)'
 endif
-	$(CC) -c $(CFLAGS) $(SRC) -I $(INC_DIR)
+	$(CC) -c $(CFLAGS) $(SRC) $(INCLUDE)
 	$(CC) -o $(BIN) $(OBJ) -L$(LIB_DIR) -l $(LIB)
 clean:
 	rm -f $(OBJ)
@@ -57,6 +60,10 @@ fclean: pclean
 	rm -f $(BIN)
 re: fclean all
 install: re clean
+
+db: debug
+debug: CFLAGS += $(DEBUG_FLAGS)
+debug: all
 
 ##	TESTS ====
 run: fclean
