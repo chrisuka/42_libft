@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 20:44:25 by ikarjala          #+#    #+#             */
-/*   Updated: 2022/02/15 16:59:58 by ikarjala         ###   ########.fr       */
+/*   Updated: 2022/10/09 02:12:32 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_aiter(void **array, size_t len, void (*fn)(void **))
 {
-	while (len-- > 0 && *array)
+	while (len-- > 0)
 	{
 		fn(array);
 		array++;

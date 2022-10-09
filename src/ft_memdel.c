@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 18:02:45 by ikarjala          #+#    #+#             */
-/*   Updated: 2021/12/18 19:08:51 by ikarjala         ###   ########.fr       */
+/*   Updated: 2022/10/09 02:20:43 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_memdel(void **ap)
 {
-	if (!ap)
+	if (!ap || !*ap)
 		return ;
-	free(*ap);
+	free (*ap);
 	*ap = NULL;
 }

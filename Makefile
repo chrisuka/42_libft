@@ -6,7 +6,7 @@
 #    By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/05 16:57:32 by ikarjala          #+#    #+#              #
-#    Updated: 2022/09/26 22:47:52 by ikarjala         ###   ########.fr        #
+#    Updated: 2022/10/09 21:01:23 by ikarjala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,8 @@ INCLUDE		= $(addprefix -I , $(INC_DIR))
 RM			= rm -f
 
 CFLAGS		= -Wall -Wextra -Werror
-DEBUG_FLAGS	= -Wimplicit -Wconversion -g# -fsanitize=address
+DEBUG_FLAGS	= -g -fsanitize=address
+RIGOR_FLAGS	= -Wimplicit -Wconversion
 SOFLAGS		= -nostartfiles -fPIC
 CC			= clang
 AR			= ar -cr
