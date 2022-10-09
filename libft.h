@@ -6,7 +6,7 @@
 /*   By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 17:06:35 by ikarjala          #+#    #+#             */
-/*   Updated: 2022/09/29 21:42:16 by ikarjala         ###   ########.fr       */
+/*   Updated: 2022/10/09 21:18:40 by ikarjala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,5 +152,7 @@ int		ft_lstcut(t_list **alst, size_t start, size_t count,
 long	ft_min(long a, long b);
 long	ft_max(long a, long b);
 int		ft_bool2sign(int b);
+
+void	*ft_bset64(void *b, uint64_t quad, size_t len);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/05 16:57:32 by ikarjala          #+#    #+#              #
-#    Updated: 2022/10/09 21:01:23 by ikarjala         ###   ########.fr        #
+#    Updated: 2022/10/09 21:13:56 by ikarjala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,8 @@ ft_swap ft_memdup ft_memclr ft_aiter ft_freearray \
 \
 ft_lstlen ft_lstclen ft_lstn ft_lstbuflen \
 ft_lstinit ft_lstcut ft_lststr \
-ft_bool2sign ft_min ft_max
+ft_bool2sign ft_min ft_max \
+ft_bset64
 
 CFUNC	= $(FUNC_P12) $(FUNC_BONUS) $(FUNC_EXTRA)
 
