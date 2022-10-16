@@ -6,7 +6,7 @@
 #    By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/05 16:57:32 by ikarjala          #+#    #+#              #
-#    Updated: 2022/10/09 21:13:56 by ikarjala         ###   ########.fr        #
+#    Updated: 2022/10/16 20:39:14 by ikarjala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,6 +66,7 @@ AR			= ar -cr
 
 all: $(NAME)
 $(NAME): $(OBJ) Makefile
+	@printf	"\n"
 	@echo	$(BMSG_AR)
 	@$(AR)		$(BIN) $(OBJ)
 	@ranlib		$(BIN)
@@ -74,9 +75,8 @@ $(SO): NAME := $(SO)
 $(SO): $(NAME)
 
 $(OBJ): $(OBJ_DIR)%.o:$(SRC_DIR)%.c Makefile
-	@printf	"$<    \t\t... "
 	@$(CC) -c $(CFLAGS) $(INCLUDE) $< -o $@
-	@echo	"DONE"
+	@printf	"$(GREEN)$<\t$(CLEAR)"
 
 clean:
 	@echo	'Cleaning objects...'
@@ -100,21 +100,22 @@ PRE_BUILD_MESSAGE:
 	@echo	$(BMSG_CC)
 	@echo	$(BMSG_RELINK)
 
-BMSG_BIN	= '$(PURPLE)$(NAME) :: Starting $(BMSG_FORM) build... $(RESET)'
+BMSG_BIN	= "$(PURPLE)$(NAME) :: Starting $(BMSG_FORM) build...$(CLEAR)"
 BMSG_FORM	:= deploy
 
-BMSG_CC		= "$(PURPLE)$(NAME) :: Using $(CC) with $(CFLAGS) $(RESET)"
+BMSG_CC		= "$(PURPLE)$(NAME) :: Using $(CC) with $(CFLAGS)$(CLEAR)"
 BMSG_RELINK	= "$(PURPLE)$(NAME) :: Compiling C objects:"
 BMSG_AR		= "$(PURPLE)$(NAME) :: Linking..."
-BMSG_FIN	= "$(GREEN)$(NAME) :: Build success! $(RESET)"
+BMSG_FIN	= "$(GREENB)$(NAME) :: Build success!$(CLEAR)"
 
-RED		:= \033[1;31m
-GREEN	:= \033[1;32m
-PURPLE	:= \033[1;35m
-CYAN	:= \033[1;36m
-RESET	:= \033[0m
+RED		:=\033[1;31m
+GREEN	:=\033[0;32m
+GREENB	:=\033[1;32m
+PURPLE	:=\033[1;35m
+CYAN	:=\033[1;36m
+CLEAR	:=\033[0;0m
 
 ##	UTILS ====
-CMD_NORME	= norminette -R CheckForbiddenSourceHeader
+CMD_NORME	:= norminette -R CheckForbiddenSourceHeader
 norme:
 	$(CMD_NORME) $(SRC_DIR)*.c $(INC_DIR)*.h
