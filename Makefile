@@ -32,10 +32,8 @@ memalloc memdup memdel memclr \
 \
 putchar putchar_fd putstr putstr_fd putendl putendl_fd \
 putnbr putnbr_fd
-
 BONUS_FILES =\
-lstnew lstadd lstdelone lstdel lstiter lstmap \
-
+lstnew lstadd lstdelone lstdel lstiter lstmap
 EXTRA_FILES =\
 islower isupper isspace isxdigit toinverse \
 bool2sign abs log10 pow min max utoa64 \
@@ -60,18 +58,20 @@ $(SO):
 
 $(OBJ): $(OBJ_DIR)%.o:$(SRC_DIR)%.c | $(OBJ_DIR)
 	@$(CC) -c $(CFLAGS) $(INCLUDE) $(<) -o $(@)
-	@$(ECHO) " $(GREEN)$(<)$(CNIL) "
+	@$(ECHO) ">$(GREEN)$(<)$(CNIL)"
 
 $(OBJ_DIR):
 	@$(MKDIR) $(@)
 #-- CLEANUP ---------------------------|----//--||
 clean:
-	@$(ECHO)	"Cleaning objects..."
-	@$(RM)		$(OBJ) $(DEPENDENCIES) $(PRE_REQUISITE)
+	@$(ECHO) "$(RED)$(OBJ)$(CNIL)"
+	@$(RM)		$(OBJ) $(DEPENDENCIES)
 	@$(RM) -d	$(OBJ_DIR)
+	@$(RM) $(PRE_REQUISITE)
 fclean: clean
-	@$(ECHO)	"Removing binaries..."
-	@$(RM) $(NAME) $(SO)
+	@$(ECHO) "$(RED)$(NAME) $(SO)$(CNIL)"
+	@$(RM)		$(NAME) $(SO)
+	@$(ECHO) "$(GREEN)Mm, refreshing!$(CNIL)"
 re: fclean all
 #-- BUILD OVERRIDES -------------------|----//--||
 W:	BUILD_RULES_STRICT
