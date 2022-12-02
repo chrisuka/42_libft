@@ -21,14 +21,14 @@ OBJ		= $(CFUNC:%=$(OBJ_DIR)%.o)
 INCLUDE	= $(addprefix -I , $(INC_DIR))
 
 CC	:= clang
-LD	:= $(CC)
+LD	:= ar
 
 CFLAGS		= -Wall -Werror -Wextra $(USEFLAGS)
 CFSTRICT	= -Wimplicit -Wunused -Wconversion
 CFOPTIM		= -O3 -flto=full
 CFDEBUG		= -g -fsanitize=address
 
-LDFLAGS 	:= 
+LDFLAGS 	:= -crs
 DEP_FLAGS	= -MMD -MP -MT $(@) -MF $(@:.o=.dep)
 #=== SPECIAL ==================================================================#
 .EXTRA_PREREQS	:= 
