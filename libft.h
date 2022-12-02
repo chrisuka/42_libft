@@ -91,6 +91,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 
 int		ft_atoi(const char *str);
 char	*ft_itoa(int n);
+char	*ft_utoa64(unsigned long long n);
 
 /*
 ** BONUS PART
