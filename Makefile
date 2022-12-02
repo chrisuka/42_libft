@@ -3,7 +3,7 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ikarjala <ikarjala@student.42.fr>          +#+  +:+       +#+         #
+#    By: ikarjala <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/05 16:57:32 by ikarjala          #+#    #+#              #
 #    Updated: 2022/10/16 20:39:14 by ikarjala         ###   ########.fr        #
@@ -11,28 +11,30 @@
 # **************************************************************************** #
 
 ROOT	:= ./
-NAME	:= libft.a
-BIN		= $(ROOT)$(NAME)
-SO		= $(NAME:.a=.so)
+NAME	:= libft
+SO		:= $(NAME:.a=.so)
 
-FUNC_P12	= \
-ft_isdigit ft_isalpha ft_isalnum ft_isprint ft_isascii \
-ft_tolower ft_toupper ft_strlen ft_itoa ft_atoi \
-\
-ft_putchar_fd ft_putchar ft_putstr_fd ft_putstr ft_putendl_fd ft_putendl \
-ft_putnbr_fd ft_putnbr \
-\
-ft_bzero ft_memset ft_memdel ft_memcpy ft_memccpy ft_memmove ft_memchr \
-ft_memcmp ft_memalloc \
-\
-ft_strcmp ft_strncmp ft_strequ ft_strnequ \
-ft_strchr ft_strrchr ft_strstr ft_strnstr \
-ft_strcat ft_strncat ft_strlcat ft_strcpy ft_strncpy ft_striter ft_striteri \
-ft_strnew ft_strdel ft_strclr ft_strdup ft_strsub ft_strmap ft_strmapi \
-ft_strjoin ft_strtrim ft_strsplit
+SRC_DIR	:= src/
+OBJ_DIR	:= obj/
+INC_DIR	:= ./
 
-FUNC_BONUS	= \
-ft_lstnew ft_lstdelone ft_lstdel ft_lstadd ft_lstiter ft_lstmap
+MANDATORY_FILES =\
+isdigit isalpha isalnum isascii isprint tolower toupper itoa atoi \
+strlen strcmp strncmp strequ strnequ \
+strchr strrchr strstr strnstr \
+\
+strcpy strncpy strcat strncat strlcat striter striteri \
+strnew strdup strsub strtrim strmap strmapi strjoin strsplit \
+strclr strdel \
+\
+bzero memset memchr memcmp memcpy memccpy memmove mapi \
+memalloc memdup memdel memclr \
+\
+putchar putchar_fd putstr putstr_fd putendl putendl_fd \
+putnbr putnbr_fd
+
+BONUS_FILES =\
+lstnew lstadd lstdelone lstdel lstiter lstmap \
 
 FUNC_EXTRA	= \
 ft_isspace ft_isupper ft_islower ft_isxdigit ft_toinverse \
@@ -44,7 +46,18 @@ ft_lstinit ft_lstcut ft_lststr \
 ft_bool2sign ft_min ft_max \
 ft_bset64
 
-CFUNC	= $(FUNC_P12) $(FUNC_BONUS) $(FUNC_EXTRA)
+SUBMAKES = config.mk
+include $(SUBMAKES)
+#=== SPECIAL ==================================================================#
+.DEFAULT_GOAL	:= all
+.PHONY: all clean fclean re
+#=== TARGETS ==================================================================#
+all: $(NAME) | $(SO)
+$(NAME): $(PRE_REQUISITE) | $(OBJ)
+	@$(ECHO) $(BMSG_LD)
+	@$(LD) -o $(@) $(LDFLAGS) $(OBJ)
+	@$(ECHO) $(BMSG_FIN)
+$(SO):
 
 SRC_DIR		= $(ROOT)src/
 OBJ_DIR		= $(ROOT)obj/
@@ -78,12 +91,16 @@ $(OBJ): $(OBJ_DIR)%.o:$(SRC_DIR)%.c Makefile
 	@$(CC) -c $(CFLAGS) $(INCLUDE) $< -o $@
 	@printf	"$(GREEN)$<\t$(CLEAR)"
 
+$(OBJ_DIR):
+	@$(MKDIR) $(@)
+#-- CLEANUP ---------------------------|----//--||
 clean:
-	@echo	'Cleaning objects...'
-	@$(RM) $(OBJ)
+	@$(ECHO)	"Cleaning objects..."
+	@$(RM)		$(OBJ) $(DEPENDENCIES) $(PRE_REQUISITE)
+	@$(RM) -d	$(OBJ_DIR)
 fclean: clean
-	@echo	'Removing binaries...'
-	@$(RM) $(BIN) $(BIN:.a=.so)
+	@$(ECHO)	"Removing binaries..."
+	@$(RM) $(NAME) $(SO)
 re: fclean all
 
 so: CFLAGS += $(SOFLAGS)
