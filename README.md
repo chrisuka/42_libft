@@ -20,6 +20,7 @@ The functions include:
 
 With bonuses regarding linked lists and custom functions.
 Find details with the respective subdirectories.
+*(UNDER CONSTRUCTION)*
 
 * _Part 1_ (Mandatory)
 * _Part 2_ (Mandatory)
@@ -32,15 +33,19 @@ Find details with the respective subdirectories.
 ``cd`` into the root folder and ``make`` with the appropriate rules to compile libft, then link it with your own programs.
 See Makefile for further details.
 
-The supported targets are:\
-``all`` : standard deploy build\
-``so`` : dynamic library\
-``debug``,``db`` : build with debug symbols, additional -W flags and fsanitize\
+The supported standard targets are:
+``all`` : standard deployment build (*DEFAULT*)\
 ``clean`` : remove object files\
 ``fclean`` : remove objects and binary\
 ``re`` : full rebuild
 
-Plus a utility command for running Norminette on the project:\
+In addition you can use the following, defined in `config.mk`:
+``so`` : dynamic library\
+``d``/``BUILD_RULES_DEBUG`` : build with debug symbols and fsanitize\
+``W``/``BUILD_RULES_STRICT`` : build with stricter -W flags, useful during development\
+``O``/``BUILD_RULES_OPTIMAL`` : build with heavier optimization
+
+Plus a utility command for running Norminette on the project:
 ``norme``
 
 There is also a separate Makefile in eval_tests/ for compiling the library with a tester and some utilities,
@@ -48,6 +53,7 @@ but it is also very much WIP.
 
 ## TODO:
 * Makefile should be able to build .so despite .a existing
-* add PRE_BUILD_MESSAGE for make targets
-* fix Makefile colors
-* write a script to automate building a moulinette-compliant directory with only needed files
+* PRE_REQUISITE message should be printed whenever objects need to be compiled
+* make clean should only print / remove the files that exist
+* make NAME should print all the objects before compiling them, allowing for nice formatting of output
+* a script to automate building a moulinette-compliant directory with only needed files
