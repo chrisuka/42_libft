@@ -19,8 +19,8 @@ The functions include:
 * Comparisons, iteration
 
 With bonuses regarding linked lists and custom functions.
-Find details with the respective subdirectories.
-*(UNDER CONSTRUCTION)*
+Find details with the respective subdirectories.\
+**(UNDER CONSTRUCTION)**
 
 * _Part 1_ (Mandatory)
 * _Part 2_ (Mandatory)
@@ -33,19 +33,19 @@ Find details with the respective subdirectories.
 ``cd`` into the root folder and ``make`` with the appropriate rules to compile libft, then link it with your own programs.
 See Makefile for further details.
 
-The supported standard targets are:
-``all`` : standard deployment build (*DEFAULT*)\
+*The supported standard targets are:*\
+``all`` : **(DEFAULT)** standard deployment build\
 ``clean`` : remove object files\
 ``fclean`` : remove objects and binary\
 ``re`` : full rebuild
 
-In addition you can use the following, defined in `config.mk`:
+*In addition you can use the following, defined in `config.mk`:*\
 ``so`` : dynamic library\
 ``d``/``BUILD_RULES_DEBUG`` : build with debug symbols and fsanitize\
 ``W``/``BUILD_RULES_STRICT`` : build with stricter -W flags, useful during development\
 ``O``/``BUILD_RULES_OPTIMAL`` : build with heavier optimization
 
-Plus a utility command for running Norminette on the project:
+*Plus a utility command for running Norminette on the project:*\
 ``norme``
 
 There is also a separate Makefile in eval_tests/ for compiling the library with a tester and some utilities,
