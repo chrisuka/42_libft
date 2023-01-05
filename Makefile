@@ -49,32 +49,32 @@ include $(SUBMAKES)
 .DEFAULT_GOAL	:= all
 .PHONY: all clean fclean re
 #=== TARGETS ==================================================================#
-all: $(NAME) | $(SO)
-$(NAME): $(PRE_REQUISITE) | $(OBJ)
-	@$(ECHO) $(BMSG_LD)
+all: $(NAME) $(SO)
+$(NAME): $(PRE_REQUISITE) $(OBJ_DIR) $(OBJ)
+	@$(ECHO);$(ECHO) $(BMSG_LD)
 	@$(LD) -o $(@) $(LDFLAGS) $(OBJ)
 	@$(ECHO) $(BMSG_FIN)
 $(SO):
 
-$(OBJ): $(OBJ_DIR)%.o:$(SRC_DIR)%.c | $(OBJ_DIR)
+$(OBJ): $(OBJ_DIR)%.o:$(SRC_DIR)%.c
 	@$(CC) -c $(CFLAGS) $(INCLUDE) $(<) -o $(@)
-	@$(ECHO) ">$(GREEN)$(<)$(CNIL)"
+	@$(ECHO) -n "[$(GREEN)$(<)$(CNIL)]"
 
 $(OBJ_DIR):
 	@$(MKDIR) $(@)
 #-- CLEANUP ---------------------------|----//--||
 clean:
 	@$(ECHO) "$(RED)$(OBJ)$(CNIL)"
-	@$(RM)		$(OBJ) $(DEPENDENCIES)
+	@$(RM)		$(OBJ) $(DEPENDENCIES) $(PRE_REQUISITE)
 	@$(RM) -d	$(OBJ_DIR)
-	@$(RM) $(PRE_REQUISITE)
 fclean: clean
 	@$(ECHO) "$(RED)$(NAME) $(SO)$(CNIL)"
 	@$(RM)		$(NAME) $(SO)
 	@$(ECHO) "$(GREEN)Mm, refreshing!$(CNIL)"
 re: fclean all
 #-- BUILD OVERRIDES -------------------|----//--||
+.PHONY: W O D .WAIT
 W:	BUILD_RULES_STRICT
 O:	BUILD_RULES_OPTIMAL
-d:	BUILD_RULES_DEBUG
+D:	BUILD_RULES_DEBUG
 #======|============|==============================================|===========#

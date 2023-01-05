@@ -10,7 +10,8 @@
 #                                                                              #
 # **************************************************************************** #
 
-MAKEARGS	:= --load-average=2.5 --jobs=4
+NPROCS		:= $(shell grep 'processor' /proc/cpuinfo | wc -l)
+MAKEARGS	:= --load-average=2.5 --jobs=$(NPROCS)
 
 ECHO 	:= echo
 TOUCH	:= touch
@@ -34,7 +35,7 @@ DEP_FLAGS	= -MMD -MP -MT $(@) -MF $(@:.o=.dep)
 .EXTRA_PREREQS	:= 
 .DELETE_ON_ERROR = $(NAME) $(OBJ)
 .NOTPARALLEL: $(PRE_REQUISITE) $(OBJ_DIR)
-.PHONY: norme so BUILD_RULES_STRICT BUILD_RULES_OPTIMAL BUILD_RULES_DEBUG 
+.PHONY: norme so BUILD_RULES_STRICT BUILD_RULES_OPTIMAL BUILD_RULES_DEBUG
 #=== COMPATABILITY ============================================================#
 OS	:= $(shell uname -s)
 ifeq ("$(OS)" , "Linux")
@@ -58,11 +59,11 @@ PURPLEB	:=\033[1;35m
 CYANB	:=\033[1;36m
 endif
 #=== BUILD MESSAGES ===========================================================#
-BMSG_FORM	:= --DEPLOY--
+BMSG_FORM		:= --DEPLOY--
 BMSG_PREFIX	:= $(BLUE)$(NAME)$(CNIL) :: 
 BMSG_BIN	= "$(BMSG_PREFIX)$(CYANB)Starting $(BMSG_FORM) build$(CNIL)..."
-BMSG_CC		= "$(BMSG_PREFIX)$(CNIL)$(CC) $(CFLAGS)"
-BMSG_LD		= "$(BMSG_PREFIX)$(PURPLEB)Linking:$(CNIL) $(LIBS)"
+BMSG_CC	= "$(BMSG_PREFIX)$(CNIL)$(CC) $(CFLAGS)"
+BMSG_LD	= "$(BMSG_PREFIX)$(PURPLEB)Linking:$(CNIL) $(LD) $(LDFLAGS)$(LIBS)"
 BMSG_FIN	= "$(BMSG_PREFIX)$(GREENB)Build success!$(CNIL)"
 #=== UTILITIES ================================================================#
 CMD_NORME		:= norminette -R CheckForbiddenSourceHeader
