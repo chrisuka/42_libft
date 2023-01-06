@@ -6,6 +6,7 @@
 !config.mk
 !libft.h
 
+!src/
 !src/ft_*.c
 
 !eval_tests/*.c.test

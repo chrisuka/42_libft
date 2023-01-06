@@ -37,7 +37,7 @@ lstnew lstadd lstdelone lstdel lstiter lstmap
 EXTRA_FILES =\
 islower isupper isspace isxdigit toinverse \
 bool2sign abs log10 pow min max utoa64 \
-swap strword wordcount \
+strany swap strword wordcount \
 aiter freearray bset64 \
 lstlen lstn lstclen lstinit lstcut lstbuflen lststr
 CSTAGE	= $(MANDATORY_FILES) $(BONUS_FILES) $(EXTRA_FILES)
