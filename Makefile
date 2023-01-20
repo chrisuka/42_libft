@@ -6,7 +6,7 @@
 #    By: ikarjala <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/19 01:31:36 by ikarjala          #+#    #+#              #
-#    Updated: 2022/12/01 13:21:26 by ikarjala         ###   ########.fr        #
+#    Updated: 2023/01/20 16:59:41 by ikarjala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,13 +52,13 @@ include $(SUBMAKES)
 all: $(NAME) $(SO)
 $(NAME): $(PRE_REQUISITE) $(OBJ_DIR) $(OBJ)
 	@$(ECHO);$(ECHO) $(BMSG_LD)
-	@$(LD) -o $(@) $(LDFLAGS) $(OBJ)
+	@$(LD) $(LDFLAGS) $(@) $(OBJ)
 	@$(ECHO) $(BMSG_FIN)
 $(SO):
 
 $(OBJ): $(OBJ_DIR)%.o:$(SRC_DIR)%.c
 	@$(CC) -c $(CFLAGS) $(INCLUDE) $(<) -o $(@)
-	@$(ECHO) -n "[$(GREEN)$(<)$(CNIL)]"
+	@printf "[$(GREEN)$(<)$(CNIL)]"
 
 $(OBJ_DIR):
 	@$(MKDIR) $(@)

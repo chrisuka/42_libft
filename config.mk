@@ -6,11 +6,11 @@
 #    By: ikarjala <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/18 22:41:30 by ikarjala          #+#    #+#              #
-#    Updated: 2022/12/01 09:31:58 by ikarjala         ###   ########.fr        #
+#    Updated: 2023/01/20 16:59:40 by ikarjala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NPROCS		:= $(shell grep 'processor' /proc/cpuinfo | wc -l)
+NPROCS		:= 1 #$(shell grep 'processor' /proc/cpuinfo | wc -l)
 MAKEARGS	:= --load-average=2.5 --jobs=$(NPROCS)
 
 ECHO 	:= echo
