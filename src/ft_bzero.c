@@ -16,7 +16,7 @@ void	ft_bzero(void *s, size_t n)
 {
 	uint64_t	*quadp;
 
-	quadp = &s[n];
+	quadp = (uint64_t *)(&s)[n];
 	while (n >= sizeof(quadp))
 	{
 		n -= sizeof(quadp);

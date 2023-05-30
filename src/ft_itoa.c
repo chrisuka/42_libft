@@ -12,12 +12,12 @@
 
 #include "libft.h"
 
-/* Return malloced string representing int n
- * first, get the least significant digit of n with modulo (%)
+/* Return malloced string representing int n.
+ * First, get the least significant digit of n with modulo (%),
  * then divide it by 10 or -10 to avoid integer overflow while
- * forcing it into a + sign, this will make it easier to get the other digits
- * Set the first char to '-', if n is positive
- * we will overwrite it with a digit later
+ * forcing it into a + sign, this will make it easier to get the other digits.
+ * Set the first char to '-' ;
+ * if n is positive we will overwrite it with a digit later.
 */
 char	*ft_itoa(int n)
 {
@@ -27,7 +27,7 @@ char	*ft_itoa(int n)
 	int		ltz;
 
 	ltz = (n < 0);
-	last = (n % 10) * ft_bool2sign(!ltz) + '0';
+	last = (char)((n % 10) * ft_bool2sign(!ltz)) + '0';
 	n /= ft_bool2sign(!ltz) * 10;
 	len = ft_log10((unsigned long long)(n)) + 1 + (n != 0) + ltz;
 	str = (char *)malloc(sizeof(char) * (size_t)(len + 1));
@@ -38,7 +38,7 @@ char	*ft_itoa(int n)
 	str[--len] = last;
 	while (--len >= ltz)
 	{
-		str[len] = (n % 10) + '0';
+		str[len] = (char)(n % 10) + '0';
 		n /= 10;
 	}
 	return (str);

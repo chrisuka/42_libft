@@ -21,7 +21,7 @@ void	ft_putnbr_fd(int n, int fd)
 	int		i;
 
 	ltz = (n < 0);
-	last = (n % 10) * ft_bool2sign(!ltz) + '0';
+	last = (char)((n % 10) * ft_bool2sign(!ltz)) + '0';
 	n /= ft_bool2sign(!ltz) * 10;
 	len = ft_log10((unsigned long long)(n)) + 1 + (n != 0) + ltz;
 	i = len - 1;
@@ -29,10 +29,10 @@ void	ft_putnbr_fd(int n, int fd)
 	buf[i] = last;
 	while (--i >= ltz)
 	{
-		buf[i] = (n % 10) + '0';
+		buf[i] = (char)(n % 10) + '0';
 		n /= 10;
 	}
-	write (fd, buf, len);
+	write (fd, buf, (size_t)(len));
 }
 
 /* this logic is virtually identical to ft_itoa, only with a stack array

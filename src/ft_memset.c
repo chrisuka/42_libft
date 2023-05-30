@@ -25,7 +25,7 @@ void	*ft_memset(void *b, int c, size_t len)
 		quad |= (quad << (__CHAR_BIT__ << 0));
 		quad |= (quad << (__CHAR_BIT__ << 1));
 		quad |= (quad << (__CHAR_BIT__ << 2));
-		qwordp = &b[len];
+		qwordp = (uint64_t *)(&b)[len];
 		while (len >= sizeof(quad))
 		{
 			len -= sizeof(quad);
