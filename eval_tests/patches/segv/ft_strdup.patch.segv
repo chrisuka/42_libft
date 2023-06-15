@@ -1,3 +1,0 @@
-20,21d19
-< 	if (!s1)
-< 		return (NULL);

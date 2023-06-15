@@ -1,3 +1,0 @@
-20,21d19
-< 	if (!haystack || !needle)
-< 		return (NULL);
