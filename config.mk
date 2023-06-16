@@ -10,39 +10,31 @@
 #                                                                              #
 # **************************************************************************** #
 
-NPROCS		:= 1 #$(shell grep 'processor' /proc/cpuinfo | wc -l)
-MAKEARGS	:= --load-average=2.5 --jobs=$(NPROCS)
-
+PRINTF	:= printf
 ECHO 	:= echo
 TOUCH	:= touch
 MKDIR	:= mkdir -p
 RM		:= rm -f
 
-OBJ		= $(CFUNC:%=$(OBJ_DIR)%.o)
+OBJ		= $(CFUNC:%=$(OBJ_DIR)/%.o)
 INCLUDE	= $(addprefix -I , $(INC_DIR))
 
-CC	:= clang
+CC	:= gcc
 LD	:= ar
 
-CFLAGS		= -Wall -Werror -Wextra $(USEFLAGS)
+CFLAGS		= -Wall -Werror -Wextra
 CFSTRICT	= -Wimplicit -Wunused -Wconversion
-CFOPTIM		= -O3 -flto=full
+CFOPTIM		= -O3 -flto
 CFDEBUG		= -g -fsanitize=address
 
 LDFLAGS 	:= -crs
-DEP_FLAGS	= -MMD -MP -MT $(@) -MF $(@:.o=.dep)
 #=== SPECIAL ==================================================================#
-.EXTRA_PREREQS	:= 
+.EXTRA_PREREQS	:=
 .DELETE_ON_ERROR = $(NAME) $(OBJ)
-.NOTPARALLEL: $(PRE_REQUISITE) $(OBJ_DIR)
-.PHONY: norme so BUILD_RULES_STRICT BUILD_RULES_OPTIMAL BUILD_RULES_DEBUG
-#=== COMPATABILITY ============================================================#
-OS	:= $(shell uname -s)
-ifeq ("$(OS)" , "Linux")
-ECHO := echo -e
-endif
+.PHONY: norme so BUILD_STRICT BUILD_OPTIMAL BUILD_DEBUG
 #=== COLORS ===================================================================#
-ifeq ("$(COLORTERM)","truecolor")
+USECOLOR := 1
+ifeq ($(USECOLOR), 1)
 CNIL	:=\033[0;0m
 RED		:=\033[0;31m
 GREEN	:=\033[0;32m
@@ -75,13 +67,13 @@ $(PRE_REQUISITE):
 norme: $(SRC_DIR) $(INC_DIR)
 	@$(CMD_NORME) $(<)
 #=== BUILD OVERRIDES ==========================================================#
-BUILD_RULES_STRICT:		BMSG_FORM := --STRICT--
-BUILD_RULES_STRICT:		CFLAGS += $(CFSTRICT)
-BUILD_RULES_STRICT:		re
-BUILD_RULES_OPTIMAL:	BMSG_FORM := --OPTIMIZED--
-BUILD_RULES_OPTIMAL:	CFLAGS += $(CFOPTIM)
-BUILD_RULES_OPTIMAL:	re
-BUILD_RULES_DEBUG:		BMSG_FORM := --DEBUG--
-BUILD_RULES_DEBUG:		CFLAGS += $(CFDEBUG)
-BUILD_RULES_DEBUG:		re
+BUILD_STRICT:	BMSG_FORM := --STRICT--
+BUILD_STRICT:	CFLAGS += $(CFSTRICT)
+BUILD_STRICT:	re
+BUILD_OPTIMAL:	BMSG_FORM := --OPTIMIZED--
+BUILD_OPTIMAL:	CFLAGS += $(CFOPTIM)
+BUILD_OPTIMAL:	re
+BUILD_DEBUG:	BMSG_FORM := --DEBUG--
+BUILD_DEBUG:	CFLAGS += $(CFDEBUG)
+BUILD_DEBUG:	re
 #======|============|==========================================================#
