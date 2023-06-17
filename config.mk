@@ -60,6 +60,7 @@ BMSG_FIN	= "$(BMSG_PREFIX)$(GREENB)Build success!$(CNIL)"
 #=== UTILITIES ================================================================#
 CMD_NORME		:= norminette -R CheckForbiddenSourceHeader
 PRE_REQUISITE	:= .buildinfo
+.INTERMEDIATE: $(PRE_REQUISITE)
 $(PRE_REQUISITE):
 	@$(ECHO)	$(BMSG_BIN)
 	@$(ECHO)	$(BMSG_CC)
@@ -69,11 +70,11 @@ norme: $(SRC_DIR) $(INC_DIR)
 #=== BUILD OVERRIDES ==========================================================#
 BUILD_STRICT:	BMSG_FORM := --STRICT--
 BUILD_STRICT:	CFLAGS += $(CFSTRICT)
-BUILD_STRICT:	re
+BUILD_STRICT:	all
 BUILD_OPTIMAL:	BMSG_FORM := --OPTIMIZED--
 BUILD_OPTIMAL:	CFLAGS += $(CFOPTIM)
-BUILD_OPTIMAL:	re
+BUILD_OPTIMAL:	all
 BUILD_DEBUG:	BMSG_FORM := --DEBUG--
 BUILD_DEBUG:	CFLAGS += $(CFDEBUG)
-BUILD_DEBUG:	re
+BUILD_DEBUG:	all
 #======|============|==========================================================#

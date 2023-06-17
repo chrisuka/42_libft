@@ -49,13 +49,13 @@ include $(SUBMAKES)
 .DEFAULT_GOAL := all
 .PHONY: all clean fclean re
 #=== TARGETS ==================================================================#
-all: $(NAME) | $(PRE_REQUISITE)
+all: $(NAME)
 $(NAME): $(OBJ)
 	@$(ECHO) && $(ECHO) $(BMSG_LD)
 	@$(LD) $(LDFLAGS) $(@) $(^)
 	@$(ECHO) $(BMSG_FIN)
 
-$(OBJ): $(OBJ:$(OBJ_DIR)/%.o=$(SRC_DIR)/%.c) | $(OBJ_DIR)/
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(PRE_REQUISITE) $(OBJ_DIR)/
 	@$(CC) -c $(CFLAGS) $(INCLUDE) $(<) -o $(@)
 	@$(PRINTF) "[$(GREEN)$(<)$(CNIL)]"
 
@@ -63,13 +63,13 @@ $(OBJ_DIR)/:
 	@$(MKDIR) $(@)
 #-- CLEANUP ---------------------------|----//--||
 clean:
-	@$(ECHO) "Cleaning objects..."
-	@$(RM)		$(OBJ) $(PRE_REQUISITE)
+	@$(ECHO) "Cleaning $(NAME) objects..."
+	@$(RM)		$(OBJ)
 	@$(RM) -d	$(OBJ_DIR)
 fclean: clean
-	@$(ECHO) "Cleaning binaries..."
-	@$(RM)		$(NAME) $(SO)
-re: fclean
+	@$(ECHO) "Cleaning $(NAME) binaries..."
+	@$(RM)		$(NAME)
+re: clean
 	@$(MAKE)
 #-- BUILD OVERRIDES -------------------|----//--||
 .PHONY: W O D .WAIT
