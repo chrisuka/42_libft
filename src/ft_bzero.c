@@ -12,11 +12,13 @@
 
 #include "libft.h"
 
+/* Zero out the memory area pointed to by s, iterating up to 8 bytes per step.
+*/
 void	ft_bzero(void *s, size_t n)
 {
 	uint64_t	*quadp;
 
-	quadp = (uint64_t *)(&s)[n];
+	quadp = (uint64_t *)(s + n);
 	while (n >= sizeof(quadp))
 	{
 		n -= sizeof(quadp);

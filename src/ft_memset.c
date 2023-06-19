@@ -12,11 +12,14 @@
 
 #include "libft.h"
 
+/* Fill memory area [b -> b+len] with unsigned byte c,
+ * iterating up to 8 bytes per iteration.
+*/
 void	*ft_memset(void *b, int c, size_t len)
 {
 	uint64_t	*qwordp;
 	uint64_t	quad;
-	uint8_t		uchr;
+	uint8_t	uchr;
 
 	uchr = (unsigned char)(c);
 	if (len > sizeof(quad))
@@ -25,7 +28,7 @@ void	*ft_memset(void *b, int c, size_t len)
 		quad |= (quad << (__CHAR_BIT__ << 0));
 		quad |= (quad << (__CHAR_BIT__ << 1));
 		quad |= (quad << (__CHAR_BIT__ << 2));
-		qwordp = (uint64_t *)(&b)[len];
+		qwordp = (uint64_t *)(b + len);
 		while (len >= sizeof(quad))
 		{
 			len -= sizeof(quad);

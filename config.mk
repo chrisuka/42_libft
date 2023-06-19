@@ -25,7 +25,7 @@ LD	:= ar
 CFLAGS		= -Wall -Werror -Wextra
 CFSTRICT	= -Wimplicit -Wunused -Wconversion
 CFOPTIM		= -O3 -flto
-CFDEBUG		= -g -fsanitize=address
+CFDEBUG		= -g
 
 LDFLAGS 	:= -crs
 #=== SPECIAL ==================================================================#
