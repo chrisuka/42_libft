@@ -4,7 +4,7 @@
 This was an introductory project for [Hive Helsinki](https://www.hive.fi/en/),
 the Finnish branch of the [42 Coding School](https://42.fr/en/homepage/) network.
 
-The idea was to re-code from scratch the functionality of a bunch of
+The assignment was to re-code from scratch the functionality of a subset of
 the standard libc functions, to learn to code in C as well as have a
 base library which to build upon as we are prohibited from using most
 built-in standard library functions in our projects.
@@ -14,12 +14,15 @@ The version tagged
 state of the project to pass the evaluations.
 (Hivers III old curriculum, Norm v3)
 
-The functions include:
+The functions feature:
 
+* Counting
 * String manipulation
-* Memory setting, clearing
+* Memory operations
+* Heap allocation / free
 * Array operations
-* Comparisons, iteration
+* Comparison
+* Iteration / recursion
 
 With bonuses regarding linked lists and custom functions.
 
@@ -39,9 +42,8 @@ In addition you can use the following, defined in `config.mk`:
 * ``O``|``BUILD_OPTIMAL`` : build with heavier optimization
 * ``D``|``BUILD_DEBUG`` : build with debug symbols and fsanitize
 
-*Plus a utility command for running Norminette on the project:*\
+Plus a utility command for running Norminette on the project:\
 ``norme``
 
 ## TODO:
 * .so target (mainly to support the testers on linux)
-* PRE_REQUISITE message should be printed whenever objects need to be recompiled
